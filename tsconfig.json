@@ -25,7 +25,6 @@
     "strict": true,
     "target": "esnext",
     "typeRoots": ["node_modules/@types"],
-    "types": ["vite/client"],
     "useDefineForClassFields": true
   },
   "include": ["src"]
