@@ -130,7 +130,7 @@ const createState = (options: Partial<Pick<Options, 'timestep' | 'fps'>>) => {
 export const snaproll = (options: Partial<Options> = {}) => {
   let state = createState(options)
 
-  const subscriptions: Set<Subscription> = new Set()
+  const subscriptions = new Set<Subscription>()
 
   const multiplexer = (action: Action) => {
     subscriptions.forEach((value) => value(action))
