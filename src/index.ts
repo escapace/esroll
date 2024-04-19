@@ -9,40 +9,40 @@ export enum TypeAction {
 }
 
 interface ActionFrameBegin {
-  type: TypeAction.FrameBegin
-  timestamp: number
   frameDelta: number
+  timestamp: number
+  type: TypeAction.FrameBegin
 }
 
 interface ActionFrameUpdate {
-  type: TypeAction.FrameUpdate
   timestep: number
+  type: TypeAction.FrameUpdate
 }
 
 interface ActionFrameDraw {
-  type: TypeAction.FrameDraw
   delta: number
   panic: boolean
+  type: TypeAction.FrameDraw
 }
 
 interface ActionFrameEnd {
-  type: TypeAction.FrameEnd
   panic: boolean
+  type: TypeAction.FrameEnd
 }
 
 export type Action =
   | ActionFrameBegin
-  | ActionFrameUpdate
   | ActionFrameDraw
   | ActionFrameEnd
+  | ActionFrameUpdate
 
 export type Unsubscribe = () => void
 export type Subscription = (action: Action) => void
 
 interface Options {
-  requestAnimationFrame: RequestAnimationFrame
   cancelAnimationFrame: CancelAnimationFrame
   fps: number
+  requestAnimationFrame: RequestAnimationFrame
   timestep: number
 }
 
@@ -50,7 +50,7 @@ interface Options {
 const calculateMaxUpdateSteps = (timestep: number) =>
   Math.round(4000 / timestep)
 
-const createState = (options: Partial<Pick<Options, 'timestep' | 'fps'>>) => {
+const createState = (options: Partial<Pick<Options, 'fps' | 'timestep'>>) => {
   // An exponential moving average of the frames per second.
   const fps = 0
 
@@ -86,7 +86,7 @@ const createState = (options: Partial<Pick<Options, 'timestep' | 'fps'>>) => {
   // relevant inside of animate(), but a reference is held externally so that
   // this variable is not marked for garbage collection every time the main
   // loop runs.
-  const numUpdateSteps = 0
+  const numberUpdateSteps = 0
   const maxUpdateSteps = calculateMaxUpdateSteps(timestep)
 
   // The minimum amount of time in milliseconds that must pass since the last
@@ -115,12 +115,12 @@ const createState = (options: Partial<Pick<Options, 'timestep' | 'fps'>>) => {
     frameDelta,
     framesSinceLastFpsUpdate,
     isActive,
+    lastDrawTime,
     lastFpsUpdate,
     lastFrameTime,
     maxUpdateSteps,
-    lastDrawTime,
     minDrawDelay,
-    numUpdateSteps,
+    numUpdateSteps: numberUpdateSteps,
     panic,
     rafHandle,
     timestep
@@ -173,15 +173,15 @@ export const snaproll = (options: Partial<Options> = {}) => {
     state.lastFrameTime = timestamp
 
     multiplexer({
-      type: TypeAction.FrameBegin,
+      frameDelta: state.frameDelta,
       timestamp,
-      frameDelta: state.frameDelta
+      type: TypeAction.FrameBegin
     })
 
     state.numUpdateSteps = 0
 
     while (state.frameDelta >= state.timestep) {
-      multiplexer({ type: TypeAction.FrameUpdate, timestep: state.timestep })
+      multiplexer({ timestep: state.timestep, type: TypeAction.FrameUpdate })
       state.frameDelta -= state.timestep
 
       // 4 seconds
@@ -211,44 +211,22 @@ export const snaproll = (options: Partial<Options> = {}) => {
       state.framesSinceLastFpsUpdate++
 
       multiplexer({
-        type: TypeAction.FrameDraw,
         delta: state.frameDelta / state.timestep,
-        panic: state.panic
+        panic: state.panic,
+        type: TypeAction.FrameDraw
       })
     }
 
     // Run any updates that are not dependent on time in the simulation.
     multiplexer({
-      type: TypeAction.FrameEnd,
-      panic: state.panic
+      panic: state.panic,
+      type: TypeAction.FrameEnd
     })
 
     state.panic = false
   }
 
   return {
-    subscribe(value: Subscription): Unsubscribe {
-      subscriptions.add(value)
-
-      return () => {
-        subscriptions.delete(value)
-      }
-    },
-    unsubscribe(value: Subscription) {
-      subscriptions.delete(value)
-    },
-    get isActive() {
-      return state.isActive
-    },
-    // How many milliseconds should be simulated by every update.
-    get timestep() {
-      return state.timestep
-    },
-    // How many milliseconds should be simulated by every update.
-    set timestep(value: number) {
-      state.timestep = value
-      state.maxUpdateSteps = calculateMaxUpdateSteps(value)
-    },
     get fps() {
       return state.fps
     },
@@ -260,6 +238,19 @@ export const snaproll = (options: Partial<Options> = {}) => {
         state.minDrawDelay = 1000 / value
       }
     },
+    get isActive() {
+      return state.isActive
+    },
+    pause,
+    reset(options: Partial<Pick<Options, 'fps' | 'timestep'>>) {
+      pause()
+
+      // preserve the options
+      state = createState({
+        fps: options.fps ?? 1000 / state.minDrawDelay,
+        timestep: options.timestep ?? state.timestep
+      })
+    },
     resetFrameDelta() {
       const oldFrameDelta = state.frameDelta
       state.frameDelta = 0
@@ -269,16 +260,25 @@ export const snaproll = (options: Partial<Options> = {}) => {
       // function.
       return oldFrameDelta
     },
-    reset(options: Partial<Pick<Options, 'timestep' | 'fps'>>) {
-      pause()
+    resume,
+    subscribe(value: Subscription): Unsubscribe {
+      subscriptions.add(value)
 
-      // preserve the options
-      state = createState({
-        fps: options.fps ?? 1000 / state.minDrawDelay,
-        timestep: options.timestep ?? state.timestep
-      })
+      return () => {
+        subscriptions.delete(value)
+      }
     },
-    pause,
-    resume
+    // How many milliseconds should be simulated by every update.
+    get timestep() {
+      return state.timestep
+    },
+    // How many milliseconds should be simulated by every update.
+    set timestep(value: number) {
+      state.timestep = value
+      state.maxUpdateSteps = calculateMaxUpdateSteps(value)
+    },
+    unsubscribe(value: Subscription) {
+      subscriptions.delete(value)
+    }
   }
 }
