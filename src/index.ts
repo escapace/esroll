@@ -5,7 +5,7 @@ export enum TypeAction {
   FrameBegin,
   FrameUpdate,
   FrameDraw,
-  FrameEnd
+  FrameEnd,
 }
 
 interface ActionFrameBegin {
@@ -30,11 +30,7 @@ interface ActionFrameEnd {
   type: TypeAction.FrameEnd
 }
 
-export type Action =
-  | ActionFrameBegin
-  | ActionFrameDraw
-  | ActionFrameEnd
-  | ActionFrameUpdate
+export type Action = ActionFrameBegin | ActionFrameDraw | ActionFrameEnd | ActionFrameUpdate
 
 export type Unsubscribe = () => void
 export type Subscription = (action: Action) => void
@@ -47,8 +43,7 @@ interface Options {
 }
 
 // Four seconds
-const calculateMaxUpdateSteps = (timestep: number) =>
-  Math.round(4000 / timestep)
+const calculateMaxUpdateSteps = (timestep: number) => Math.round(4000 / timestep)
 
 const createState = (options: Partial<Pick<Options, 'fps' | 'timestep'>>) => {
   // An exponential moving average of the frames per second.
@@ -123,7 +118,7 @@ const createState = (options: Partial<Pick<Options, 'fps' | 'timestep'>>) => {
     numUpdateSteps: numberUpdateSteps,
     panic,
     rafHandle,
-    timestep
+    timestep,
   }
 }
 
@@ -175,7 +170,7 @@ export const snaproll = (options: Partial<Options> = {}) => {
     multiplexer({
       frameDelta: state.frameDelta,
       timestamp,
-      type: TypeAction.FrameBegin
+      type: TypeAction.FrameBegin,
     })
 
     state.numUpdateSteps = 0
@@ -195,8 +190,7 @@ export const snaproll = (options: Partial<Options> = {}) => {
 
     if (drawDelta >= state.minDrawDelay) {
       state.lastDrawTime =
-        timestamp -
-        (state.minDrawDelay === 0 ? 0 : drawDelta % state.minDrawDelay)
+        timestamp - (state.minDrawDelay === 0 ? 0 : drawDelta % state.minDrawDelay)
 
       if (timestamp > state.lastFpsUpdate + state.fpsUpdateInterval) {
         state.fps =
@@ -213,14 +207,14 @@ export const snaproll = (options: Partial<Options> = {}) => {
       multiplexer({
         delta: state.frameDelta / state.timestep,
         panic: state.panic,
-        type: TypeAction.FrameDraw
+        type: TypeAction.FrameDraw,
       })
     }
 
     // Run any updates that are not dependent on time in the simulation.
     multiplexer({
       panic: state.panic,
-      type: TypeAction.FrameEnd
+      type: TypeAction.FrameEnd,
     })
 
     state.panic = false
@@ -248,7 +242,7 @@ export const snaproll = (options: Partial<Options> = {}) => {
       // preserve the options
       state = createState({
         fps: options.fps ?? 1000 / state.minDrawDelay,
-        timestep: options.timestep ?? state.timestep
+        timestep: options.timestep ?? state.timestep,
       })
     },
     resetFrameDelta() {
@@ -279,6 +273,6 @@ export const snaproll = (options: Partial<Options> = {}) => {
     },
     unsubscribe(value: Subscription) {
       subscriptions.delete(value)
-    }
+    },
   }
 }
