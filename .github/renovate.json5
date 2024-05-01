@@ -1,0 +1,5 @@
+{
+  extends: [
+    'github>escapace/renovate-configuration'
+  ]
+}
