@@ -1,0 +1,47 @@
+name: release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+  NODE_OPTIONS: --max-old-space-size=6144
+
+jobs:
+  context:
+    uses: escapace/workflows/.github/workflows/context.yaml@trunk
+
+  ci:
+    if: needs.context.outputs.environment == 'production' || needs.context.outputs.environment == 'staging'
+    needs:
+      - context
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+    uses: escapace/workflows/.github/workflows/ci-typescript.yaml@trunk
+    with:
+      enable-artifact-upload: true
+      enable-codecov: true
+      node-version: ${{ needs.context.outputs.node-version }}
+      pnpm-version: ${{ needs.context.outputs.pnpm-version }}
+      ref: ${{ needs.context.outputs.ref }}
+      version: ${{ needs.context.outputs.version }}
+
+  release:
+    if: needs.context.outputs.environment == 'production' || needs.context.outputs.environment == 'staging'
+    needs:
+      - context
+      - ci
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    uses: escapace/workflows/.github/workflows/release-typescript.yaml@trunk
+    with:
+      changelog: ${{ needs.context.outputs.changelog }}
+      enable-github-packages-npm-registry: false
+      enable-npm-registry: true
+      node-version: ${{ needs.context.outputs.node-version }}
+      prerelease: ${{ fromJSON(needs.context.outputs.prerelease) }}
+      ref: ${{ needs.context.outputs.ref }}
+      version: ${{ needs.context.outputs.version }}
