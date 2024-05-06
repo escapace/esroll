@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { RollupLog } from 'rollup'
 import type { SourceMapConsumers, TransformFailure } from './types'
+import { isFile } from './is-file'
 
 export const createHandlerRollupLog =
   (options: {
@@ -45,9 +46,8 @@ export const createHandlerRollupLog =
 
       const pathAbsolute = path.resolve(options.pathDirectoryTemporary, sourcePath)
       const file = path.relative(options.pathDirectoryPackage, pathAbsolute)
-      const source = await readFile(pathAbsolute, 'utf8')
-
-      const lineText = source.split(/\r?\n/)[position.line - 1]
+      const source = (await isFile(pathAbsolute)) ? await readFile(pathAbsolute, 'utf8') : undefined
+      const lineText = source?.split(/\r?\n/)[position.line - 1]
 
       const message: PartialMessage = {
         ...messageShared,
@@ -55,7 +55,8 @@ export const createHandlerRollupLog =
           column,
           file,
           line,
-          lineText,
+          lineText:
+            typeof lineText === 'string' ? lineText : `The source for this file is not available.`,
         },
         // notes: [{ location: null, text: log.message }],
       }
