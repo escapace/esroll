@@ -28,7 +28,7 @@
     "@types/node": "20.12.7",
     "@vitest/coverage-v8": "1.5.3",
     "eslint": "9.1.1",
-    "eslint-config-escapace": "5.0.6",
+    "eslint-config-escapace": "5.0.9",
     "knip": "5.11.0",
     "lefthook": "1.6.10",
     "lodash-es": "4.17.21",
@@ -45,17 +45,26 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.mjs"
+      "node": {
+        "import": {
+          "types": "./lib/types/index.d.ts",
+          "default": "./lib/node/index.js"
+        }
+      },
+      "default": {
+        "import": {
+          "types": "./lib/types/index.d.ts",
+          "default": "./lib/node/index.js"
+        }
+      }
     }
   },
   "files": [
-    "lib/esm",
+    "lib/node",
     "lib/types"
   ],
   "homepage": "https://github.com/escapace/esroll#readme",
   "license": "MPL-2.0",
-  "module": "lib/esm/index.mjs",
   "private": false,
   "publishConfig": {
     "access": "public",
@@ -63,7 +72,7 @@
   },
   "repository": "escapace/esroll",
   "scripts": {
-    "build": "tsx build.config.ts",
+    "build": "tsx scripts/build.ts",
     "lint": "ls-lint --config .ls-lint.yaml && knip && eslint",
     "pack": "pnpm-pack package --pack-destination lib",
     "prepare": "lefthook install",
@@ -72,5 +81,5 @@
   },
   "sideEffects": false,
   "type": "module",
-  "types": "lib/types/index.d.ts"
+  "types": "./lib/types/index.d.ts"
 }
