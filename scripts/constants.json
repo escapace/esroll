@@ -1,0 +1,14 @@
+{
+  "builds": {
+    "browser": {
+      "define": {
+        "__PLATFORM__": "\"browser\""
+      },
+      "entryPoints": ["src/index.ts"],
+      "mainFields": ["module", "browser", "main"],
+      "outdir": "lib/browser",
+      "platform": "browser",
+      "target": ["chrome123", "firefox124", "edge122", "opera108", "safari17.3"]
+    }
+  }
+}
