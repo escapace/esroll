@@ -45,18 +45,8 @@
   },
   "exports": {
     ".": {
-      "node": {
-        "import": {
-          "types": "./lib/types/index.d.ts",
-          "default": "./lib/node/index.js"
-        }
-      },
-      "default": {
-        "import": {
-          "types": "./lib/types/index.d.ts",
-          "default": "./lib/node/index.js"
-        }
-      }
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/node/index.js"
     }
   },
   "files": [
@@ -65,6 +55,7 @@
   ],
   "homepage": "https://github.com/escapace/esroll#readme",
   "license": "MPL-2.0",
+  "module": "./lib/node/index.js",
   "private": false,
   "publishConfig": {
     "access": "public",
