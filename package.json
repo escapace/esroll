@@ -16,7 +16,7 @@
     "@vitejs/plugin-vue": "5.0.5",
     "@vitest/coverage-v8": "1.6.0",
     "eslint": "9.6.0",
-    "eslint-config-escapace": "5.2.1",
+    "eslint-config-escapace": "5.2.2",
     "esroll": "0.2.0",
     "jsdom": "24.1.0",
     "knip": "5.23.3",
