@@ -35,7 +35,7 @@ const boxes = range(100).map((_, index) => {
     lastPosition: position,
     limit,
     position,
-    velocity
+    velocity,
   }
 
   const subscription: Subscription = (action) => {
@@ -46,14 +46,13 @@ const boxes = range(100).map((_, index) => {
         box.lastPosition = box.position
         box.position += box.velocity * action.timestep
         // Switch directions if we go too far
-        if (box.position >= box.limit || box.position <= 0)
-          box.velocity = -box.velocity
+        if (box.position >= box.limit || box.position <= 0) box.velocity = -box.velocity
         break
       case TypeAction.FrameDraw:
         element.style.left = `${lerp(
           box.lastPosition,
           box.position,
-          1 - Math.exp(-lambda * action.delta)
+          1 - Math.exp(-lambda * action.delta),
         )}vw`
 
         break
@@ -107,8 +106,18 @@ onMounted(() => {
   text-align: right;
   font-weight: 300;
   font-size: 5vw;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
 }
 
 .box {

@@ -3,9 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   build: {
-    outDir: 'lib/vite'
+    outDir: 'lib/vite',
   },
-  plugins: [
-    vue()
-  ]
+  plugins: [vue()],
 })

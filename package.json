@@ -15,9 +15,9 @@
     "@types/lodash-es": "4.17.12",
     "@vitejs/plugin-vue": "5.0.5",
     "@vitest/coverage-v8": "1.6.0",
-    "eslint": "9.6.0",
+    "eslint": "9.14.0",
     "eslint-config-escapace": "5.2.3",
-    "esroll": "0.2.0",
+    "esroll": "0.3.0",
     "jsdom": "24.1.0",
     "knip": "5.23.3",
     "lefthook": "1.6.18",
@@ -32,7 +32,7 @@
     "vue": "3.4.31"
   },
   "engines": {
-    "pnpm": ">=9.4.0"
+    "pnpm": ">=9.11.0"
   },
   "exports": {
     ".": {
@@ -56,11 +56,11 @@
   "scripts": {
     "build": "tsx scripts/build.ts",
     "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw .",
-    "lint": "ls-lint --config .ls-lint.yaml && knip && eslint",
+    "lint": "ls-lint --config .ls-lint.yaml && knip --no-config-hints && eslint",
     "ls-lint": "ls-lint --config .ls-lint.yaml",
     "pack": "pnpm-pack package --pack-destination lib",
     "prepare": "lefthook install",
-    "syncpack": "syncpack fix-mismatches && syncpack-set-semver-ranges && syncpack format",
+    "syncpack": "syncpack fix-mismatches && syncpack set-semver-ranges && syncpack format",
     "test": "vitest --no-watch --coverage",
     "typecheck": "tsc --noEmit"
   },
