@@ -41,7 +41,7 @@ export interface BuildOptions extends OmitOptions<ESBuildOptions> {
     >
     treeshake?: TreeshakingOptions
   } & Partial<Pick<RollupOptions, 'experimentalLogSideEffects' | 'maxParallelFileOps'>>
-  sourcemap?: 'external' | 'inline' | 'linked' | boolean
+  sourcemap?: boolean | 'external' | 'inline' | 'linked'
 }
 
 // export type BuildResult<T extends BuildOptions> = Pick<
