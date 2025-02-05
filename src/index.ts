@@ -1,3 +1,4 @@
+import pluginJSON from '@rollup/plugin-json'
 import commonPathPrefix from 'common-path-prefix'
 import { build as esbuild, type BuildOptions as ESBuildOptions, type SameShape } from 'esbuild'
 import { findUp } from 'find-up'
@@ -64,6 +65,10 @@ export async function build<T extends BuildOptions>(
     color: zx.chalk.level !== 0,
     format: 'esm',
     globalName: undefined,
+    // loader: {
+    //   '.json': 'copy',
+    //   ...options.loader
+    // },
     logLevel: 'silent',
     metafile: true,
     minify: false,
@@ -86,6 +91,8 @@ export async function build<T extends BuildOptions>(
       errors: [...resultESBuild.errors],
       warnings: [...resultESBuild.warnings],
     }
+
+    console.log(resultESBuild.metafile)
 
     const sourceMapConsumers = await createSourcemapConsumers(resultESBuild.metafile)
     const handlerRollupLog = createHandlerRollupLog({
@@ -172,7 +179,10 @@ export async function build<T extends BuildOptions>(
         // sourcemapPathTransform: options.rollup?.output?.sourcemapPathTransform,
         validate: true,
       },
-      plugins: [pluginSourcemaps(sourceMapConsumers)],
+      plugins: [
+        pluginJSON({ indent: '  ', namedExports: true, preferConst: true }),
+        pluginSourcemaps(sourceMapConsumers),
+      ],
       preserveEntrySignatures: 'exports-only',
       preserveSymlinks: false,
       treeshake: {

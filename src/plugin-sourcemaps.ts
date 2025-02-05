@@ -15,7 +15,7 @@ export function pluginSourcemaps(
   sourceMapConsumers: SourceMapConsumers,
   options?: Options,
 ): Plugin {
-  const filter = createFilter(options?.include, options?.include)
+  const filter = createFilter(options?.include, options?.exclude)
 
   return {
     async load(id: string) {
