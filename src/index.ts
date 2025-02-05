@@ -92,8 +92,6 @@ export async function build<T extends BuildOptions>(
       warnings: [...resultESBuild.warnings],
     }
 
-    console.log(resultESBuild.metafile)
-
     const sourceMapConsumers = await createSourcemapConsumers(resultESBuild.metafile)
     const handlerRollupLog = createHandlerRollupLog({
       messages,
