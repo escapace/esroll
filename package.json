@@ -12,7 +12,7 @@
     "@rollup/pluginutils": "^5.1.4",
     "common-path-prefix": "^3.0.0",
     "console-table-printer": "^2.12.1",
-    "esbuild": "^0.24.2",
+    "esbuild": "^0.25.0",
     "find-up": "^7.0.0",
     "is-path-inside": "^4.0.0",
     "pretty-bytes": "^6.1.1",
