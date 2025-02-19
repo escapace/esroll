@@ -178,6 +178,7 @@ export async function build<T extends BuildOptions>(
         validate: true,
       },
       plugins: [
+        ...(options.rollup?.plugins ?? []),
         pluginJSON({ indent: '  ', namedExports: true, preferConst: true }),
         pluginSourcemaps(sourceMapConsumers),
       ],

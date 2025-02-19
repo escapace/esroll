@@ -1,5 +1,11 @@
 import type { BuildOptions as ESBuildOptions, OutputFile, PartialMessage } from 'esbuild'
-import type { GeneratedCodeOptions, OutputOptions, RollupOptions, TreeshakingOptions } from 'rollup'
+import type {
+  GeneratedCodeOptions,
+  OutputOptions,
+  Plugin,
+  RollupOptions,
+  TreeshakingOptions,
+} from 'rollup'
 import type { IndexedSourceMapConsumer } from 'source-map'
 
 type OmitOptions<T> = Omit<
@@ -39,6 +45,7 @@ export interface BuildOptions extends OmitOptions<ESBuildOptions> {
         // | 'sourcemapPathTransform'
       >
     >
+    plugins?: Plugin[]
     treeshake?: TreeshakingOptions
   } & Partial<Pick<RollupOptions, 'experimentalLogSideEffects' | 'maxParallelFileOps'>>
   sourcemap?: boolean | 'external' | 'inline' | 'linked'
