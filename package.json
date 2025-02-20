@@ -57,6 +57,12 @@
   "homepage": "https://github.com/escapace/esroll#readme",
   "license": "MPL-2.0",
   "module": "./lib/node/index.js",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "lefthook",
+      "esbuild"
+    ]
+  },
   "private": false,
   "publishConfig": {
     "access": "public",
