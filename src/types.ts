@@ -19,7 +19,6 @@ type OmitOptions<T> = Omit<
   | 'minify'
   | 'outdir'
   | 'outfile'
-  | 'preserveSymlinks'
   | 'sourcemap'
   | 'stdin'
   | 'write'

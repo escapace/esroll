@@ -58,6 +58,7 @@ export async function build<T extends BuildOptions>(
   const logLevel = options.logLevel ?? 'info'
 
   const optionsESBuild = {
+    preserveSymlinks: false,
     ...(omit(options, ['rollup']) as ESBuildOptions),
     absWorkingDir: pathDirectoryPackage,
     allowOverwrite: true,
@@ -75,7 +76,6 @@ export async function build<T extends BuildOptions>(
     outdir: pathDirectoryTemporary,
     outExtension: { '.js': '.js', ...options.outExtension },
     outfile: undefined,
-    preserveSymlinks: false,
     sourcemap: 'external',
     sourceRoot: undefined,
     stdin: undefined,
