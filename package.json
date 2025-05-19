@@ -15,7 +15,7 @@
     "esbuild": "^0.25.2",
     "find-up": "^7.0.0",
     "is-path-inside": "^4.0.0",
-    "pretty-bytes": "^6.1.1",
+    "pretty-bytes": "^7.0.0",
     "rollup": "^4.40.0",
     "source-map": "^0.7.4",
     "zx": "^8.5.3"
