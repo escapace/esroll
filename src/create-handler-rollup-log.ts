@@ -3,8 +3,8 @@ import { capitalize, startCase } from 'lodash-es'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { RollupLog } from 'rollup'
-import type { SourceMapConsumers, TransformFailure } from './types'
 import { isFile } from './is-file'
+import type { SourceMapConsumers, TransformFailure } from './types'
 
 export const createHandlerRollupLog =
   (options: {
@@ -20,7 +20,7 @@ export const createHandlerRollupLog =
       text: log.code === undefined ? '' : capitalize(startCase(log.code)),
     }
 
-    if (!(log.loc?.file !== undefined && options.sourceMapConsumers[log.loc?.file] !== undefined)) {
+    if (log.loc?.file === undefined || options.sourceMapConsumers[log.loc?.file] === undefined) {
       options.messages.warnings?.push({
         ...messageShared,
         location: null,

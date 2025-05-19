@@ -45,11 +45,12 @@ export async function build<T extends BuildOptions>(
 ): Promise<BuildResult> {
   assertions(options)
 
-  const pathFilePackageJSON = await findUp('package.json')
-  assert(pathFilePackageJSON !== undefined)
-
+  const pathFilePackageJSON = await findUp('package.json', { cwd: options.absWorkingDir })
   const pathDirectoryTemporary = await mkdtemp(path.join(os.tmpdir(), 'esroll'))
-  const pathDirectoryPackage = options.absWorkingDir ?? path.dirname(pathFilePackageJSON)
+  const pathDirectoryPackage =
+    options.absWorkingDir ??
+    (pathFilePackageJSON === undefined ? undefined : path.dirname(pathFilePackageJSON)) ??
+    process.cwd()
   const pathDirectoryOutput = path.resolve(pathDirectoryPackage, options.outdir)
 
   assert(isPathInside(pathDirectoryOutput, pathDirectoryPackage))
@@ -103,7 +104,7 @@ export async function build<T extends BuildOptions>(
     const optionsRollup = {
       experimentalLogSideEffects: options.rollup?.experimentalLogSideEffects,
       external: (id) =>
-        !(id.startsWith('./') || id.startsWith(pathDirectoryTemporary) || id.startsWith('../')),
+        !id.startsWith('./') && !id.startsWith(pathDirectoryTemporary) && !id.startsWith('../'),
       input: Object.fromEntries(
         Object.entries(resultESBuild.metafile.outputs)
           .filter(
@@ -240,12 +241,13 @@ export async function build<T extends BuildOptions>(
     return {
       errors: messages.errors ?? [],
       outputFiles: resultRollup.output.map((value) => ({
-        path: path.resolve(pathDirectoryPackage, value.fileName),
+        path: path.resolve(pathDirectoryOutput, value.fileName),
       })),
       warnings: messages.warnings ?? [],
     }
   } catch (error) {
     await messagesPrint(logLevel, transformFailureFlatten(error))
+    await zx.fs.remove(pathDirectoryTemporary)
 
     throw error
   } finally {
