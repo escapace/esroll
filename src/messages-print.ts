@@ -32,7 +32,7 @@ export const messagesPrint = async (level: LogLevel, value: TransformFailure) =>
     ...(level !== 'silent'
       ? await esbuildFormatMessages(errors ?? [], { color, kind: 'error', terminalWidth: 100 })
       : []),
-  ].filter((value) => !(value === undefined || value.length === 0))
+  ].filter((value) => value !== undefined && value.length !== 0)
 
   if (messages.length !== 0) {
     console.log(trimArrayWhitespace(messages.join('\n').split('\n')).join('\n'))
