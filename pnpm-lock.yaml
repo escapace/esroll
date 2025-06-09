@@ -67,8 +67,8 @@ importers:
         specifier: 9.27.0
         version: 9.27.0(jiti@2.4.2)
       eslint-config-escapace:
-        specifier: 5.6.0
-        version: 5.6.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
+        specifier: 5.7.1
+        version: 5.7.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
       knip:
         specifier: 5.58.1
         version: 5.58.1(@types/node@22.15.21)(typescript@5.8.3)
@@ -1249,11 +1249,11 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
-  eslint-config-escapace@5.6.0:
-    resolution: {integrity: sha512-KHCd3jSqa2qKrp/BVQ2PMawnH7kln9z2TOzg4hsXeUpcIOfw+vd5fzLWpyxnVjA9GKGAzlfcZzHOoIbWTMZkew==}
+  eslint-config-escapace@5.7.1:
+    resolution: {integrity: sha512-RzHfr+zRF9ZcZf2WCE7cwxFB2ozKpZ1vuCzOgM6iPmC/hlEdLuY+0qAFq8goCKRNFW4NVOCrhTirw28WL5VW5g==}
     engines: {node: '>=22.13.1', pnpm: '>=10.4.1'}
     peerDependencies:
-      eslint: '>=9.26.0'
+      eslint: '>=9.27.0'
 
   eslint-config-flat-gitignore@2.1.0:
     resolution: {integrity: sha512-cJzNJ7L+psWp5mXM7jBX+fjHtBvvh06RBlcweMhKD8jWqQw0G78hOW5tpVALGHGFPsBV+ot2H+pdDGJy6CV8pA==}
@@ -3837,7 +3837,7 @@ snapshots:
       eslint: 9.27.0(jiti@2.4.2)
       semver: 7.7.2
 
-  eslint-config-escapace@5.6.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3):
+  eslint-config-escapace@5.7.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       '@stylistic/eslint-plugin': 4.4.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
       '@typescript-eslint/utils': 8.33.0(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
