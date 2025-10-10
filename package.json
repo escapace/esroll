@@ -13,7 +13,7 @@
     "common-path-prefix": "^3.0.0",
     "console-table-printer": "^2.14.6",
     "esbuild": "^0.25.10",
-    "find-up": "^7.0.0",
+    "find-up": "^8.0.0",
     "is-path-inside": "^4.0.0",
     "pretty-bytes": "^7.1.0",
     "rollup": "^4.52.4",
