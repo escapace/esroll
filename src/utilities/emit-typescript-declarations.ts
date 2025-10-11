@@ -17,6 +17,73 @@ import type TS from 'typescript'
 import * as zx from 'zx'
 import type { TransformFailure } from '../types'
 
+const DECLARATION_EXTENSION = /\.d\.(?:cts|mts|ts)$/
+const SUPPORTED_ARBITRARY_EXTENSIONS = ['.d.json.ts']
+
+/**
+ * Predict output paths (e.g., .d.ts and .map) for a virtual file,
+ * using the original program's file set so path projection matches.
+ */
+function createLanguageService(ts: typeof TS, program: TS.Program) {
+  const compilerOptions = program.getCompilerOptions()
+
+  // Seed the LS with all real files from the original program (no .d.ts),
+  // and add the virtual file.
+  const realFiles = program
+    .getSourceFiles()
+    .filter((sf) => !sf.isDeclarationFile) // only real sources affect commonSourceDirectory
+    .map((sf) => path.resolve(sf.fileName))
+
+  // Capture snapshots from the original program to avoid re-reading from disk.
+  const snapshots = new Map<string, TS.IScriptSnapshot>()
+  for (const sf of program.getSourceFiles()) {
+    if (!sf.isDeclarationFile) {
+      snapshots.set(path.resolve(sf.fileName), ts.ScriptSnapshot.fromString(sf.text))
+    }
+  }
+
+  const host: TS.LanguageServiceHost = {
+    directoryExists: ts.sys.directoryExists,
+    fileExists: ts.sys.fileExists,
+    getCompilationSettings: () => compilerOptions,
+    getCurrentDirectory: () => program.getCurrentDirectory(),
+    getDefaultLibFileName: (o) => ts.getDefaultLibFilePath(o),
+    getDirectories: ts.sys.getDirectories,
+    getScriptFileNames: () => [...realFiles, ...snapshots.keys()],
+    getScriptSnapshot: (value) => snapshots.get(path.resolve(value)),
+    getScriptVersion: () => '0',
+    readDirectory: ts.sys.readDirectory,
+    readFile: ts.sys.readFile,
+    useCaseSensitiveFileNames: () => ts.sys.useCaseSensitiveFileNames,
+  }
+
+  const ls = ts.createLanguageService(host, ts.createDocumentRegistry())
+
+  return {
+    dispose() {
+      ls.dispose()
+    },
+    resolve(filePath: string) {
+      const extension = SUPPORTED_ARBITRARY_EXTENSIONS.find((value) => filePath.endsWith(value))
+
+      if (extension === undefined) {
+        return
+      }
+
+      const newFilePath = `${filePath.substring(0, filePath.length - extension.length)}.ts`
+
+      if (!snapshots.has(newFilePath)) {
+        snapshots.set(newFilePath, ts.ScriptSnapshot.fromString(''))
+      }
+
+      return ls
+        .getEmitOutput(newFilePath, /*emitOnlyDtsFiles*/ true)
+        .outputFiles.filter((value) => DECLARATION_EXTENSION.test(value.name))
+        .map((value) => value.name.replace(DECLARATION_EXTENSION, extension))
+    },
+  }
+}
+
 export const emitTypeScriptDeclarations = async (options: {
   entryPoints: string[]
   messages: TransformFailure
@@ -123,6 +190,34 @@ export const emitTypeScriptDeclarations = async (options: {
       })
       .filter((value) => value !== undefined),
   )
+
+  if (compilerOptions.allowArbitraryExtensions === true) {
+    const rootFileNames = program.getRootFileNames()
+    const sourceFiles = program
+      .getSourceFiles()
+      .filter(
+        (value) =>
+          value.isDeclarationFile &&
+          value.fileName.endsWith('.d.json.ts') &&
+          rootFileNames.includes(value.fileName),
+      )
+
+    const service = createLanguageService(ts, program)
+
+    for (const sourceFile of sourceFiles) {
+      const files = service.resolve(sourceFile.fileName)
+
+      if (files?.length !== 1) {
+        return
+      }
+
+      const filePath = files[0]
+      zx.fs.ensureDirSync(path.dirname(filePath))
+      zx.fs.copySync(sourceFile.fileName, filePath)
+    }
+
+    service.dispose()
+  }
 
   const diagnostics = ts.getPreEmitDiagnostics(program).concat(emitResult.diagnostics)
 
@@ -247,6 +342,15 @@ export const emitTypeScriptDeclarations = async (options: {
       localBuild: false,
       messageCallback: (message) => {
         message.handled = true
+
+        if (
+          message.messageId === 'ae-wrong-input-file-type' &&
+          SUPPORTED_ARBITRARY_EXTENSIONS.some(
+            (value) => message.sourceFilePath?.endsWith(value) === true,
+          )
+        ) {
+          return
+        }
 
         const destination =
           message.logLevel === ExtractorLogLevel.Error

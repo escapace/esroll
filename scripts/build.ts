@@ -1,5 +1,4 @@
 import { build, type BuildOptions } from '../src/index'
-import { exec as _exec } from 'node:child_process'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 
