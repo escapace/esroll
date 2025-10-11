@@ -1,4 +1,4 @@
-import type { TransformFailure } from './types'
+import type { TransformFailure } from '../types'
 
 export const isTransformFailure = (value: unknown): value is TransformFailure => {
   const failure = value as Partial<TransformFailure>

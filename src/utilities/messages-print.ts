@@ -1,6 +1,5 @@
 import { formatMessages as esbuildFormatMessages } from 'esbuild'
-import * as zx from 'zx'
-import type { LogLevel, TransformFailure } from './types'
+import type { LogLevel, TransformFailure } from '../types'
 
 function trimArrayWhitespace(array: string[]): string[] {
   // Remove excess whitespace and newline strings from the beginning
@@ -16,10 +15,8 @@ function trimArrayWhitespace(array: string[]): string[] {
   return array
 }
 
-export const messagesPrint = async (level: LogLevel, value: TransformFailure) => {
+export const messagesPrint = async (level: LogLevel, value: TransformFailure, color: boolean) => {
   const { errors, warnings } = value
-
-  const color = zx.chalk.level !== 0
 
   const messages = [
     ...(level === 'info'

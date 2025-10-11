@@ -2,7 +2,7 @@ import pluginUtils, { type FilterPattern } from '@rollup/pluginutils'
 import { readFile } from 'node:fs/promises'
 import type { Plugin } from 'rollup'
 import { SourceMapGenerator } from 'source-map'
-import type { SourceMapConsumers } from './types'
+import type { SourceMapConsumers } from '../types'
 
 const { createFilter } = pluginUtils
 

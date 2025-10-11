@@ -21,6 +21,7 @@ type OmitOptions<T> = Omit<
   | 'outfile'
   | 'sourcemap'
   | 'stdin'
+  | 'tsconfigRaw'
   | 'write'
 >
 
@@ -29,6 +30,8 @@ export type LogLevel = Exclude<BuildOptions['logLevel'], undefined>
 export interface BuildOptions extends OmitOptions<ESBuildOptions> {
   entryPoints: string[]
   outdir: string
+  declarationRollup?: boolean
+  declarationRollupPackages?: string[]
   logLevel?: 'error' | 'info' | 'silent'
   rollup?: {
     output?: { generatedCode?: GeneratedCodeOptions } & Partial<
@@ -67,6 +70,6 @@ export interface BuildResult {
 export type SourceMapConsumers = Partial<Record<string, IndexedSourceMapConsumer>>
 
 export interface TransformFailure {
-  errors?: PartialMessage[]
-  warnings?: PartialMessage[]
+  errors: PartialMessage[]
+  warnings: PartialMessage[]
 }

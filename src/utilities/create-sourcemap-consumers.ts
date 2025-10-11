@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { SourceMapConsumer } from 'source-map'
 import { isFile } from './is-file'
-import type { SourceMapConsumers } from './types'
+import type { SourceMapConsumers } from '../types'
 
 export const createSourcemapConsumers = async (metafile: Metafile): Promise<SourceMapConsumers> =>
   Object.fromEntries(

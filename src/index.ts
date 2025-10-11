@@ -11,18 +11,19 @@ import path from 'node:path'
 import prettyBytes from 'pretty-bytes'
 import { rollup, type LogLevelOption as RollupLogLevel, type RollupOptions } from 'rollup'
 import * as zx from 'zx'
-import { createHandlerRollupLog } from './create-handler-rollup-log'
-import { createSourcemapConsumers } from './create-sourcemap-consumers'
-import { createTable } from './create-table'
-import { messagesPrint } from './messages-print'
-import { pluginSourcemaps } from './plugin-sourcemaps'
-import { scoreFile } from './score-file'
-import { transformFailureFlatten } from './transform-failure-flatten'
+import { pluginSourcemaps } from './plugins/plugin-sourcemaps'
 import type { BuildOptions, BuildResult, LogLevel, TransformFailure } from './types'
+import { createHandlerRollupLog } from './utilities/create-handler-rollup-log'
+import { createSourcemapConsumers } from './utilities/create-sourcemap-consumers'
+import { createTable } from './utilities/create-table'
+import { messagesPrint } from './utilities/messages-print'
+import { scoreFile } from './utilities/score-file'
+import { transformFailureFlatten } from './utilities/transform-failure-flatten'
+import { emitTypeScriptDeclarations } from './utilities/emit-typescript-declarations'
 
 export type { BuildOptions, BuildResult }
 
-const assertions = (options: ESBuildOptions) => {
+const assertionsESBuildOptions = (options: ESBuildOptions) => {
   assert(options.sourcemap !== 'both')
   assert(typeof options.outdir === 'string')
   assert(Array.isArray(options.entryPoints))
@@ -39,11 +40,10 @@ const assertions = (options: ESBuildOptions) => {
   }
 }
 
-// TODO: return build result & metafile
 export async function build<T extends BuildOptions>(
   options: SameShape<BuildOptions, T>,
 ): Promise<BuildResult> {
-  assertions(options)
+  assertionsESBuildOptions(options)
 
   const pathFilePackageJSON = await findUp('package.json', { cwd: options.absWorkingDir })
   const pathDirectoryTemporary = await mkdtemp(path.join(os.tmpdir(), 'esroll'))
@@ -52,24 +52,45 @@ export async function build<T extends BuildOptions>(
     (pathFilePackageJSON === undefined ? undefined : path.dirname(pathFilePackageJSON)) ??
     process.cwd()
   const pathDirectoryOutput = path.resolve(pathDirectoryPackage, options.outdir)
+  const pathFileTSConfig =
+    options.tsconfig === undefined
+      ? undefined
+      : path.resolve(pathDirectoryPackage, options.tsconfig)
 
   assert(isPathInside(pathDirectoryOutput, pathDirectoryPackage))
+  assert(
+    options.declarationRollup === true ||
+      options.declarationRollup === false ||
+      options.declarationRollup === undefined,
+  )
+
+  if (options.declarationRollup === true) {
+    assert(options.entryPoints.length === 1, 'Declaration rollup requires a single entry point.')
+    assert(pathFileTSConfig !== undefined)
+    assert(pathFilePackageJSON !== undefined)
+  }
+
   process.chdir(pathDirectoryPackage)
 
   const logLevel = options.logLevel ?? 'info'
+  const hasColor = ![0, undefined].includes(zx.chalk.level)
 
   const optionsESBuild = {
     preserveSymlinks: false,
-    ...(omit(options, ['rollup']) as ESBuildOptions),
+    ...(omit(options, [
+      'rollup',
+      'declarationRollup',
+      'declarationRollupPackages',
+    ]) as ESBuildOptions),
     absWorkingDir: pathDirectoryPackage,
     allowOverwrite: true,
     bundle: true,
-    color: zx.chalk.level !== 0,
+    color: hasColor,
     format: 'esm',
     globalName: undefined,
     // loader: {
     //   '.json': 'copy',
-    //   ...options.loader
+    //   ...options.loader,
     // },
     logLevel: 'silent',
     metafile: true,
@@ -83,15 +104,18 @@ export async function build<T extends BuildOptions>(
     write: true,
   } satisfies ESBuildOptions
 
+  const messages: TransformFailure = {
+    errors: [],
+    warnings: [],
+  }
+
   try {
     const resultESBuild = await esbuild(optionsESBuild)
 
     assert(resultESBuild.metafile?.outputs !== undefined)
 
-    const messages: TransformFailure = {
-      errors: [...resultESBuild.errors],
-      warnings: [...resultESBuild.warnings],
-    }
+    messages.errors.push(...resultESBuild.errors)
+    messages.warnings.push(...resultESBuild.warnings)
 
     const sourceMapConsumers = await createSourcemapConsumers(resultESBuild.metafile)
     const handlerRollupLog = createHandlerRollupLog({
@@ -182,7 +206,7 @@ export async function build<T extends BuildOptions>(
         ...(options.rollup?.plugins ?? []),
         pluginJSON({ indent: '  ', namedExports: true, preferConst: true }),
         pluginSourcemaps(sourceMapConsumers),
-      ],
+      ].filter((value) => value !== undefined),
       preserveEntrySignatures: 'exports-only',
       preserveSymlinks: false,
       treeshake: {
@@ -198,8 +222,6 @@ export async function build<T extends BuildOptions>(
 
     await zx.fs.emptyDir(pathDirectoryOutput)
     const resultRollup = await (await rollup(optionsRollup)).write(optionsRollup.output)
-
-    await messagesPrint(logLevel, messages)
 
     if (logLevel === 'info') {
       const filesAll = (
@@ -238,15 +260,28 @@ export async function build<T extends BuildOptions>(
       console.log(table.render().split(/\r?\n/).slice(2).join('\n'))
     }
 
+    await emitTypeScriptDeclarations({
+      declarationRollup: options.declarationRollup,
+      declarationRollupPackages: options.declarationRollupPackages,
+      entryPoints: options.entryPoints.map((value) => path.resolve(pathDirectoryPackage, value)),
+      messages,
+      pathDirectoryPackage,
+      pathFilePackageJSON,
+      pathFileTSConfig,
+    })
+
+    const outputFiles = resultRollup.output.map((value) => ({
+      path: path.resolve(pathDirectoryOutput, value.fileName),
+    }))
+    await messagesPrint(logLevel, messages, hasColor)
+
     return {
-      errors: messages.errors ?? [],
-      outputFiles: resultRollup.output.map((value) => ({
-        path: path.resolve(pathDirectoryOutput, value.fileName),
-      })),
-      warnings: messages.warnings ?? [],
+      errors: messages.errors,
+      outputFiles,
+      warnings: messages.warnings,
     }
   } catch (error) {
-    await messagesPrint(logLevel, transformFailureFlatten(error))
+    await messagesPrint(logLevel, transformFailureFlatten(messages, error), hasColor)
     await zx.fs.remove(pathDirectoryTemporary)
 
     throw error

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { RollupLog } from 'rollup'
 import { isFile } from './is-file'
-import type { SourceMapConsumers, TransformFailure } from './types'
+import type { SourceMapConsumers, TransformFailure } from '../types'
 
 export const createHandlerRollupLog =
   (options: {
@@ -14,6 +14,10 @@ export const createHandlerRollupLog =
     sourceMapConsumers: SourceMapConsumers
   }) =>
   async (log: RollupLog) => {
+    if (log.plugin === 'unplugin-dts') {
+      return
+    }
+
     const messageShared = {
       detail: undefined,
       pluginName: log.plugin === undefined ? 'rollup' : `rollup: ${log.plugin}`,

@@ -1,5 +1,5 @@
 import { isTransformFailure } from './is-transform-failure'
-import type { TransformFailure } from './types'
+import type { TransformFailure } from '../types'
 
 export const transformFailureFlatten = (...values: unknown[]) =>
   values.reduce<TransformFailure>(

@@ -9,7 +9,7 @@
       "mainFields": ["module", "main"],
       "outdir": "lib/node",
       "platform": "node",
-      "target": ["node22.13.1"]
+      "target": ["node24.9.0"]
     }
   }
 }
