@@ -2,10 +2,12 @@ import type { Metafile } from 'esbuild'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import { SourceMapConsumer } from 'source-map'
-import { isFile } from './is-file'
-import type { SourceMapConsumers } from '../types'
+import type { BuildSourceMapConsumers } from '../types'
+import { isFile } from '../utilities/is-file'
 
-export const createSourcemapConsumers = async (metafile: Metafile): Promise<SourceMapConsumers> =>
+export const createSourcemapConsumers = async (
+  metafile: Metafile,
+): Promise<BuildSourceMapConsumers> =>
   Object.fromEntries(
     await Promise.all(
       Object.keys(metafile.outputs)

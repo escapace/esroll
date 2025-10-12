@@ -1,0 +1,1970 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`create-documentation > snapshot a 1`] = `
+"# API
+
+## function add
+
+add function : \`x\`
+
+\`\`\`typescript
+export declare function add(a: number, b: number): number;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target \`1\` |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Returns
+
+result as \`a\` + \`b\`
+
+### Throws
+
+1. \`SyntaxError\` this is syntax error
+2. \`Error\` this is general error
+
+### Remarks
+
+This is add function remarks: [ErrorCodes](#enum-errorcodes).
+
+See [add](https://foo.bar.com/api/add).
+
+### Examples
+
+example of \`add\` function:
+
+\`\`\`javascript
+console.log(add(1, 1))
+\`\`\`
+
+## function undumbify
+
+un dummy
+
+\`\`\`typescript
+export declare function undumbify<T>(dummy: DumbType<T>): T;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | a type template |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`dummy\` | <pre>[DumbType](#type-dumbtype "type DumbType")\\<T></pre> | A dummy |
+
+## class Calculator
+
+Calculator class
+
+\`\`\`typescript
+export declare class Calculator<T> implements Calculatable
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | A type of calcualator class |
+
+### Remarks
+
+This is remarks of Calculator class
+
+### Examples
+
+\`\`\`javascript
+const c = new Calculator()
+const v1 = c.add(1, 1)
+const v2 = c.sub(1, 1)
+\`\`\`
+
+### new Calculator
+
+Conssutructor of usage
+
+\`\`\`typescript
+constructor(type: T);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`type\` | <pre>T</pre> | calculator type |
+
+### Calculator.add
+
+add method
+
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Calculator.sub
+
+sub method
+
+\`\`\`typescript
+sub(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Calculator.PI
+
+PI
+
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+### Calculator.type
+
+calcurator types
+
+\`\`\`typescript
+type: T;
+\`\`\`
+
+## const Config
+
+Configrations
+
+\`\`\`typescript
+Config: {
+  [name: string]: unknown;
+}
+\`\`\`
+
+## const VERSION
+
+app version
+
+\`\`\`typescript
+VERSION = "1.0.0"
+\`\`\`
+
+### Remarks
+
+you can lookup application version that is semver format.
+
+### Examples
+
+\`\`\`javascript
+console.log(VERSION)
+\`\`\`
+
+## enum ErrorCodes
+
+Error Code
+
+\`\`\`typescript
+export declare enum ErrorCodes
+\`\`\`
+
+### Members
+
+| Member | Value | Description |
+| - | - | - |
+| \`InvalidFormat\` | <pre>1</pre> | Invalid format |
+| \`Succcess\` | <pre>0</pre> | Success |
+
+## enum TokenChars
+
+Token Characters
+
+\`\`\`typescript
+export declare enum TokenChars
+\`\`\`
+
+### Members
+
+| Member | Value | Description |
+| - | - | - |
+| \`Modulo\` | <pre>"%"</pre> | Modulo charactor |
+| \`Plus\` | <pre>"+"</pre> | Plus charactor |
+
+### Remarks
+
+This is remarks of Token Chararaceters
+
+## interface AddCallable
+
+Add Callable interface
+
+\`\`\`typescript
+export interface AddCallable
+\`\`\`
+
+### AddCallable.(call)
+
+add callable object
+
+\`\`\`typescript
+<A extends number = number, B extends number = number>(a: A, b: B): number;
+\`\`\`
+
+#### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`A\` | a target 1 Type |
+| \`B\` | a target 2 Type |
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>A</pre> | target 1 |
+| \`b\` | <pre>B</pre> | target 2 |
+
+#### Returns
+
+added value
+
+### AddCallable.(call)
+
+add callable object
+
+\`\`\`typescript
+<A extends number = number, B extends number = number>(a: A, b: B): string;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>A</pre> | target 1 |
+| \`b\` | <pre>B</pre> | target 2 |
+
+#### Returns
+
+added string value
+
+## interface Calculatable
+
+Calculatable interface
+
+\`\`\`typescript
+export interface Calculatable
+\`\`\`
+
+### Calculatable.add
+
+add method
+
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+#### Returns
+
+added value
+
+### Calculatable.PI
+
+PI
+
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+## interface MyOptions
+
+My Options
+
+\`\`\`typescript
+export interface MyOptions
+\`\`\`
+
+### MyOptions.field
+
+Field
+
+\`\`\`typescript
+field?: string;
+\`\`\`
+
+## type A
+
+A
+
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+## type B
+
+[A](#type-a)
+
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
+## type DumbType
+
+A dumb type
+
+\`\`\`typescript
+export declare type DumbType<T> = {
+  foo: T;
+};
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | a type template |
+
+## type FallbackLocale
+
+Falback Locale
+
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+  [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+## type Locale
+
+Locale
+
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+## type LocaleMessage
+
+Locale Message resources
+
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+"
+`;
+
+exports[`create-documentation > snapshot b 1`] = `
+"# API
+
+## function add
+
+add function : \`x\`
+
+\`\`\`typescript
+export declare function add(a: number, b: number): number;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target \`1\` |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Returns
+
+result as \`a\` + \`b\`
+
+### Throws
+
+1. \`SyntaxError\` this is syntax error
+2. \`Error\` this is general error
+
+### Remarks
+
+This is add function remarks: [ErrorCodes](#enum-errorcodes). See [add](https://foo.bar.com/api/add).
+
+### Examples
+
+example of \`add\` function:
+
+\`\`\`javascript
+console.log(add(1, 1))
+\`\`\`
+
+## function undumbify
+
+un dummy
+
+\`\`\`typescript
+export declare function undumbify<T>(dummy: DumbType<T>): T;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`dummy\` | <pre>[DumbType](#type-dumbtype "type DumbType")\\<T></pre> | A dummy<br><br>category1 |
+
+## class Calculator
+
+Calculator class
+
+\`\`\`typescript
+export declare class Calculator implements Calculatable
+\`\`\`
+
+### Remarks
+
+This is remarks of Calculator class
+
+### Examples
+
+\`\`\`javascript
+const c = new Calculator()
+const v1 = c.add(1, 1)
+const v2 = c.sub(1, 1)
+\`\`\`
+
+### new Calculator
+
+Conssutructor of usage
+
+\`\`\`typescript
+constructor(type: string);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`type\` | <pre>string</pre> | calculator type |
+
+### Calculator.add
+
+add method
+
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Calculator.sub
+
+sub method
+
+\`\`\`typescript
+sub(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Calculator.PI
+
+PI
+
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+### Calculator.type
+
+calcurator types
+
+'simple'
+
+\`\`\`typescript
+type: string;
+\`\`\`
+
+## const Config
+
+Configrations
+
+\`\`\`typescript
+Config: {
+  [name: string]: unknown;
+}
+\`\`\`
+
+## const VERSION
+
+app version
+
+\`\`\`typescript
+VERSION = "1.0.0"
+\`\`\`
+
+### Remarks
+
+you can lookup application version that is semver format.
+
+### Examples
+
+\`\`\`javascript
+console.log(VERSION)
+\`\`\`
+
+## enum ErrorCodes
+
+Error Code
+
+\`\`\`typescript
+export declare enum ErrorCodes
+\`\`\`
+
+### Members
+
+| Member | Value | Description |
+| - | - | - |
+| \`InvalidFormat\` | <pre>1</pre> | Invalid format |
+| \`Succcess\` | <pre>0</pre> | Success |
+
+## enum TokenChars
+
+Token Characters
+
+\`\`\`typescript
+export declare enum TokenChars
+\`\`\`
+
+### Members
+
+| Member | Value | Description |
+| - | - | - |
+| \`Modulo\` | <pre>"%"</pre> | Modulo charactor |
+| \`Plus\` | <pre>"+"</pre> | Plus charactor |
+
+### Remarks
+
+This is remarks of Token Chararaceters
+
+## interface Calculatable
+
+Calculatable interface
+
+\`\`\`typescript
+export interface Calculatable
+\`\`\`
+
+### Calculatable.add
+
+add method
+
+\`\`\`typescript
+add(a: number, b: number): number;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`a\` | <pre>number</pre> | target 1 |
+| \`b\` | <pre>number</pre> | target 2 |
+
+### Calculatable.PI
+
+PI
+
+\`\`\`typescript
+PI: number;
+\`\`\`
+
+## type A
+
+A
+
+\`\`\`typescript
+export declare type A = string;
+\`\`\`
+
+## type B
+
+[A](#type-a)
+
+\`\`\`typescript
+export declare type B = number;
+\`\`\`
+
+## type DumbType
+
+A dumb type
+
+\`\`\`typescript
+export declare type DumbType<T> = {
+  foo: T;
+};
+\`\`\`
+
+## type FallbackLocale
+
+Falback Locale
+
+\`\`\`typescript
+export declare type FallbackLocale = Locale | Locale[] | {
+  [locale in string]: Locale[];
+} | false;
+\`\`\`
+
+### Remarks
+
+This is remarks of \`Fallback Locale\`
+
+## type Locale
+
+Locale
+
+\`\`\`typescript
+export declare type Locale = string;
+\`\`\`
+
+## type LocaleMessage
+
+Locale Message resources
+
+\`\`\`typescript
+export declare type LocaleMessage = string | LocaleMessage[];
+\`\`\`
+"
+`;
+
+exports[`create-documentation > snapshot c 1`] = `
+"# API
+
+## function isBoolean
+
+Whether the value is Boolean or not
+
+\`\`\`typescript
+export declare function isBoolean(val: unknown): val is boolean;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isFunction
+
+Whether the value is Function or not
+
+\`\`\`typescript
+export declare function isFunction(val: unknown): val is Function;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isObject
+
+Whether the value is Object or not
+
+\`\`\`typescript
+export declare function isObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isPlainObject
+
+Whether the value is Plain Object or not
+
+\`\`\`typescript
+export declare function isPlainObject(val: unknown): val is Record<string, unknown>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isPromise
+
+Whether the value is Promise or not
+
+\`\`\`typescript
+export declare function isPromise<T = any>(val: unknown): val is Promise<T>;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isString
+
+Whether the value is String or not
+
+\`\`\`typescript
+export declare function isString(val: unknown): val is string;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+
+## function isSymbol
+
+Whether the value is Symbol or not
+
+\`\`\`typescript
+export declare function isSymbol(val: unknown): val is symbol;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`val\` | <pre>unknown</pre> | target value |
+
+### Returns
+
+boolean value
+"
+`;
+
+exports[`create-documentation > snapshot d 1`] = `
+"# API
+
+## function createCachedIterable
+
+Creates a cached iterable that wraps a factory-produced iterable with lazy evaluation and shared caching.
+
+Values are cached as they are consumed from the source iterator, enabling multiple iterators to share the same underlying data without redundant factory calls or source re-evaluation. Each iterator follows a two-phase approach: first consuming cached values, then extending the cache by consuming from the source if the cache requires extension.
+
+\`\`\`typescript
+export declare function createCachedIterable<T, TReturn = any>(factory: () => Iterable<T, TReturn, CassiopeiaCancel | undefined>): CachedIterable<T, TReturn>;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | The type of values yielded by the iterable |
+| \`TReturn\` | The type of the return value from the source iterator |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`factory\` | <pre>() => Iterable\\<T, TReturn, [CassiopeiaCancel](#type-cassiopeiacancel "type CassiopeiaCancel") \\| undefined></pre> | Function that creates the source iterable. Called exactly once when the first cache extension is needed. Must return an iterable that accepts \`TerminatingReducerCancel \\| undefined\` as input. |
+
+### Returns
+
+A [CachedIterable](#interface-cachediterable) that yields the same values as the source but with caching behavior. Return value is \`TReturn | undefined\` since cancellation can prevent source completion.
+
+### Remarks
+
+**Iterator Behavior:** - Iterators first yield cached values in order - Multiple iterators cooperatively extend the shared cache as needed - Any iterator can extend the cache when requiring values beyond the current cached set - Iterators that have used a cleared source complete gracefully immediately
+
+**Caching Behavior:** - Values are cached incrementally as consumed from the source - Multiple iterators share the same cache and cooperatively extend it - Cache preserves values consumed before errors or cancellation
+
+**Lazy Evaluation:** - Factory is not called until an iterator needs to extend the cache - Source iterator creation is deferred until the first cache extension is required
+
+**Cancellation Support:** The returned cached iterable supports two cancellation approaches:
+
+1. **Iterator-based cancellation:** Pass \`CASSIOPEIA_CANCEL\` to any iterator's \`next()\` method 2. **Method-based cancellation:** Call the \`CASSIOPEIA_CANCEL\` method directly on the cached iterable
+
+Both approaches have the same immediate effects: - \`CASSIOPEIA_CANCEL\` is forwarded to the current source iterator - Current source iterator is cleared, allowing active iterators to complete gracefully - New iterators created after cancellation immediately return done without creating sources
+
+**Source Iterable Contract:** - Source iterables must check for \`CASSIOPEIA_CANCEL\` and return immediately - Source iterables must not perform additional work after receiving the cancel token - Source iterables must not yield additional values after cancellation - Iterables that violate this contract may result in unpredictable cache states
+
+## function createStyleElementSubscription
+
+Creates a subscription function that dynamically manages \`<style>\` elements in the browser DOM. This function enables CSS injection and automatic cleanup for client-side applications by creating and maintaining style elements with qualified attributes for tracking.
+
+\`\`\`typescript
+createStyleElementSubscription: (options?: StyleElementSubscriptionOptions) => CassiopeiaSubscription
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`options\` | <pre>[StyleElementSubscriptionOptions](#interface-styleelementsubscriptionoptions "interface StyleElementSubscriptionOptions")</pre> | Configuration for DOM update behavior and element namespacing |
+
+### Returns
+
+A subscription function that accepts CassiopeiaStyleSheets and updates the DOM accordingly
+
+## function createTerminatingReducerFactoriesProxy
+
+Creates a revocable proxy that intercepts factory modifications with lifecycle callbacks.
+
+Wraps terminating reducer factories in a proxy that tracks property modifications, maintains a synchronized array of reducer keys, and provides controlled disposal. The proxy intercepts set and delete operations, calling corresponding lifecycle callbacks and updating the key array. Disposal revokes the proxy, clears all factory properties, and empties the key tracking array.
+
+\`\`\`typescript
+export declare function createTerminatingReducerFactoriesProxy<T extends object = {}, U = unknown>(reducerFactories: TerminatingReducerFactories<T>, options: {
+    onDelete: (key: keyof T) => void;
+    onDispose: (keys: Set<keyof T>) => U;
+    onSet: (key: keyof T) => void;
+}): {
+    dispose: () => U;
+    reducerFactories: TerminatingReducerFactories<T>;
+    reducerKeys: ReadonlySet<keyof T>;
+};
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | Object type where each property value extends \`TerminatingReducer\` |
+| \`U\` | Return type of the disposal callback |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`reducerFactories\` | <pre>[TerminatingReducerFactories](#type-terminatingreducerfactories "type TerminatingReducerFactories")\\<T></pre> | Reducer factory functions to wrap with proxy behavior |
+| \`options\` | <pre>{<br>  onDelete: (key: keyof T) => void;<br>  onDispose: (keys: Set\\<keyof T>) => U;<br>  onSet: (key: keyof T) => void;<br>}</pre> | Lifecycle callbacks and disposal handler |
+
+### Returns
+
+Object containing the proxied factories, current keys array, and dispose method
+
+## function createTerminatingReducers
+
+Creates terminating reducers with implicit caching through getter replacement.
+
+Sets up property getters for the specified keys that provide lazy initialization with implicit caching behavior. Upon first access, each getter invokes the corresponding factory function exactly once, eagerly primes the returned reducer instance, then replaces itself with a static property containing the primed reducer. This eliminates subsequent factory calls and getter overhead for the same property.
+
+\`\`\`typescript
+export declare function createTerminatingReducers<T extends object>(reducerFactories: TerminatingReducerFactories<T>, keys: Iterable<keyof T>): TerminatingReducers<T>;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | Object type where each property value extends \`TerminatingReducer\` |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`reducerFactories\` | <pre>[TerminatingReducerFactories](#type-terminatingreducerfactories "type TerminatingReducerFactories")\\<T></pre> | Record mapping each key to a factory function that returns a terminating reducer |
+| \`keys\` | <pre>Iterable\\<keyof T></pre> | Iterable of keys from the factories record to set up as lazy properties |
+
+### Returns
+
+Object with specified keys providing lazy initialization and implicit caching
+
+Property enumeration behavior reflects the getter-to-value transformation: - Initially all properties are non-enumerable getters, excluded from \`Object.keys/values/entries\` - After first access, properties become enumerable static values included in enumeration - \`Object.keys()\` reflects only currently enumerable (accessed) properties - \`Object.values()\` and \`Object.entries()\` trigger initialization of accessed properties only
+
+## function isIterableActive
+
+Type guard that filters out CASSIOPEIA\\_CANCEL token from iterable inputs.
+
+\`\`\`typescript
+export declare function isIterableActive<U = unknown>(value: CassiopeiaCancel | U): value is U;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`U\` | The expected user data type |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>[CassiopeiaCancel](#type-cassiopeiacancel "type CassiopeiaCancel") \\| U</pre> | Input value that could be user data or a cancel token |
+
+### Returns
+
+\`true\` when the value is user data, \`false\` for cancel token
+
+Checks whether an iterable input value is actual user data rather than a cancellation token. When this function returns \`true\`, TypeScript narrows the value type from \`CassiopeiaCancel | U\` to \`U\`, enabling type-safe processing of user data while excluding the \`CASSIOPEIA_CANCEL\` token.
+
+## function isIterableTerminated
+
+Type guard that identifies CASSIOPEIA\\_CANCEL token in iterable inputs.
+
+\`\`\`typescript
+export declare function isIterableTerminated<U = unknown>(value: CassiopeiaCancel | U): value is CassiopeiaCancel;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`U\` | The expected user data type |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>[CassiopeiaCancel](#type-cassiopeiacancel "type CassiopeiaCancel") \\| U</pre> | Input value that could be user data or a cancel token |
+
+### Returns
+
+\`true\` when the value is a cancel token, \`false\` for user data
+
+Checks whether an iterable input value is a cancellation token rather than user data. When this function returns \`true\`, TypeScript narrows the value type from \`CassiopeiaCancel | U\` to \`CassiopeiaCancel\`, enabling type-safe handling of cancellation tokens.
+
+## function isReducerActive
+
+Type guard that filters out termination control tokens from reducer inputs.
+
+\`\`\`typescript
+export declare function isReducerActive<U = unknown>(value: TerminatingReducerNext<U>): value is U;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`U\` | The expected user data type (defaults to \`unknown\`) |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>[TerminatingReducerNext](#type-terminatingreducernext "type TerminatingReducerNext")\\<U></pre> | Input value that could be user data or a control token |
+
+### Returns
+
+\`true\` when the value is user data of type \`U\`, \`false\` for control tokens
+
+Checks whether a reducer input value is actual user data rather than a control token. When this function returns \`true\`, TypeScript narrows the value type from \`TerminatingReducerNextInput<U>\` to \`U\`, enabling type-safe processing of user data while excluding \`CASSIOPEIA_CANCEL\` and \`CASSIOPEIA_COMPLETE\` tokens.
+
+## function isReducerTerminated
+
+Type guard that identifies termination control tokens in reducer inputs.
+
+\`\`\`typescript
+export declare function isReducerTerminated<U = unknown>(value: TerminatingReducerNext<U>): value is CassiopeiaCancel | CassiopeiaComplete;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`U\` | The expected user data type (defaults to \`unknown\`) |
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>[TerminatingReducerNext](#type-terminatingreducernext "type TerminatingReducerNext")\\<U></pre> | Input value that could be user data or a control token |
+
+### Returns
+
+\`true\` when the value is a control token, \`false\` for user data
+
+Checks whether a reducer input value is a termination control token rather than user data. When this function returns \`true\`, TypeScript narrows the value type from \`TerminatingReducerNext<U>\` to \`TerminatingReducerCancel | TerminatingReducerComplete\`, enabling type-safe handling of control tokens.
+
+## function parseCustomPropertyName
+
+Parses Cassiopeia custom property names with \`---KEY-SUFFIX\` structure.
+
+Pattern requirements: - Prefix: three literal hyphens \`---\` - KEY: identifier characters (letters, digits, underscore, non-ASCII) or CSS escapes; unescaped hyphens rejected - Separator: one literal hyphen \`-\` - SUFFIX: identifier characters or CSS escapes; unescaped hyphens allowed - Anchored to entire input; partial matches rejected - Case-sensitive
+
+\`\`\`typescript
+export declare function parseCustomPropertyName(input: string): [string, string] | undefined;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`input\` | <pre>string</pre> | String to parse |
+
+### Returns
+
+Tuple \`[key, suffix]\` when input matches pattern, \`undefined\` otherwise
+
+## function renderStyleSheets
+
+Extracts CSS stylesheets from a Cassiopeia instance for server-side rendering.
+
+Runs the orchestrator to completion by consuming its iterator, processing all triple-dash custom properties (---key-suffix) through configured reducers. Each reducer transforms custom properties into stylesheet content with metadata including reducer key, position index, and optional attributes like media queries.
+
+Returns undefined when no generator or reducers are available, allowing graceful handling of incomplete instance configurations during server-side rendering scenarios.
+
+\`\`\`typescript
+renderStyleSheets: <T extends CassiopeiaInstance>(cassiopeia: T) => CassiopeiaStyleSheets | undefined
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`cassiopeia\` | <pre>T</pre> | Cassiopeia instance containing generator and reducers for stylesheet processing |
+
+### Returns
+
+Object containing stylesheet arrays and keys, or undefined if generator/reducers unavailable
+
+## class CassiopeiaScope
+
+Represents an isolated scope of triple-dash CSS custom property names. Tracks property names used within this scope and updates the parent's aggregate index. The update methods trigger CSS generation by passing the parent's generator to cassiopeia. The generator extracts key and suffix pairs from property names in the aggregate index and feeds them to the plugin system for CSS generation.
+
+\`\`\`typescript
+export declare class CassiopeiaScope
+\`\`\`
+
+### new CassiopeiaScope
+
+Constructs a new instance of the \`CassiopeiaScope\` class
+
+\`\`\`typescript
+constructor(parent: CassiopeiaScopes);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type |
+| - | - |
+| \`parent\` | <pre>[CassiopeiaScopes](#class-cassiopeiascopes "class CassiopeiaScopes")</pre> |
+
+### CassiopeiaScope.add
+
+Adds a triple-dash CSS custom property name to this scope.
+
+\`\`\`typescript
+add: (value: string) => boolean;
+\`\`\`
+
+### CassiopeiaScope.addMany
+
+Adds multiple triple-dash CSS custom property names to this scope.
+
+\`\`\`typescript
+addMany: (values: Iterable<string>) => boolean;
+\`\`\`
+
+### CassiopeiaScope.clear
+
+Removes all triple-dash CSS custom property names from this scope.
+
+\`\`\`typescript
+clear: () => boolean;
+\`\`\`
+
+### CassiopeiaScope.delete
+
+Removes a triple-dash CSS custom property name from this scope.
+
+\`\`\`typescript
+delete: (value: string) => boolean;
+\`\`\`
+
+### CassiopeiaScope.deleteMany
+
+Removes multiple triple-dash CSS custom property names from this scope.
+
+\`\`\`typescript
+deleteMany: (values: Iterable<string>) => boolean;
+\`\`\`
+
+### CassiopeiaScope.dispose
+
+Clears this scope, unregisters it from the parent, and nullifies references. The scope cannot be used after disposal.
+
+\`\`\`typescript
+dispose: () => boolean;
+\`\`\`
+
+## class CassiopeiaScopes
+
+Manages multiple isolated scopes of triple-dash CSS custom property names. Maintains a deduplicated index of property names across all scopes. The update methods trigger CSS generation by passing a generator to cassiopeia. The generator extracts key and suffix pairs from property names in the aggregate index and feeds them to the plugin system for CSS generation.
+
+\`\`\`typescript
+export declare class CassiopeiaScopes
+\`\`\`
+
+### new CassiopeiaScopes
+
+Constructs a new instance of the \`CassiopeiaScopes\` class
+
+\`\`\`typescript
+constructor(cassiopeia: Cassiopeia);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type |
+| - | - |
+| \`cassiopeia\` | <pre>Cassiopeia</pre> |
+
+### CassiopeiaScopes.createScope
+
+Creates and registers a new isolated scope.
+
+\`\`\`typescript
+createScope: () => CassiopeiaScope;
+\`\`\`
+
+### CassiopeiaScopes.dispose
+
+Disposes all scopes and clears the aggregate index. Resets to the initial empty state.
+
+\`\`\`typescript
+dispose: () => void;
+\`\`\`
+
+## const CASSIOPEIA\\_CANCEL
+
+Control token signaling a generator to cancel
+
+\`\`\`typescript
+CASSIOPEIA_CANCEL: unique symbol
+\`\`\`
+
+## const CASSIOPEIA\\_COMPLETE
+
+Control token signaling a generator to complete and return its final value.
+
+\`\`\`typescript
+CASSIOPEIA_COMPLETE: unique symbol
+\`\`\`
+
+## const CASSIOPEIA\\_CUSTOM\\_PROPERTY\\_NAME\\_REGEX
+
+Unicode-aware regex matching Cassiopeia custom property names with escape sequence support. Performs syntactic validation for \`---key-suffix\` patterns.
+
+Design philosophy: Permissive by design—accepts inputs that may be semantically invalid (e.g., out-of-range hex escapes). Final validation is delegated to the hand-rolled parser. The regex serves as a fast pre-filter before parser validation.
+
+Identifier characters: letters (A-Z, a-z), digits (0-9), underscore (\\_), and all non-ASCII characters (U+0080–U+10FFFF). Digits are allowed at the start of identifiers.
+
+Escape sequences (matched literally, not decoded): - Hex escapes: \`\\2d \` (1-6 hex digits + optional space/tab) - Simple escapes: \`\\-\` (backslash + any non-newline character)
+
+Structural constraints: - Prefix: exactly three literal hyphens \`---\` - KEY segment: cannot contain unescaped hyphens (use \`\\2d \` or \`\\-\` for hyphens in KEY) - Separator: exactly one literal hyphen \`-\` - SUFFIX segment: can contain unescaped hyphens after the first character
+
+Requires the \`u\` flag for full Unicode support including supplementary planes. Uses the \`i\` flag for case-insensitive hex digit matching.
+
+Capture groups: - \`(1)\`: KEY with literal escape sequences - \`(2)\`: SUFFIX with literal escape sequences
+
+\`\`\`typescript
+CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX: RegExp
+\`\`\`
+
+### Examples
+
+\`\`\`typescript
+CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---color-primary') // true
+CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---café-latté') // true
+CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---my\\\\2d key-value') // true
+CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('--color-primary') // false (wrong prefix)
+\`\`\`
+
+## const CASSIOPEIA\\_CUSTOM\\_PROPERTY\\_VAR\\_NOTATION\\_REGEX
+
+Unicode-aware regex matching \`var(---key-suffix)\` patterns in CSS stylesheets with escape sequence support. Extracts the reducer key and suffix from Cassiopeia custom property references embedded in var() functions.
+
+Design philosophy: Permissive by design—accepts inputs that may be semantically invalid (e.g., out-of-range hex escapes). Final validation is delegated to the hand-rolled parser. The regex serves as a fast pre-filter before parser validation.
+
+Identifier characters: letters (A-Z, a-z), digits (0-9), underscore (\\_), and all non-ASCII characters (U+0080–U+10FFFF). Digits are allowed at the start of identifiers.
+
+Escape sequences (matched literally, not decoded): - Hex escapes: \`\\2d \` (1-6 hex digits + optional space/tab) - Simple escapes: \`\\-\` (backslash + any non-newline character)
+
+Structural constraints: - Prefix: \`var(---\` (var function with three literal hyphens) - KEY segment: cannot contain unescaped hyphens (use \`\\2d \` or \`\\-\` for hyphens in KEY) - Separator: exactly one literal hyphen \`-\` - SUFFIX segment: can contain unescaped hyphens after the first character - Terminator: closing \`)\` or comma \`,\` (matches both \`var(---key-suffix)\` and \`var(---key-suffix,)\`
+
+Global flag finds all occurrences in a stylesheet. Requires the \`u\` flag for full Unicode support including supplementary planes. Uses the \`i\` flag for case-insensitive hex digit matching.
+
+Capture groups: - \`(1)\`: KEY with literal escape sequences - \`(2)\`: SUFFIX with literal escape sequences
+
+\`\`\`typescript
+CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX: RegExp
+\`\`\`
+
+### Examples
+
+\`\`\`typescript
+'var(---color-primary)'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)
+// Matches: ['var(---color-primary)', 'color', 'primary']
+
+'var(---café-latté,'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)
+// Matches: ['var(---café-latté,', 'café', 'latté']
+
+'var(---my\\2d key-value)'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)
+// Matches: ['var(---my\\2d key-value)', 'my\\2d key', 'value']
+\`\`\`
+
+## interface CachedIterable
+
+Cached iterable with shared caching and external cancellation control.
+
+\`\`\`typescript
+export interface CachedIterable<T, TReturn = unknown> extends Iterable<T, TReturn | undefined, CassiopeiaCancel | undefined>
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | The type of values yielded by the iterable |
+| \`TReturn\` | The type of the return value from the source iterator<br><br>Combines the standard \`Iterable\` interface with external cancellation capabilities. Extends \`Iterable<T, TReturn \\| undefined, TerminatingReducerCancel \\| undefined>\` to provide iterator-based value consumption while adding a direct cancellation method that operates independently of any active iterator instances. |
+
+### Remarks
+
+**Iterator Behavior:** - Implements standard iterator protocol with \`Symbol.iterator\` method - Return type is \`TReturn | undefined\` since cancellation can prevent source completion - Accepts \`TerminatingReducerCancel | undefined\` as input to iterator \`next()\` calls
+
+**Shared Caching:** - Multiple iterators created from the same cached iterable share a common value cache - Values are cached incrementally as consumed from the source - Cache persists across iterator instances and survives iterator completion
+
+**External Cancellation:** - Provides direct cancellation control without requiring an active iterator - Cancellation clears current source iterator; new iterators created after cancellation return done immediately - Already-cached values remain accessible through existing iterators until they complete
+
+### CachedIterable\\[CASSIOPEIA\\_CANCEL]
+
+Cancels the cached iterable and terminates any ongoing source iteration.
+
+Provides external cancellation control without requiring an active iterator instance. Forwards \`CASSIOPEIA_CANCEL\` to the source iterator following the same contract as iterator-based cancellation through \`next(CASSIOPEIA_CANCEL)\`.
+
+\`\`\`typescript
+[CASSIOPEIA_CANCEL]: () => void;
+\`\`\`
+
+#### Remarks
+
+**Cancellation Effects:** - Sends \`CASSIOPEIA_CANCEL\` to the current source before clearing it - Clears the current source iterator, forcing active iterators to complete gracefully immediately - New iterators created after cancellation immediately return done without extending cache or creating sources
+
+**Idempotent Operation:** - Safe to call multiple times without side effects - Subsequent calls have no effect if no active source iterator exists - No error is thrown for redundant cancellation attempts
+
+**Source Iterator Contract:** - Source iterator must handle \`CASSIOPEIA_CANCEL\` and return immediately - Source iterator must not perform additional work after receiving the cancel token - Source iterator must not yield additional values after cancellation - Contract violation may result in unpredictable cache states
+
+## interface CassiopeiaPluginContext
+
+### CassiopeiaPluginContext.dispose
+
+Cleanup function to remove plugin and trigger update
+
+\`\`\`typescript
+dispose: () => Promise<void>;
+\`\`\`
+
+### CassiopeiaPluginContext.reducerFactories
+
+Proxy for registering reducer factory functions with automatic change detection
+
+\`\`\`typescript
+reducerFactories: CassiopeiaReducerFactories;
+\`\`\`
+
+### CassiopeiaPluginContext.reducerKeys
+
+Read-only set of currently registered reducer keys
+
+\`\`\`typescript
+reducerKeys: ReadonlySet<string>;
+\`\`\`
+
+### CassiopeiaPluginContext.update
+
+Trigger async reducer-only update for this plugin's keys
+
+\`\`\`typescript
+update: CassiopeiaReducerUpdate;
+\`\`\`
+
+### CassiopeiaPluginContext.updateSync
+
+Trigger synchronous reducer-only update for this plugin's keys
+
+\`\`\`typescript
+updateSync: CassiopeiaReducerUpdateSync;
+\`\`\`
+
+## interface StyleElementSubscriptionOptions
+
+Configuration options for style element subscription behavior.
+
+\`\`\`typescript
+export interface StyleElementSubscriptionOptions
+\`\`\`
+
+### StyleElementSubscriptionOptions.container
+
+Container element for style injection. Supports flexible targeting for different DOM contexts.
+
+* \`Element\`: Direct element reference where styles will be injected - \`ShadowRoot\`: Shadow DOM root for Web Component style isolation - \`string\`: CSS selector that resolves to a container element - \`undefined\`: Defaults to \`document.head\` for global stylesheet management
+
+\`\`\`typescript
+container?: string | Element | ShadowRoot;
+\`\`\`
+
+### StyleElementSubscriptionOptions.method
+
+Update strategy for existing style elements.
+
+* \`overwrite\`: Modifies existing elements in-place, preserving element identity and DOM position. Preferred for performance as it avoids element recreation and DOM reflow. - \`insert-discard\`: Replaces elements entirely by creating new ones at the same position. Use when complete element replacement is required for compatibility or debugging.
+
+\`\`\`typescript
+method?: 'insert-discard' | 'overwrite';
+\`\`\`
+
+### StyleElementSubscriptionOptions.namespace
+
+Optional namespace identifier for isolating style element groups. When provided, creates qualified attributes like \`cassiopeia-key-theme\` instead of \`cassiopeia-key\`.
+
+\`\`\`typescript
+namespace?: string;
+\`\`\`
+
+## type CassiopeiaCancel
+
+Type alias for the cancel control token symbol.
+
+\`\`\`typescript
+export type CassiopeiaCancel = typeof CASSIOPEIA_CANCEL;
+\`\`\`
+
+## type CassiopeiaComplete
+
+Type alias for the complete control token symbol.
+
+\`\`\`typescript
+export type CassiopeiaComplete = typeof CASSIOPEIA_COMPLETE;
+\`\`\`
+
+## type CassiopeiaGenerator
+
+Generator that yields custom property key-suffix pairs. Processes CSS custom property references with triple-dash prefixes and extracts the key-suffix segments from the custom property identifier. The triple-dash pattern follows CSS custom property naming conventions but uses an extended prefix for key-based organization. For example, \`var(---foo-bar)\` yields the pair \`['foo', 'bar']\`.
+
+\`\`\`typescript
+export type CassiopeiaGenerator = Generator<[
+  string,
+  string
+], undefined, CassiopeiaCancel | undefined>;
+\`\`\`
+
+## type CassiopeiaGeneratorUpdate
+
+Update function that accepts optional generator factory for custom property source changes
+
+\`\`\`typescript
+export type CassiopeiaGeneratorUpdate = (createGenerator?: () => CassiopeiaGenerator) => Promise<void>;
+\`\`\`
+
+## type CassiopeiaGeneratorUpdateSync
+
+Update function that accepts optional generator factory for custom property source changes
+
+\`\`\`typescript
+export type CassiopeiaGeneratorUpdateSync = (createGenerator?: () => CassiopeiaGenerator) => void;
+\`\`\`
+
+## type CassiopeiaOrchestrator
+
+Terminating reducer that coordinates stylesheet collection from multiple custom property processing reducers.
+
+\`\`\`typescript
+export type CassiopeiaOrchestrator = TerminatingReducer<CassiopeiaStyleSheets, never>;
+\`\`\`
+
+## type CassiopeiaReducer
+
+Terminating reducer that processes custom property key-suffix strings and generates CSS stylesheets. Reduces triple-dash custom properties into stylesheet objects or arrays, with implementation-specific processing logic.
+
+\`\`\`typescript
+export type CassiopeiaReducer = TerminatingReducer<CassiopeiaPartialStyleSheet | CassiopeiaPartialStyleSheet[], string>;
+\`\`\`
+
+## type CassiopeiaReducerFactories
+
+Factory functions for creating triple-dash custom property processing reducers with lazy initialization.
+
+\`\`\`typescript
+export type CassiopeiaReducerFactories = TerminatingReducerFactories<Record<string, CassiopeiaReducer>>;
+\`\`\`
+
+## type CassiopeiaReducers
+
+Cached terminating reducers providing lazy access to triple-dash custom property processing instances.
+
+\`\`\`typescript
+export type CassiopeiaReducers = TerminatingReducers<Record<string, CassiopeiaReducer>>;
+\`\`\`
+
+## type CassiopeiaReducerUpdate
+
+Update function that accepts optional reducer keys for targeted plugin updates
+
+\`\`\`typescript
+export type CassiopeiaReducerUpdate = (keys?: Iterable<string>) => Promise<void>;
+\`\`\`
+
+## type CassiopeiaReducerUpdateSync
+
+Update function that accepts optional reducer keys for targeted plugin updates
+
+\`\`\`typescript
+export type CassiopeiaReducerUpdateSync = (keys?: Iterable<string>) => void;
+\`\`\`
+
+## type TerminatingReducer
+
+Generator type representing a synchronous terminating reducer.
+
+\`\`\`typescript
+export type TerminatingReducer<GeneratorReturn = unknown, GeneratorNext = unknown, T = undefined> = Generator<T, TerminatingReducerReturn<GeneratorReturn>, TerminatingReducerNext<GeneratorNext>>;
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`GeneratorReturn\` | The type of value returned when the reducer completes normally |
+| \`GeneratorNext\` | The type of data values accepted as input during processing<br><br>Terminating reducers are synchronous generators that implement a controlled processing pattern where they yield nothing during execution, accept typed input through \`.next()\` including control tokens, and return either a final computed value or \`undefined\` when processing completes or is cancelled. |
+
+## type TerminatingReducerFactories
+
+Input type for \`createTerminatingReducers()\` defining factory functions for each reducer key.
+
+\`\`\`typescript
+export type TerminatingReducerFactories<T extends object = {}> = {
+  [K in keyof T]: () => T[K] extends TerminatingReducer ? T[K] : never;
+};
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | Object type where each property value extends \`TerminatingReducer\`<br><br>Maps each property key to a factory function that returns a \`TerminatingReducer\` for that key. Factory functions are invoked exactly once per property upon first access, after which the getter is replaced with the static reducer instance for direct access. |
+
+## type TerminatingReducerNext
+
+Union type representing all possible input values for a terminating reducer.
+
+\`\`\`typescript
+export type TerminatingReducerNext<GeneratorNext = unknown> = CassiopeiaCancel | CassiopeiaComplete | GeneratorNext;
+\`\`\`
+
+## type TerminatingReducerReturn
+
+Union type representing all possible return values for a terminating reducer.
+
+\`\`\`typescript
+export type TerminatingReducerReturn<GeneratorReturn = unknown> = GeneratorReturn | undefined;
+\`\`\`
+
+## type TerminatingReducers
+
+Return type from \`createTerminatingReducers()\` with implicit caching through getter replacement.
+
+\`\`\`typescript
+export type TerminatingReducers<T extends object = {}> = {
+  readonly [K in keyof T]: T[K] extends TerminatingReducer ? T[K] : never;
+};
+\`\`\`
+
+### Type Parameters
+
+| Parameter | Description |
+| - | - |
+| \`T\` | Object type where each property value extends \`TerminatingReducer\`<br><br>Properties provide lazy initialization with implicit caching behavior: first access triggers factory invocation and getter replacement with the static value, eliminating subsequent factory calls for the same property. |
+"
+`;
+
+exports[`create-documentation > snapshot e 1`] = `
+"# API
+
+## class Snaproll
+
+Fixed-timestep animation loop with independent draw and update rates.
+
+\`\`\`typescript
+export declare class Snaproll
+\`\`\`
+
+### new Snaproll
+
+Creates animation loop instance with specified configuration.
+
+\`\`\`typescript
+constructor(options?: Partial<SnaprollOptions>);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type |
+| - | - |
+| \`options\` | <pre>Partial<[SnaprollOptions](#interface-snaprolloptions "interface SnaprollOptions")></pre> |
+
+### Snaproll.pause
+
+Stops animation while keeping subscriptions.
+
+\`\`\`typescript
+pause(): void;
+\`\`\`
+
+### Snaproll.reset
+
+Resets the animation loop with optional configuration updates.
+
+\`\`\`typescript
+reset(options?: {
+  keepContext?: boolean;
+  keepSubscriptions?: boolean;
+} & Partial<SnaprollOptions>): void;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type |
+| - | - |
+| \`options\` | <pre>{<br>  keepContext?: boolean;<br>  keepSubscriptions?: boolean;<br>} & Partial<[SnaprollOptions](#interface-snaprolloptions "interface SnaprollOptions")></pre> |
+
+### Snaproll.resume
+
+Resumes animation.
+
+\`\`\`typescript
+resume(): void;
+\`\`\`
+
+### Snaproll.subscribe
+
+Registers subscription callback for animation frame processing.
+
+\`\`\`typescript
+subscribe(value: SnaprollSubscription, options?: {
+  immediate?: boolean;
+}): SnaprollSubscriptionControls;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>[SnaprollSubscription](#type-snaprollsubscription "type SnaprollSubscription")</pre> | Callback function to execute during frame processing |
+| \`options\` | <pre>{<br>  immediate?: boolean;<br>}</pre> | Subscription configuration with immediate activation flag |
+
+#### Returns
+
+Control object for pausing, resuming, and removing subscription
+
+### Snaproll.drawRate
+
+Gets current draw rate in Hz.
+
+\`\`\`typescript
+get drawRate(): number;
+set drawRate(value: number);
+\`\`\`
+
+### Snaproll.state
+
+Current animation loop state.
+
+Returns 'active' when running animation frames, 'idle' when no active subscriptions, or 'paused' when stopped by pause().
+
+\`\`\`typescript
+get state(): "active" | "idle" | "paused";
+\`\`\`
+
+### Snaproll.updateRate
+
+Gets current update rate in Hz.
+
+\`\`\`typescript
+get updateRate(): number;
+set updateRate(value: number);
+\`\`\`
+
+## class SnaprollDrawRateAdvisor
+
+Provides draw rates inferred from observed frame periods.
+
+The recommendation logic is stateless and deterministic: identical period inputs produce identical outputs. Concurrent class instances do not interfere with each other.
+
+\`\`\`typescript
+export declare class SnaprollDrawRateAdvisor
+\`\`\`
+
+### new SnaprollDrawRateAdvisor
+
+Creates a new draw rate advisor instance.
+
+\`\`\`typescript
+constructor(options?: SnaprollDrawRateAdvisorOptions);
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`options\` | <pre>[SnaprollDrawRateAdvisorOptions](#interface-snaprolldrawrateadvisoroptions "interface SnaprollDrawRateAdvisorOptions")</pre> | Configuration options for the advisor |
+
+#### Throws
+
+Assertion error if any option values are invalid
+
+### SnaprollDrawRateAdvisor.dispose
+
+Cancels ongoing operations and releases resources.
+
+\`\`\`typescript
+dispose(): void;
+\`\`\`
+
+### SnaprollDrawRateAdvisor.subscribe
+
+Registers callback for recommendation results.
+
+Callbacks receive SnaprollDrawRateAdvisorResponse when recommendation completes successfully. Callbacks are not invoked if the operation is canceled or produces no recommendations.
+
+\`\`\`typescript
+subscribe(subscription: SnaprollDrawRateAdvisorSubscription): () => void;
+\`\`\`
+
+#### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`subscription\` | <pre>[SnaprollDrawRateAdvisorSubscription](#type-snaprolldrawrateadvisorsubscription "type SnaprollDrawRateAdvisorSubscription")</pre> | Callback function to invoke with results |
+
+#### Returns
+
+Function that unregisters the subscription when called
+
+### SnaprollDrawRateAdvisor.trigger
+
+Cancels any previous ongoing operation before starting a new one. Results are delivered to registered subscriptions when the operation completes. If the operation is canceled or produces no recommendations, subscriptions are not invoked.
+
+\`\`\`typescript
+trigger(): void;
+\`\`\`
+
+## enum SnaprollActionType
+
+Animation frame phases.
+
+\`\`\`typescript
+export declare enum SnaprollActionType
+\`\`\`
+
+### Members
+
+| Member | Value |
+| - | - |
+| \`Begin\` | <pre>0</pre> |
+| \`Update\` | <pre>1</pre> |
+| \`Draw\` | <pre>2</pre> |
+
+## interface SnaprollActionBegin
+
+Frame initialization action.
+
+\`\`\`typescript
+export interface SnaprollActionBegin
+\`\`\`
+
+### SnaprollActionBegin.timestamp
+
+Current frame time
+
+\`\`\`typescript
+timestamp: number;
+\`\`\`
+
+## interface SnaprollActionDraw
+
+Interpolated drawing action.
+
+\`\`\`typescript
+export interface SnaprollActionDraw extends Omit<SnaprollActionUpdate, 'action'>
+\`\`\`
+
+### SnaprollActionDraw\\.alpha
+
+Interpolation factor \\[0, 1)
+
+\`\`\`typescript
+alpha: number;
+\`\`\`
+
+## interface SnaprollActionUpdate
+
+Fixed timestep animation logic action. The updateStep counts down remaining updates in the current frame.
+
+\`\`\`typescript
+export interface SnaprollActionUpdate extends Omit<SnaprollActionBegin, 'action'>
+\`\`\`
+
+### SnaprollActionUpdate.timestep
+
+Time to advance per update
+
+\`\`\`typescript
+timestep: number;
+\`\`\`
+
+### SnaprollActionUpdate.updateStep
+
+Remaining updates this frame, counts down to 1
+
+\`\`\`typescript
+updateStep: number;
+\`\`\`
+
+## interface SnaprollDrawRateAdvisorOptions
+
+### SnaprollDrawRateAdvisorOptions.canonicalBases
+
+Array of canonical refresh rates to consider for snapping. Must be non-empty array of positive integers.
+
+\`\`\`typescript
+canonicalBases?: readonly number[];
+\`\`\`
+
+### SnaprollDrawRateAdvisorOptions.maxDivisor
+
+Maximum count of divisors to consider for candidate generation and output. Must be positive integer ≥ 1.
+
+\`\`\`typescript
+maxDivisor?: number;
+\`\`\`
+
+### SnaprollDrawRateAdvisorOptions.minDraw
+
+Minimum draw rate to include in results. Must be positive integer ≥ 5.
+
+\`\`\`typescript
+minDraw?: number;
+\`\`\`
+
+### SnaprollDrawRateAdvisorOptions.samples
+
+Number of frame intervals to collect after warmup. Must be positive integer ≥ 30.
+
+\`\`\`typescript
+samples?: number;
+\`\`\`
+
+### SnaprollDrawRateAdvisorOptions.warmup
+
+Number of frames to ignore before sampling. Must be non-negative integer ≥ 0.
+
+\`\`\`typescript
+warmup?: number;
+\`\`\`
+
+## interface SnaprollDrawRateAdvisorResponse
+
+### SnaprollDrawRateAdvisorResponse.score
+
+Quality score in range \\[0,1] using RF (Robustness × Fit) formula. Higher scores indicate better data consistency and more reliable recommendations.
+
+Score interpretation:
+
+* \`0.95–1.00\`: Rock-solid. Extremely stable capture, fits a canonical/divisor cleanly
+* \`0.85–0.95\`: Healthy. Mild jitter only; values are trustworthy
+* \`0.75–0.85\`: Borderline steady. Noticeable instability or light regime mixing; fine for most uses, re-run if chasing perfection
+* \`0.60–0.75\`: Shaky. Significant jitter or likely mid-phase change; consider re-running
+* \`< 0.60\` : Unstable. Strong evidence of blocking/jitter or regime split; re-run recommended
+
+\`\`\`typescript
+score: number;
+\`\`\`
+
+### SnaprollDrawRateAdvisorResponse.values
+
+Array of recommended draw rates (Hz), sorted descending and de-duplicated. All values are integers and ≥ minDraw.
+
+\`\`\`typescript
+values: number[];
+\`\`\`
+
+## interface SnaprollOptions
+
+Configuration interface for animation loop.
+
+\`\`\`typescript
+export interface SnaprollOptions
+\`\`\`
+
+### Remarks
+
+drawRate and updateRate operate independently, allowing different frequencies for draw and update rates.
+
+### SnaprollOptions.context
+
+Optional shared state object passed to all subscription callbacks
+
+\`\`\`typescript
+context?: SnaprollUserContext;
+\`\`\`
+
+### SnaprollOptions.drawRate
+
+Draw rate in Hz, controls visual frame timing
+
+\`\`\`typescript
+drawRate: number;
+\`\`\`
+
+### SnaprollOptions.updateRate
+
+Update rate in Hz, determines fixed timestep size
+
+\`\`\`typescript
+updateRate: number;
+\`\`\`
+
+## interface SnaprollSubscriptionControls
+
+Control interface for managing individual animation subscriptions.
+
+\`\`\`typescript
+export interface SnaprollSubscriptionControls
+\`\`\`
+
+### Remarks
+
+Each subscription operates independently. Pausing one subscription does not affect others. The animation loop continues running as long as any subscription remains active.
+
+### SnaprollSubscriptionControls.pause
+
+Pauses this subscription
+
+\`\`\`typescript
+pause: () => void;
+\`\`\`
+
+### SnaprollSubscriptionControls.resume
+
+Resumes this subscription
+
+\`\`\`typescript
+resume: () => void;
+\`\`\`
+
+### SnaprollSubscriptionControls.unsubscribe
+
+Removes this subscription
+
+\`\`\`typescript
+unsubscribe: () => void;
+\`\`\`
+
+## interface SnaprollUserContext
+
+Context interface for application-specific state.
+
+\`\`\`typescript
+export interface SnaprollUserContext
+\`\`\`
+
+### Remarks
+
+Uses TypeScript declaration merging to allow augmentation with custom properties. Extended properties become available in all subscription callbacks.
+
+### Examples
+
+\`\`\`ts
+declare module 'snaproll' {
+  interface SnaprollUserContext {
+    score: number
+  }
+}
+\`\`\`
+
+## type SnaprollContext
+
+Context object passed to subscription callbacks during animation frames.
+
+\`\`\`typescript
+export type SnaprollContext = (SnaprollActionBegin | SnaprollActionDraw | SnaprollActionUpdate) & SnaprollUserContext;
+\`\`\`
+
+### Remarks
+
+Discriminated union that combines action-specific interfaces with user context. Available properties depend on the current action type: Begin, Update, or Draw.
+
+## type SnaprollDrawRateAdvisorSubscription
+
+Callback function invoked when draw rate estimation completes.
+
+\`\`\`typescript
+export type SnaprollDrawRateAdvisorSubscription = (response: SnaprollDrawRateAdvisorResponse) => void;
+\`\`\`
+
+## type SnaprollSubscription
+
+Subscription callback function.
+
+\`\`\`typescript
+export type SnaprollSubscription = (context: SnaprollContext) => boolean | undefined;
+\`\`\`
+
+### Remarks
+
+Return value controls frame execution flow: - \`true\` from Begin phase skips the entire frame - \`true\` from Update phase skips remaining updates and draw for current frame - \`undefined\` or \`false\` continues normal execution
+"
+`;

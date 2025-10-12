@@ -1,5 +1,5 @@
 import { formatMessages as esbuildFormatMessages } from 'esbuild'
-import type { LogLevel, TransformFailure } from '../types'
+import type { BuildLogLevel, BuildMessages } from '../types'
 
 function trimArrayWhitespace(array: string[]): string[] {
   // Remove excess whitespace and newline strings from the beginning
@@ -15,7 +15,7 @@ function trimArrayWhitespace(array: string[]): string[] {
   return array
 }
 
-export const messagesPrint = async (level: LogLevel, value: TransformFailure, color: boolean) => {
+export const messagesPrint = async (level: BuildLogLevel, value: BuildMessages, color: boolean) => {
   const { errors, warnings } = value
 
   const messages = [

@@ -2,9 +2,7 @@ import pluginUtils, { type FilterPattern } from '@rollup/pluginutils'
 import { readFile } from 'node:fs/promises'
 import type { Plugin } from 'rollup'
 import { SourceMapGenerator } from 'source-map'
-import type { SourceMapConsumers } from '../types'
-
-const { createFilter } = pluginUtils
+import type { BuildSourceMapConsumers } from '../types'
 
 interface Options {
   exclude?: FilterPattern
@@ -12,9 +10,11 @@ interface Options {
 }
 
 export function pluginSourcemaps(
-  sourceMapConsumers: SourceMapConsumers,
+  sourceMapConsumers: BuildSourceMapConsumers,
   options?: Options,
 ): Plugin {
+  const { createFilter } = pluginUtils
+
   const filter = createFilter(options?.include, options?.exclude)
 
   return {

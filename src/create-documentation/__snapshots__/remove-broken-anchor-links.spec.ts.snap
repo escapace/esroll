@@ -1,0 +1,2564 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`removeBrokenAnchorLinks > broken anchor links > handles empty anchor link 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Go to ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 1,
+            "offset": 10,
+          },
+          "start": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+        },
+        "type": "text",
+        "value": "top",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 16,
+            "line": 1,
+            "offset": 15,
+          },
+          "start": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 16,
+        "line": 1,
+        "offset": 15,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > broken anchor links > replaces link to non-existent heading with children 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Real Heading",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 3,
+            "offset": 20,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+        },
+        "type": "text",
+        "value": "See ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 3,
+            "offset": 30,
+          },
+          "start": {
+            "column": 6,
+            "line": 3,
+            "offset": 21,
+          },
+        },
+        "type": "text",
+        "value": "fake link",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 32,
+            "line": 3,
+            "offset": 47,
+          },
+          "start": {
+            "column": 31,
+            "line": 3,
+            "offset": 46,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 32,
+        "line": 3,
+        "offset": 47,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > broken anchor links > replaces link with code in children 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Check ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 1,
+            "offset": 13,
+          },
+          "start": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+        },
+        "type": "inlineCode",
+        "value": "code",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+          "start": {
+            "column": 14,
+            "line": 1,
+            "offset": 13,
+          },
+        },
+        "type": "text",
+        "value": " reference",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 35,
+            "line": 1,
+            "offset": 34,
+          },
+          "start": {
+            "column": 34,
+            "line": 1,
+            "offset": 33,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 35,
+        "line": 1,
+        "offset": 34,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > broken anchor links > replaces link with nested formatting 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 1,
+            "offset": 4,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "See ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 17,
+                "line": 1,
+                "offset": 16,
+              },
+              "start": {
+                "column": 8,
+                "line": 1,
+                "offset": 7,
+              },
+            },
+            "type": "text",
+            "value": "important",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 19,
+            "line": 1,
+            "offset": 18,
+          },
+          "start": {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+        },
+        "type": "strong",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+          "start": {
+            "column": 19,
+            "line": 1,
+            "offset": 18,
+          },
+        },
+        "type": "text",
+        "value": " info",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 36,
+            "line": 1,
+            "offset": 35,
+          },
+          "start": {
+            "column": 35,
+            "line": 1,
+            "offset": 34,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 36,
+        "line": 1,
+        "offset": 35,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > broken anchor links > replaces multiple broken anchor links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Links: ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 1,
+            "offset": 11,
+          },
+          "start": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+        },
+        "type": "text",
+        "value": "one",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 29,
+            "line": 1,
+            "offset": 28,
+          },
+          "start": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+        },
+        "type": "text",
+        "value": " and ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 33,
+            "line": 1,
+            "offset": 32,
+          },
+          "start": {
+            "column": 30,
+            "line": 1,
+            "offset": 29,
+          },
+        },
+        "type": "text",
+        "value": "two",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 46,
+            "line": 1,
+            "offset": 45,
+          },
+          "start": {
+            "column": 45,
+            "line": 1,
+            "offset": 44,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 46,
+        "line": 1,
+        "offset": 45,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > edge cases > handles document with no headings 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 1,
+            "offset": 10,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Text with ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 16,
+            "line": 1,
+            "offset": 15,
+          },
+          "start": {
+            "column": 12,
+            "line": 1,
+            "offset": 11,
+          },
+        },
+        "type": "text",
+        "value": "link",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 1,
+            "offset": 26,
+          },
+          "start": {
+            "column": 26,
+            "line": 1,
+            "offset": 25,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 27,
+        "line": 1,
+        "offset": 26,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > edge cases > handles document with no links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 1,
+            "offset": 9,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Heading",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 10,
+        "line": 1,
+        "offset": 9,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 3,
+            "offset": 21,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 11,
+          },
+        },
+        "type": "text",
+        "value": "Just text.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 11,
+        "line": 3,
+        "offset": 21,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 11,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > edge cases > handles empty input 1`] = `[]`;
+
+exports[`removeBrokenAnchorLinks > edge cases > handles heading with complex text 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "inlineCode",
+        "value": "Code",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 1,
+            "offset": 9,
+          },
+          "start": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+        },
+        "type": "text",
+        "value": " ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 16,
+                "line": 1,
+                "offset": 15,
+              },
+              "start": {
+                "column": 12,
+                "line": 1,
+                "offset": 11,
+              },
+            },
+            "type": "text",
+            "value": "Bold",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 18,
+            "line": 1,
+            "offset": 17,
+          },
+          "start": {
+            "column": 10,
+            "line": 1,
+            "offset": 9,
+          },
+        },
+        "type": "strong",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 19,
+            "line": 1,
+            "offset": 18,
+          },
+          "start": {
+            "column": 18,
+            "line": 1,
+            "offset": 17,
+          },
+        },
+        "type": "text",
+        "value": " ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 26,
+                "line": 1,
+                "offset": 25,
+              },
+              "start": {
+                "column": 20,
+                "line": 1,
+                "offset": 19,
+              },
+            },
+            "type": "text",
+            "value": "Italic",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 1,
+            "offset": 26,
+          },
+          "start": {
+            "column": 19,
+            "line": 1,
+            "offset": 18,
+          },
+        },
+        "type": "emphasis",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 27,
+        "line": 1,
+        "offset": 26,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 3,
+            "offset": 36,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 28,
+          },
+        },
+        "type": "text",
+        "value": "Link to ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 17,
+                "line": 3,
+                "offset": 44,
+              },
+              "start": {
+                "column": 10,
+                "line": 3,
+                "offset": 37,
+              },
+            },
+            "type": "text",
+            "value": "section",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 37,
+            "line": 3,
+            "offset": 64,
+          },
+          "start": {
+            "column": 9,
+            "line": 3,
+            "offset": 36,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#code-bold-italic",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 38,
+            "line": 3,
+            "offset": 65,
+          },
+          "start": {
+            "column": 37,
+            "line": 3,
+            "offset": 64,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 38,
+        "line": 3,
+        "offset": 65,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 28,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > mixed scenarios > handles links in different block types 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 1,
+            "offset": 9,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Heading",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 10,
+        "line": 1,
+        "offset": 9,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 3,
+            "offset": 21,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 11,
+          },
+        },
+        "type": "text",
+        "value": "Paragraph ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 16,
+                "line": 3,
+                "offset": 26,
+              },
+              "start": {
+                "column": 12,
+                "line": 3,
+                "offset": 22,
+              },
+            },
+            "type": "text",
+            "value": "link",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 3,
+            "offset": 37,
+          },
+          "start": {
+            "column": 11,
+            "line": 3,
+            "offset": 21,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#heading",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 3,
+            "offset": 38,
+          },
+          "start": {
+            "column": 27,
+            "line": 3,
+            "offset": 37,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 28,
+        "line": 3,
+        "offset": 38,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 11,
+      },
+    },
+    "type": "paragraph",
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 5,
+                "offset": 48,
+              },
+              "start": {
+                "column": 3,
+                "line": 5,
+                "offset": 42,
+              },
+            },
+            "type": "text",
+            "value": "Quote ",
+          },
+          {
+            "position": {
+              "end": {
+                "column": 16,
+                "line": 5,
+                "offset": 55,
+              },
+              "start": {
+                "column": 10,
+                "line": 5,
+                "offset": 49,
+              },
+            },
+            "type": "text",
+            "value": "broken",
+          },
+          {
+            "position": {
+              "end": {
+                "column": 28,
+                "line": 5,
+                "offset": 67,
+              },
+              "start": {
+                "column": 27,
+                "line": 5,
+                "offset": 66,
+              },
+            },
+            "type": "text",
+            "value": ".",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 5,
+            "offset": 67,
+          },
+          "start": {
+            "column": 3,
+            "line": 5,
+            "offset": 42,
+          },
+        },
+        "type": "paragraph",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 28,
+        "line": 5,
+        "offset": 67,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 40,
+      },
+    },
+    "type": "blockquote",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > mixed scenarios > handles mix of valid and broken anchors 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Real Section",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 3,
+            "offset": 23,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+        },
+        "type": "text",
+        "value": "Links: ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 14,
+                "line": 3,
+                "offset": 29,
+              },
+              "start": {
+                "column": 9,
+                "line": 3,
+                "offset": 24,
+              },
+            },
+            "type": "text",
+            "value": "valid",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 30,
+            "line": 3,
+            "offset": 45,
+          },
+          "start": {
+            "column": 8,
+            "line": 3,
+            "offset": 23,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#real-section",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 35,
+            "line": 3,
+            "offset": 50,
+          },
+          "start": {
+            "column": 30,
+            "line": 3,
+            "offset": 45,
+          },
+        },
+        "type": "text",
+        "value": " and ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 42,
+            "line": 3,
+            "offset": 57,
+          },
+          "start": {
+            "column": 36,
+            "line": 3,
+            "offset": 51,
+          },
+        },
+        "type": "text",
+        "value": "broken",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 51,
+            "line": 3,
+            "offset": 66,
+          },
+          "start": {
+            "column": 50,
+            "line": 3,
+            "offset": 65,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 51,
+        "line": 3,
+        "offset": 66,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > mixed scenarios > handles nested links in lists 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Topic",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 8,
+        "line": 1,
+        "offset": 7,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 13,
+                    "line": 3,
+                    "offset": 21,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 3,
+                    "offset": 11,
+                  },
+                },
+                "type": "text",
+                "value": "Item with ",
+              },
+              {
+                "children": [
+                  {
+                    "position": {
+                      "end": {
+                        "column": 19,
+                        "line": 3,
+                        "offset": 27,
+                      },
+                      "start": {
+                        "column": 14,
+                        "line": 3,
+                        "offset": 22,
+                      },
+                    },
+                    "type": "text",
+                    "value": "valid",
+                  },
+                ],
+                "position": {
+                  "end": {
+                    "column": 28,
+                    "line": 3,
+                    "offset": 36,
+                  },
+                  "start": {
+                    "column": 13,
+                    "line": 3,
+                    "offset": 21,
+                  },
+                },
+                "title": null,
+                "type": "link",
+                "url": "#topic",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 28,
+                "line": 3,
+                "offset": 36,
+              },
+              "start": {
+                "column": 3,
+                "line": 3,
+                "offset": 11,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 3,
+            "offset": 36,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 9,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 13,
+                    "line": 4,
+                    "offset": 49,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 4,
+                    "offset": 39,
+                  },
+                },
+                "type": "text",
+                "value": "Item with ",
+              },
+              {
+                "position": {
+                  "end": {
+                    "column": 20,
+                    "line": 4,
+                    "offset": 56,
+                  },
+                  "start": {
+                    "column": 14,
+                    "line": 4,
+                    "offset": 50,
+                  },
+                },
+                "type": "text",
+                "value": "broken",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 30,
+                "line": 4,
+                "offset": 66,
+              },
+              "start": {
+                "column": 3,
+                "line": 4,
+                "offset": 39,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 30,
+            "line": 4,
+            "offset": 66,
+          },
+          "start": {
+            "column": 1,
+            "line": 4,
+            "offset": 37,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": false,
+    "position": {
+      "end": {
+        "column": 30,
+        "line": 4,
+        "offset": 66,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 9,
+      },
+    },
+    "spread": false,
+    "start": null,
+    "type": "list",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > mixed scenarios > preserves text when link has only text children 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Click ",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 1,
+            "offset": 11,
+          },
+          "start": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+        },
+        "type": "text",
+        "value": "here",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+          "start": {
+            "column": 23,
+            "line": 1,
+            "offset": 22,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 24,
+        "line": 1,
+        "offset": 23,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > non-anchor links > keeps absolute path links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Open ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 11,
+                "line": 1,
+                "offset": 10,
+              },
+              "start": {
+                "column": 7,
+                "line": 1,
+                "offset": 6,
+              },
+            },
+            "type": "text",
+            "value": "page",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 1,
+            "offset": 27,
+          },
+          "start": {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "/docs/guide.md",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 29,
+            "line": 1,
+            "offset": 28,
+          },
+          "start": {
+            "column": 28,
+            "line": 1,
+            "offset": 27,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 29,
+        "line": 1,
+        "offset": 28,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > non-anchor links > keeps external http links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Visit ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 15,
+                "line": 1,
+                "offset": 14,
+              },
+              "start": {
+                "column": 8,
+                "line": 1,
+                "offset": 7,
+              },
+            },
+            "type": "text",
+            "value": "example",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 37,
+            "line": 1,
+            "offset": 36,
+          },
+          "start": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "https://example.com",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 38,
+            "line": 1,
+            "offset": 37,
+          },
+          "start": {
+            "column": 37,
+            "line": 1,
+            "offset": 36,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 38,
+        "line": 1,
+        "offset": 37,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > non-anchor links > keeps external https links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 1,
+            "offset": 4,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "See ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 10,
+                "line": 1,
+                "offset": 9,
+              },
+              "start": {
+                "column": 6,
+                "line": 1,
+                "offset": 5,
+              },
+            },
+            "type": "text",
+            "value": "docs",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 43,
+            "line": 1,
+            "offset": 42,
+          },
+          "start": {
+            "column": 5,
+            "line": 1,
+            "offset": 4,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "https://docs.example.com/guide",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 44,
+            "line": 1,
+            "offset": 43,
+          },
+          "start": {
+            "column": 43,
+            "line": 1,
+            "offset": 42,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 44,
+        "line": 1,
+        "offset": 43,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > non-anchor links > keeps relative path links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Read ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 11,
+                "line": 1,
+                "offset": 10,
+              },
+              "start": {
+                "column": 7,
+                "line": 1,
+                "offset": 6,
+              },
+            },
+            "type": "text",
+            "value": "file",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+          "start": {
+            "column": 6,
+            "line": 1,
+            "offset": 5,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "./other.md",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 25,
+            "line": 1,
+            "offset": 24,
+          },
+          "start": {
+            "column": 24,
+            "line": 1,
+            "offset": 23,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 25,
+        "line": 1,
+        "offset": 24,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > valid anchor links > keeps link to existing heading 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Introduction",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 3,
+            "offset": 20,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+        },
+        "type": "text",
+        "value": "See ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 11,
+                "line": 3,
+                "offset": 26,
+              },
+              "start": {
+                "column": 6,
+                "line": 3,
+                "offset": 21,
+              },
+            },
+            "type": "text",
+            "value": "intro",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 3,
+            "offset": 42,
+          },
+          "start": {
+            "column": 5,
+            "line": 3,
+            "offset": 20,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#introduction",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 40,
+            "line": 3,
+            "offset": 55,
+          },
+          "start": {
+            "column": 27,
+            "line": 3,
+            "offset": 42,
+          },
+        },
+        "type": "text",
+        "value": " for details.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 40,
+        "line": 3,
+        "offset": 55,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > valid anchor links > keeps link to heading with numbers 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 1,
+            "offset": 13,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Section 123",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 1,
+        "offset": 13,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 3,
+            "offset": 21,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 15,
+          },
+        },
+        "type": "text",
+        "value": "Go to ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 15,
+                "line": 3,
+                "offset": 29,
+              },
+              "start": {
+                "column": 8,
+                "line": 3,
+                "offset": 22,
+              },
+            },
+            "type": "text",
+            "value": "section",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 30,
+            "line": 3,
+            "offset": 44,
+          },
+          "start": {
+            "column": 7,
+            "line": 3,
+            "offset": 21,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#section-123",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 31,
+            "line": 3,
+            "offset": 45,
+          },
+          "start": {
+            "column": 30,
+            "line": 3,
+            "offset": 44,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 31,
+        "line": 3,
+        "offset": 45,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 15,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > valid anchor links > keeps link to heading with special characters 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Hello World!",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 6,
+            "line": 3,
+            "offset": 21,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+        },
+        "type": "text",
+        "value": "Read ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 12,
+                "line": 3,
+                "offset": 27,
+              },
+              "start": {
+                "column": 7,
+                "line": 3,
+                "offset": 22,
+              },
+            },
+            "type": "text",
+            "value": "hello",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 27,
+            "line": 3,
+            "offset": 42,
+          },
+          "start": {
+            "column": 6,
+            "line": 3,
+            "offset": 21,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#hello-world",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 36,
+            "line": 3,
+            "offset": 51,
+          },
+          "start": {
+            "column": 27,
+            "line": 3,
+            "offset": 42,
+          },
+        },
+        "type": "text",
+        "value": " section.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 36,
+        "line": 3,
+        "offset": 51,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > valid anchor links > keeps link with nested formatting to valid anchor 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Target",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 1,
+        "offset": 8,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 3,
+            "offset": 14,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 10,
+          },
+        },
+        "type": "text",
+        "value": "See ",
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 3,
+                    "offset": 21,
+                  },
+                  "start": {
+                    "column": 8,
+                    "line": 3,
+                    "offset": 17,
+                  },
+                },
+                "type": "text",
+                "value": "bold",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 14,
+                "line": 3,
+                "offset": 23,
+              },
+              "start": {
+                "column": 6,
+                "line": 3,
+                "offset": 15,
+              },
+            },
+            "type": "strong",
+          },
+          {
+            "position": {
+              "end": {
+                "column": 19,
+                "line": 3,
+                "offset": 28,
+              },
+              "start": {
+                "column": 14,
+                "line": 3,
+                "offset": 23,
+              },
+            },
+            "type": "text",
+            "value": " text",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 29,
+            "line": 3,
+            "offset": 38,
+          },
+          "start": {
+            "column": 5,
+            "line": 3,
+            "offset": 14,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#target",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 30,
+            "line": 3,
+            "offset": 39,
+          },
+          "start": {
+            "column": 29,
+            "line": 3,
+            "offset": 38,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 30,
+        "line": 3,
+        "offset": 39,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 10,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeBrokenAnchorLinks > valid anchor links > keeps multiple valid anchor links 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "First",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 8,
+        "line": 1,
+        "offset": 7,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 3,
+            "offset": 17,
+          },
+          "start": {
+            "column": 3,
+            "line": 3,
+            "offset": 11,
+          },
+        },
+        "type": "text",
+        "value": "Second",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 3,
+        "offset": 17,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 9,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 5,
+            "offset": 26,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 19,
+          },
+        },
+        "type": "text",
+        "value": "Links: ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 12,
+                "line": 5,
+                "offset": 30,
+              },
+              "start": {
+                "column": 9,
+                "line": 5,
+                "offset": 27,
+              },
+            },
+            "type": "text",
+            "value": "one",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 21,
+            "line": 5,
+            "offset": 39,
+          },
+          "start": {
+            "column": 8,
+            "line": 5,
+            "offset": 26,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#first",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 26,
+            "line": 5,
+            "offset": 44,
+          },
+          "start": {
+            "column": 21,
+            "line": 5,
+            "offset": 39,
+          },
+        },
+        "type": "text",
+        "value": " and ",
+      },
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 30,
+                "line": 5,
+                "offset": 48,
+              },
+              "start": {
+                "column": 27,
+                "line": 5,
+                "offset": 45,
+              },
+            },
+            "type": "text",
+            "value": "two",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 40,
+            "line": 5,
+            "offset": 58,
+          },
+          "start": {
+            "column": 26,
+            "line": 5,
+            "offset": 44,
+          },
+        },
+        "title": null,
+        "type": "link",
+        "url": "#second",
+      },
+      {
+        "position": {
+          "end": {
+            "column": 41,
+            "line": 5,
+            "offset": 59,
+          },
+          "start": {
+            "column": 40,
+            "line": 5,
+            "offset": 58,
+          },
+        },
+        "type": "text",
+        "value": ".",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 41,
+        "line": 5,
+        "offset": 59,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 19,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;

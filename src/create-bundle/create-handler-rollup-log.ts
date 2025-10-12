@@ -1,17 +1,17 @@
 import type { PartialMessage } from 'esbuild'
-import { capitalize, startCase } from 'lodash-es'
+import { capitalize, startCase } from 'es-toolkit'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
 import type { RollupLog } from 'rollup'
-import { isFile } from './is-file'
-import type { SourceMapConsumers, TransformFailure } from '../types'
+import type { BuildMessages, BuildSourceMapConsumers } from '../types'
+import { isFile } from '../utilities/is-file'
 
 export const createHandlerRollupLog =
   (options: {
-    messages: TransformFailure
+    messages: BuildMessages
     pathDirectoryPackage: string
     pathDirectoryTemporary: string
-    sourceMapConsumers: SourceMapConsumers
+    sourceMapConsumers: BuildSourceMapConsumers
   }) =>
   async (log: RollupLog) => {
     if (log.plugin === 'unplugin-dts') {

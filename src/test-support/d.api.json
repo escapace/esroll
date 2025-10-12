@@ -1,0 +1,4455 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.53.0",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "cassiopeia!",
+  "docComment": "",
+  "name": "cassiopeia",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "cassiopeia!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CachedIterable:interface",
+          "docComment": "/**\n * Cached iterable with shared caching and external cancellation control.\n *\n * @remarks\n *\n * **Iterator Behavior:** - Implements standard iterator protocol with `Symbol.iterator` method - Return type is `TReturn | undefined` since cancellation can prevent source completion - Accepts `TerminatingReducerCancel | undefined` as input to iterator `next()` calls\n *\n * **Shared Caching:** - Multiple iterators created from the same cached iterable share a common value cache - Values are cached incrementally as consumed from the source - Cache persists across iterator instances and survives iterator completion\n *\n * **External Cancellation:** - Provides direct cancellation control without requiring an active iterator - Cancellation clears current source iterator; new iterators created after cancellation return done immediately - Already-cached values remain accessible through existing iterators until they complete\n *\n * @typeParam T - The type of values yielded by the iterable\n *\n * @typeParam TReturn - The type of the return value from the source iterator\n *\n * Combines the standard `Iterable` interface with external cancellation capabilities. Extends `Iterable<T, TReturn | undefined, TerminatingReducerCancel | undefined>` to provide iterator-based value consumption while adding a direct cancellation method that operates independently of any active iterator instances.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CachedIterable<T, TReturn = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "> extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, TReturn | undefined, "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/create-cached-iterable.ts",
+          "releaseTag": "Public",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TReturn",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "CachedIterable",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CachedIterable#[CASSIOPEIA_CANCEL]:member",
+              "docComment": "/**\n * Cancels the cached iterable and terminates any ongoing source iteration.\n *\n * Provides external cancellation control without requiring an active iterator instance. Forwards `CASSIOPEIA_CANCEL` to the source iterator following the same contract as iterator-based cancellation through `next(CASSIOPEIA_CANCEL)`.\n *\n * @remarks\n *\n * **Cancellation Effects:** - Sends `CASSIOPEIA_CANCEL` to the current source before clearing it - Clears the current source iterator, forcing active iterators to complete gracefully immediately - New iterators created after cancellation immediately return done without extending cache or creating sources\n *\n * **Idempotent Operation:** - Safe to call multiple times without side effects - Subsequent calls have no effect if no active source iterator exists - No error is thrown for redundant cancellation attempts\n *\n * **Source Iterator Contract:** - Source iterator must handle `CASSIOPEIA_CANCEL` and return immediately - Source iterator must not perform additional work after receiving the cancel token - Source iterator must not yield additional values after cancellation - Contract violation may result in unpredictable cache states\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "["
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CASSIOPEIA_CANCEL",
+                  "canonicalReference": "cassiopeia!CASSIOPEIA_CANCEL:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "[CASSIOPEIA_CANCEL]",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 3,
+              "endIndex": 7
+            }
+          ]
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_CANCEL:var",
+          "docComment": "/**\n * Control token signaling a generator to cancel\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_CANCEL: "
+            },
+            {
+              "kind": "Content",
+              "text": "unique symbol"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_CANCEL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_COMPLETE:var",
+          "docComment": "/**\n * Control token signaling a generator to complete and return its final value.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_COMPLETE: "
+            },
+            {
+              "kind": "Content",
+              "text": "unique symbol"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_COMPLETE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_CONTEXT:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_CONTEXT: "
+            },
+            {
+              "kind": "Content",
+              "text": "unique symbol"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_CONTEXT",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX:var",
+          "docComment": "/**\n * Unicode-aware regex matching Cassiopeia custom property names with escape sequence support. Performs syntactic validation for `---key-suffix` patterns.\n *\n * Design philosophy: Permissive by design—accepts inputs that may be semantically invalid (e.g., out-of-range hex escapes). Final validation is delegated to the hand-rolled parser. The regex serves as a fast pre-filter before parser validation.\n *\n * Identifier characters: letters (A-Z, a-z), digits (0-9), underscore (_), and all non-ASCII characters (U+0080–U+10FFFF). Digits are allowed at the start of identifiers.\n *\n * Escape sequences (matched literally, not decoded): - Hex escapes: `\\2d ` (1-6 hex digits + optional space/tab) - Simple escapes: `\\-` (backslash + any non-newline character)\n *\n * Structural constraints: - Prefix: exactly three literal hyphens `---` - KEY segment: cannot contain unescaped hyphens (use `\\2d ` or `\\-` for hyphens in KEY) - Separator: exactly one literal hyphen `-` - SUFFIX segment: can contain unescaped hyphens after the first character\n *\n * Requires the `u` flag for full Unicode support including supplementary planes. Uses the `i` flag for case-insensitive hex digit matching.\n *\n * Capture groups: - `(1)`: KEY with literal escape sequences - `(2)`: SUFFIX with literal escape sequences\n *\n * @example\n * ```typescript\n * CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---color-primary') // true\n * CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---café-latté') // true\n * CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('---my\\\\2d key-value') // true\n * CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX.test('--color-primary') // false (wrong prefix)\n * ```\n *\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX: "
+            },
+            {
+              "kind": "Reference",
+              "text": "RegExp",
+              "canonicalReference": "!RegExp:interface"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_CUSTOM_PROPERTY_NAME_REGEX",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX:var",
+          "docComment": "/**\n * Unicode-aware regex matching `var(---key-suffix)` patterns in CSS stylesheets with escape sequence support. Extracts the reducer key and suffix from Cassiopeia custom property references embedded in var() functions.\n *\n * Design philosophy: Permissive by design—accepts inputs that may be semantically invalid (e.g., out-of-range hex escapes). Final validation is delegated to the hand-rolled parser. The regex serves as a fast pre-filter before parser validation.\n *\n * Identifier characters: letters (A-Z, a-z), digits (0-9), underscore (_), and all non-ASCII characters (U+0080–U+10FFFF). Digits are allowed at the start of identifiers.\n *\n * Escape sequences (matched literally, not decoded): - Hex escapes: `\\2d ` (1-6 hex digits + optional space/tab) - Simple escapes: `\\-` (backslash + any non-newline character)\n *\n * Structural constraints: - Prefix: `var(---` (var function with three literal hyphens) - KEY segment: cannot contain unescaped hyphens (use `\\2d ` or `\\-` for hyphens in KEY) - Separator: exactly one literal hyphen `-` - SUFFIX segment: can contain unescaped hyphens after the first character - Terminator: closing `)` or comma `,` (matches both `var(---key-suffix)` and `var(---key-suffix,)`\n *\n * Global flag finds all occurrences in a stylesheet. Requires the `u` flag for full Unicode support including supplementary planes. Uses the `i` flag for case-insensitive hex digit matching.\n *\n * Capture groups: - `(1)`: KEY with literal escape sequences - `(2)`: SUFFIX with literal escape sequences\n *\n * @example\n * ```typescript\n * 'var(---color-primary)'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)\n * // Matches: ['var(---color-primary)', 'color', 'primary']\n *\n * 'var(---café-latté,'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)\n * // Matches: ['var(---café-latté,', 'café', 'latté']\n *\n * 'var(---my\\2d key-value)'.match(CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX)\n * // Matches: ['var(---my\\2d key-value)', 'my\\2d key', 'value']\n * ```\n *\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX: "
+            },
+            {
+              "kind": "Reference",
+              "text": "RegExp",
+              "canonicalReference": "!RegExp:interface"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_PLUGIN:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_PLUGIN: "
+            },
+            {
+              "kind": "Content",
+              "text": "unique symbol"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_PLUGIN",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "cassiopeia!CASSIOPEIA_STATE:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "CASSIOPEIA_STATE: "
+            },
+            {
+              "kind": "Content",
+              "text": "unique symbol"
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "CASSIOPEIA_STATE",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!Cassiopeia:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface Cassiopeia extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaInstance",
+              "canonicalReference": "cassiopeia!CassiopeiaInstance:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "Cassiopeia",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!Cassiopeia#dispose:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispose: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "dispose",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!Cassiopeia#subscribe:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "subscribe: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(subscription: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaSubscription",
+                  "canonicalReference": "cassiopeia!CassiopeiaSubscription:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ") => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaUnsubscribe",
+                  "canonicalReference": "cassiopeia!CassiopeiaUnsubscribe:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "subscribe",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!Cassiopeia#update:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "update: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaGeneratorUpdate",
+                  "canonicalReference": "cassiopeia!CassiopeiaGeneratorUpdate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "update",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!Cassiopeia#updateSync:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateSync: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaGeneratorUpdateSync",
+                  "canonicalReference": "cassiopeia!CassiopeiaGeneratorUpdateSync:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateSync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!Cassiopeia#use:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "use: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(...plugins: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaPlugin",
+                  "canonicalReference": "cassiopeia!CassiopeiaPlugin:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]) => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Cassiopeia",
+                  "canonicalReference": "cassiopeia!Cassiopeia:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "use",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaCancel:type",
+          "docComment": "/**\n * Type alias for the cancel control token symbol.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaCancel = "
+            },
+            {
+              "kind": "Content",
+              "text": "typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "CASSIOPEIA_CANCEL",
+              "canonicalReference": "cassiopeia!CASSIOPEIA_CANCEL:var"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaCancel",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaComplete:type",
+          "docComment": "/**\n * Type alias for the complete control token symbol.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaComplete = "
+            },
+            {
+              "kind": "Content",
+              "text": "typeof "
+            },
+            {
+              "kind": "Reference",
+              "text": "CASSIOPEIA_COMPLETE",
+              "canonicalReference": "cassiopeia!CASSIOPEIA_COMPLETE:var"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaComplete",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaGenerator:type",
+          "docComment": "/**\n * Generator that yields custom property key-suffix pairs. Processes CSS custom property references with triple-dash prefixes and extracts the key-suffix segments from the custom property identifier. The triple-dash pattern follows CSS custom property naming conventions but uses an extended prefix for key-based organization. For example, `var(---foo-bar)` yields the pair `['foo', 'bar']`.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaGenerator = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Generator",
+              "canonicalReference": "!Generator:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<[\n    string,\n    string\n], undefined, "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaGenerator",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaGeneratorUpdate:type",
+          "docComment": "/**\n * Update function that accepts optional generator factory for custom property source changes\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaGeneratorUpdate = "
+            },
+            {
+              "kind": "Content",
+              "text": "(createGenerator?: () => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaGenerator",
+              "canonicalReference": "cassiopeia!CassiopeiaGenerator:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaGeneratorUpdate",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaGeneratorUpdateSync:type",
+          "docComment": "/**\n * Update function that accepts optional generator factory for custom property source changes\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaGeneratorUpdateSync = "
+            },
+            {
+              "kind": "Content",
+              "text": "(createGenerator?: () => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaGenerator",
+              "canonicalReference": "cassiopeia!CassiopeiaGenerator:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaGeneratorUpdateSync",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaInstance:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaInstance "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaInstance",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaInstance#[CASSIOPEIA_CONTEXT]:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "["
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CASSIOPEIA_CONTEXT",
+                  "canonicalReference": "cassiopeia!CASSIOPEIA_CONTEXT:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaStateMachineContext",
+                  "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "[CASSIOPEIA_CONTEXT]",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaInstance#[CASSIOPEIA_STATE]:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "["
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CASSIOPEIA_STATE",
+                  "canonicalReference": "cassiopeia!CASSIOPEIA_STATE:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaStateMachineState",
+                  "canonicalReference": "cassiopeia!CassiopeiaStateMachineState:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "[CASSIOPEIA_STATE]",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaOrchestrator:type",
+          "docComment": "/**\n * Terminating reducer that coordinates stylesheet collection from multiple custom property processing reducers.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaOrchestrator = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducer",
+              "canonicalReference": "cassiopeia!TerminatingReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStyleSheets",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheets:type"
+            },
+            {
+              "kind": "Content",
+              "text": ", never>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaOrchestrator",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 5
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaPartialStyleSheet "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaPartialStyleSheet",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "IndexSignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet:index(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "[key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number | string | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet#content:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "content: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "content",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet#media:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "media?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "media",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaPlugin:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaPlugin "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaPlugin",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPlugin#[CASSIOPEIA_PLUGIN]:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "["
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CASSIOPEIA_PLUGIN",
+                  "canonicalReference": "cassiopeia!CASSIOPEIA_PLUGIN:var"
+                },
+                {
+                  "kind": "Content",
+                  "text": "]: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(context: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaPluginContext",
+                  "canonicalReference": "cassiopeia!CassiopeiaPluginContext:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ") => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "[CASSIOPEIA_PLUGIN]",
+              "propertyTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 6
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaPluginContext:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaPluginContext "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaPluginContext",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPluginContext#dispose:member",
+              "docComment": "/**\n * Cleanup function to remove plugin and trigger update\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispose: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "dispose",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPluginContext#reducerFactories:member",
+              "docComment": "/**\n * Proxy for registering reducer factory functions with automatic change detection\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reducerFactories: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaReducerFactories",
+                  "canonicalReference": "cassiopeia!CassiopeiaReducerFactories:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "reducerFactories",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPluginContext#reducerKeys:member",
+              "docComment": "/**\n * Read-only set of currently registered reducer keys\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reducerKeys: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ReadonlySet",
+                  "canonicalReference": "!ReadonlySet:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "reducerKeys",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPluginContext#update:member",
+              "docComment": "/**\n * Trigger async reducer-only update for this plugin's keys\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "update: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaReducerUpdate",
+                  "canonicalReference": "cassiopeia!CassiopeiaReducerUpdate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "update",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaPluginContext#updateSync:member",
+              "docComment": "/**\n * Trigger synchronous reducer-only update for this plugin's keys\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateSync: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaReducerUpdateSync",
+                  "canonicalReference": "cassiopeia!CassiopeiaReducerUpdateSync:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateSync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaReducer:type",
+          "docComment": "/**\n * Terminating reducer that processes custom property key-suffix strings and generates CSS stylesheets. Reduces triple-dash custom properties into stylesheet objects or arrays, with implementation-specific processing logic.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaReducer = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducer",
+              "canonicalReference": "cassiopeia!TerminatingReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaPartialStyleSheet",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaPartialStyleSheet",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[], string>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaReducer",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaReducerFactories:type",
+          "docComment": "/**\n * Factory functions for creating triple-dash custom property processing reducers with lazy initialization.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaReducerFactories = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerFactories",
+              "canonicalReference": "cassiopeia!TerminatingReducerFactories:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaReducer",
+              "canonicalReference": "cassiopeia!CassiopeiaReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaReducerFactories",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaReducers:type",
+          "docComment": "/**\n * Cached terminating reducers providing lazy access to triple-dash custom property processing instances.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaReducers = "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducers",
+              "canonicalReference": "cassiopeia!TerminatingReducers:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Record",
+              "canonicalReference": "!Record:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<string, "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaReducer",
+              "canonicalReference": "cassiopeia!CassiopeiaReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaReducers",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaReducerUpdate:type",
+          "docComment": "/**\n * Update function that accepts optional reducer keys for targeted plugin updates\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaReducerUpdate = "
+            },
+            {
+              "kind": "Content",
+              "text": "(keys?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaReducerUpdate",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaReducerUpdateSync:type",
+          "docComment": "/**\n * Update function that accepts optional reducer keys for targeted plugin updates\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaReducerUpdateSync = "
+            },
+            {
+              "kind": "Content",
+              "text": "(keys?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>) => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaReducerUpdateSync",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "cassiopeia!CassiopeiaScope:class",
+          "docComment": "/**\n * Represents an isolated scope of triple-dash CSS custom property names. Tracks property names used within this scope and updates the parent's aggregate index. The update methods trigger CSS generation by passing the parent's generator to cassiopeia. The generator extracts key and suffix pairs from property names in the aggregate index and feeds them to the plugin system for CSS generation.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class CassiopeiaScope "
+            }
+          ],
+          "fileUrlPath": "src/cassiopeia-scope.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "CassiopeiaScope",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "cassiopeia!CassiopeiaScope:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `CassiopeiaScope` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(parent: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaScopes",
+                  "canonicalReference": "cassiopeia!CassiopeiaScopes:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "parent",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#add:member",
+              "docComment": "/**\n * Adds a triple-dash CSS custom property name to this scope.\n *\n * @param value - The CSS custom property name\n *\n * @returns True when the property name enters the aggregate index, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "add: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(value: string) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "add",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#addMany:member",
+              "docComment": "/**\n * Adds multiple triple-dash CSS custom property names to this scope.\n *\n * @param values - CSS custom property names to add\n *\n * @returns True when at least one property name enters the aggregate index, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addMany: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(values: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Iterable",
+                  "canonicalReference": "!Iterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "addMany",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#clear:member",
+              "docComment": "/**\n * Removes all triple-dash CSS custom property names from this scope.\n *\n * @returns True when at least one property name exits the aggregate index, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "clear: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "clear",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#delete:member",
+              "docComment": "/**\n * Removes a triple-dash CSS custom property name from this scope.\n *\n * @param value - The CSS custom property name\n *\n * @returns True when the property name exits the aggregate index, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "delete: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(value: string) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "delete",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#deleteMany:member",
+              "docComment": "/**\n * Removes multiple triple-dash CSS custom property names from this scope.\n *\n * @param values - CSS custom property names to remove\n *\n * @returns True when at least one property name exits the aggregate index, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deleteMany: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(values: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Iterable",
+                  "canonicalReference": "!Iterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>) => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "deleteMany",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#dispose:member",
+              "docComment": "/**\n * Clears this scope, unregisters it from the parent, and nullifies references. The scope cannot be used after disposal.\n *\n * @returns True when at least one property name exited the aggregate index during disposal, false otherwise\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispose: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "dispose",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#update:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "update: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "update",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScope#updateSync:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateSync: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateSync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "cassiopeia!CassiopeiaScopes:class",
+          "docComment": "/**\n * Manages multiple isolated scopes of triple-dash CSS custom property names. Maintains a deduplicated index of property names across all scopes. The update methods trigger CSS generation by passing a generator to cassiopeia. The generator extracts key and suffix pairs from property names in the aggregate index and feeds them to the plugin system for CSS generation.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class CassiopeiaScopes "
+            }
+          ],
+          "fileUrlPath": "src/cassiopeia-scope.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "CassiopeiaScopes",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `CassiopeiaScopes` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(cassiopeia: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Cassiopeia",
+                  "canonicalReference": "cassiopeia!Cassiopeia:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "cassiopeia",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#createScope:member",
+              "docComment": "/**\n * Creates and registers a new isolated scope.\n *\n * @returns A new scope for managing triple-dash CSS custom property names\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "createScope: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaScope",
+                  "canonicalReference": "cassiopeia!CassiopeiaScope:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "createScope",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#dispose:member",
+              "docComment": "/**\n * Disposes all scopes and clears the aggregate index. Resets to the initial empty state.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispose: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "dispose",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#index:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "index: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "index",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#subsets:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "subsets: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Set",
+                  "canonicalReference": "!Set:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaScope",
+                  "canonicalReference": "cassiopeia!CassiopeiaScope:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "subsets",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#update:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "update: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<void>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "update",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cassiopeia!CassiopeiaScopes#updateSync:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateSync: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateSync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "cassiopeia!CassiopeiaStateMachineAction:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum CassiopeiaStateMachineAction "
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStateMachineAction",
+          "preserveMemberOrder": true,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineAction.Done:member",
+              "docComment": "/**\n * Complete current operation and return to idle state\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Done = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Done"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineAction.Reduce:member",
+              "docComment": "/**\n * Execute orchestrator to coordinate reducers and generate stylesheets\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Reduce = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Reduce"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineAction.Update:member",
+              "docComment": "/**\n * Initiate new generator or reducer update cycle\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Update = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Update"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineAction.Reset:member",
+              "docComment": "/**\n * Reset the state machine\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Reset = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "3"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Reset"
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateOptions:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaStateMachineActionUpdateOptions = "
+            },
+            {
+              "kind": "Reference",
+              "text": "$.Prettify",
+              "canonicalReference": "@escapace/typelevel!Prettify:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<{\n    updateReducerKeys?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>;\n} & "
+            },
+            {
+              "kind": "Reference",
+              "text": "Partial",
+              "canonicalReference": "!Partial:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Pick",
+              "canonicalReference": "!Pick:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStateMachineContext",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", 'updateGenerator'>> & "
+            },
+            {
+              "kind": "Reference",
+              "text": "Pick",
+              "canonicalReference": "!Pick:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStateMachineContext",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", 'updateIsAsync' | 'updateType'>>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStateMachineActionUpdateOptions",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 15
+          }
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum CassiopeiaStateMachineActionUpdateType "
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStateMachineActionUpdateType",
+          "preserveMemberOrder": true,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType.None:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "None = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "None"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType.Generator:member",
+              "docComment": "/**\n * Update involves generator changes (new custom property sources)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Generator = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Generator"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType.Reducer:member",
+              "docComment": "/**\n * Update involves reducer changes (plugin modifications)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Reducer = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Reducer"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType.Both:member",
+              "docComment": "/**\n * Update involves both generator and reducer changes\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Both = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "3"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Both"
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaStateMachineContext "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStateMachineContext",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#defer:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "defer: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(callback: () => void) => number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "defer",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#deferCancel:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deferCancel: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "(id: number) => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "deferCancel",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#deferEvery:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "deferEvery: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "deferEvery",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#generator:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "generator?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CachedIterable",
+                  "canonicalReference": "cassiopeia!CachedIterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<[string, string], undefined>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "generator",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#orchestrator:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "orchestrator?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaOrchestrator",
+                  "canonicalReference": "cassiopeia!CassiopeiaOrchestrator:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "orchestrator",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#reducerFactories:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reducerFactories: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "TerminatingReducerFactories",
+                  "canonicalReference": "cassiopeia!TerminatingReducerFactories:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Record",
+                  "canonicalReference": "!Record:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string, "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaReducer",
+                  "canonicalReference": "cassiopeia!CassiopeiaReducer:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "reducerFactories",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 7
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#reducerKeys:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reducerKeys: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Set",
+                  "canonicalReference": "!Set:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "reducerKeys",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#updateGenerator:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateGenerator?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaGenerator",
+                  "canonicalReference": "cassiopeia!CassiopeiaGenerator:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "updateGenerator",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#updateIsAsync:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateIsAsync: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateIsAsync",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#updateReducerKeys:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateReducerKeys?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Set",
+                  "canonicalReference": "!Set:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<string>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "updateReducerKeys",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineContext#updateType:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateType: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "CassiopeiaStateMachineActionUpdateType",
+                  "canonicalReference": "cassiopeia!CassiopeiaStateMachineActionUpdateType:enum"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateType",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "cassiopeia!CassiopeiaStateMachineState:enum",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum CassiopeiaStateMachineState "
+            }
+          ],
+          "fileUrlPath": "src/constants.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStateMachineState",
+          "preserveMemberOrder": true,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineState.Idle:member",
+              "docComment": "/**\n * No active processing, awaiting next update\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Idle = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Idle"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineState.PreFlight:member",
+              "docComment": "/**\n * Update received, preparing for orchestrator execution\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "PreFlight = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "PreFlight"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "cassiopeia!CassiopeiaStateMachineState.InFlight:member",
+              "docComment": "/**\n * Orchestrator actively processing stylesheets\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "InFlight = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "InFlight"
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!CassiopeiaStyleSheet:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface CassiopeiaStyleSheet extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaPartialStyleSheet",
+              "canonicalReference": "cassiopeia!CassiopeiaPartialStyleSheet:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStyleSheet",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheet#index:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "index: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "index",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheet#key:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "key",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 2
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaStyleSheets:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaStyleSheets = "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStyleSheet",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheet:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaStyleSheets",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaSubscription:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaSubscription = "
+            },
+            {
+              "kind": "Content",
+              "text": "(keys: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Set",
+              "canonicalReference": "!Set:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>, values: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStyleSheets",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheets:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaSubscription",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!CassiopeiaUnsubscribe:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type CassiopeiaUnsubscribe = "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/types.ts",
+          "releaseTag": "Public",
+          "name": "CassiopeiaUnsubscribe",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createCachedIterable:function(1)",
+          "docComment": "/**\n * Creates a cached iterable that wraps a factory-produced iterable with lazy evaluation and shared caching.\n *\n * Values are cached as they are consumed from the source iterator, enabling multiple iterators to share the same underlying data without redundant factory calls or source re-evaluation. Each iterator follows a two-phase approach: first consuming cached values, then extending the cache by consuming from the source if the cache requires extension.\n *\n * @remarks\n *\n * **Iterator Behavior:** - Iterators first yield cached values in order - Multiple iterators cooperatively extend the shared cache as needed - Any iterator can extend the cache when requiring values beyond the current cached set - Iterators that have used a cleared source complete gracefully immediately\n *\n * **Caching Behavior:** - Values are cached incrementally as consumed from the source - Multiple iterators share the same cache and cooperatively extend it - Cache preserves values consumed before errors or cancellation\n *\n * **Lazy Evaluation:** - Factory is not called until an iterator needs to extend the cache - Source iterator creation is deferred until the first cache extension is required\n *\n * **Cancellation Support:** The returned cached iterable supports two cancellation approaches:\n *\n * 1. **Iterator-based cancellation:** Pass `CASSIOPEIA_CANCEL` to any iterator's `next()` method 2. **Method-based cancellation:** Call the `CASSIOPEIA_CANCEL` method directly on the cached iterable\n *\n * Both approaches have the same immediate effects: - `CASSIOPEIA_CANCEL` is forwarded to the current source iterator - Current source iterator is cleared, allowing active iterators to complete gracefully - New iterators created after cancellation immediately return done without creating sources\n *\n * **Source Iterable Contract:** - Source iterables must check for `CASSIOPEIA_CANCEL` and return immediately - Source iterables must not perform additional work after receiving the cancel token - Source iterables must not yield additional values after cancellation - Iterables that violate this contract may result in unpredictable cache states\n *\n * @param factory - Function that creates the source iterable. Called exactly once when the first cache extension is needed. Must return an iterable that accepts `TerminatingReducerCancel | undefined` as input.\n *\n * @typeParam T - The type of values yielded by the iterable\n *\n * @typeParam TReturn - The type of the return value from the source iterator\n *\n * @returns A {@link CachedIterable} that yields the same values as the source but with caching behavior. Return value is `TReturn | undefined` since cancellation can prevent source completion.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function createCachedIterable<T, TReturn = "
+            },
+            {
+              "kind": "Content",
+              "text": "any"
+            },
+            {
+              "kind": "Content",
+              "text": ">(factory: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, TReturn, "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "CachedIterable",
+              "canonicalReference": "cassiopeia!CachedIterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, TReturn>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-cached-iterable.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 9,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "factory",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 8
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "TReturn",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "createCachedIterable"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createCassiopeia:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function createCassiopeia(): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Cassiopeia",
+              "canonicalReference": "cassiopeia!Cassiopeia:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-cassiopeia.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [],
+          "name": "createCassiopeia"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createMultiplexer:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createMultiplexer: <T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "(...arguments_: any) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaReducer",
+              "canonicalReference": "cassiopeia!CassiopeiaReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">(reducerFactory: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ", options: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Array",
+              "canonicalReference": "!Array:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Parameters",
+              "canonicalReference": "!Parameters:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>[0]>"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Content",
+              "text": "(() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaReducer",
+              "canonicalReference": "cassiopeia!CassiopeiaReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": ")"
+            }
+          ],
+          "fileUrlPath": "src/create-multiplexer.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 11,
+            "endIndex": 14
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "reducerFactory",
+              "parameterTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "createMultiplexer"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createStyleElementSubscription:function(1)",
+          "docComment": "/**\n * Creates a subscription function that dynamically manages `<style>` elements in the browser DOM. This function enables CSS injection and automatic cleanup for client-side applications by creating and maintaining style elements with qualified attributes for tracking.\n *\n * @param options - Configuration for DOM update behavior and element namespacing\n *\n * @returns A subscription function that accepts CassiopeiaStyleSheets and updates the DOM accordingly\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createStyleElementSubscription: (options?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "StyleElementSubscriptionOptions",
+              "canonicalReference": "cassiopeia!~StyleElementSubscriptionOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaSubscription",
+              "canonicalReference": "cassiopeia!CassiopeiaSubscription:type"
+            }
+          ],
+          "fileUrlPath": "src/create-style-element-subscription.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": true
+            }
+          ],
+          "name": "createStyleElementSubscription"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createTerminatingReducerFactoriesProxy:function(1)",
+          "docComment": "/**\n * Creates a revocable proxy that intercepts factory modifications with lifecycle callbacks.\n *\n * Wraps terminating reducer factories in a proxy that tracks property modifications, maintains a synchronized array of reducer keys, and provides controlled disposal. The proxy intercepts set and delete operations, calling corresponding lifecycle callbacks and updating the key array. Disposal revokes the proxy, clears all factory properties, and empties the key tracking array.\n *\n * @param reducerFactories - Reducer factory functions to wrap with proxy behavior\n *\n * @param options - Lifecycle callbacks and disposal handler\n *\n * @typeParam T - Object type where each property value extends `TerminatingReducer`\n *\n * @typeParam U - Return type of the disposal callback\n *\n * @returns Object containing the proxied factories, current keys array, and dispose method\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function createTerminatingReducerFactoriesProxy<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": ", U = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(reducerFactories: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerFactories",
+              "canonicalReference": "cassiopeia!TerminatingReducerFactories:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ", options: "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    onDelete: (key: keyof T) => void;\n    onDispose: (keys: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Set",
+              "canonicalReference": "!Set:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<keyof T>) => U;\n    onSet: (key: keyof T) => void;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    dispose: () => U;\n    reducerFactories: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerFactories",
+              "canonicalReference": "cassiopeia!TerminatingReducerFactories:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>;\n    reducerKeys: "
+            },
+            {
+              "kind": "Reference",
+              "text": "ReadonlySet",
+              "canonicalReference": "!ReadonlySet:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<keyof T>;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 14,
+            "endIndex": 19
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "reducerFactories",
+              "parameterTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 9
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "options",
+              "parameterTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 13
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            },
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "name": "createTerminatingReducerFactoriesProxy"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!createTerminatingReducers:function(1)",
+          "docComment": "/**\n * Creates terminating reducers with implicit caching through getter replacement.\n *\n * Sets up property getters for the specified keys that provide lazy initialization with implicit caching behavior. Upon first access, each getter invokes the corresponding factory function exactly once, eagerly primes the returned reducer instance, then replaces itself with a static property containing the primed reducer. This eliminates subsequent factory calls and getter overhead for the same property.\n *\n * @param reducerFactories - Record mapping each key to a factory function that returns a terminating reducer\n *\n * @param keys - Iterable of keys from the factories record to set up as lazy properties\n *\n * @typeParam T - Object type where each property value extends `TerminatingReducer`\n *\n * @returns Object with specified keys providing lazy initialization and implicit caching\n *\n * Property enumeration behavior reflects the getter-to-value transformation: - Initially all properties are non-enumerable getters, excluded from `Object.keys/values/entries` - After first access, properties become enumerable static values included in enumeration - `Object.keys()` reflects only currently enumerable (accessed) properties - `Object.values()` and `Object.entries()` trigger initialization of accessed properties only\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function createTerminatingReducers<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": ">(reducerFactories: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerFactories",
+              "canonicalReference": "cassiopeia!TerminatingReducerFactories:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ", keys: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Iterable",
+              "canonicalReference": "!Iterable:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<keyof T>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducers",
+              "canonicalReference": "cassiopeia!TerminatingReducers:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 9,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "reducerFactories",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "keys",
+              "parameterTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "createTerminatingReducers"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!isIterableActive:function(1)",
+          "docComment": "/**\n * Type guard that filters out CASSIOPEIA_CANCEL token from iterable inputs.\n *\n * @param value - Input value that could be user data or a cancel token\n *\n * @typeParam U - The expected user data type\n *\n * @returns `true` when the value is user data, `false` for cancel token\n *\n * Checks whether an iterable input value is actual user data rather than a cancellation token. When this function returns `true`, TypeScript narrows the value type from `CassiopeiaCancel | U` to `U`, enabling type-safe processing of user data while excluding the `CASSIOPEIA_CANCEL` token.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isIterableActive<U = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | U"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "cassiopeia!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is U"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-cached-iterable.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "isIterableActive"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!isIterableTerminated:function(1)",
+          "docComment": "/**\n * Type guard that identifies CASSIOPEIA_CANCEL token in iterable inputs.\n *\n * @param value - Input value that could be user data or a cancel token\n *\n * @typeParam U - The expected user data type\n *\n * @returns `true` when the value is a cancel token, `false` for user data\n *\n * Checks whether an iterable input value is a cancellation token rather than user data. When this function returns `true`, TypeScript narrows the value type from `CassiopeiaCancel | U` to `CassiopeiaCancel`, enabling type-safe handling of cancellation tokens.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isIterableTerminated<U = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | U"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "cassiopeia!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-cached-iterable.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "isIterableTerminated"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!isReducerActive:function(1)",
+          "docComment": "/**\n * Type guard that filters out termination control tokens from reducer inputs.\n *\n * @param value - Input value that could be user data or a control token\n *\n * @typeParam U - The expected user data type (defaults to `unknown`)\n *\n * @returns `true` when the value is user data of type `U`, `false` for control tokens\n *\n * Checks whether a reducer input value is actual user data rather than a control token. When this function returns `true`, TypeScript narrows the value type from `TerminatingReducerNextInput<U>` to `U`, enabling type-safe processing of user data while excluding `CASSIOPEIA_CANCEL` and `CASSIOPEIA_COMPLETE` tokens.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isReducerActive<U = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerNext",
+              "canonicalReference": "cassiopeia!TerminatingReducerNext:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<U>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "cassiopeia!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is U"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "isReducerActive"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!isReducerTerminated:function(1)",
+          "docComment": "/**\n * Type guard that identifies termination control tokens in reducer inputs.\n *\n * @param value - Input value that could be user data or a control token\n *\n * @typeParam U - The expected user data type (defaults to `unknown`)\n *\n * @returns `true` when the value is a control token, `false` for user data\n *\n * Checks whether a reducer input value is a termination control token rather than user data. When this function returns `true`, TypeScript narrows the value type from `TerminatingReducerNext<U>` to `TerminatingReducerCancel | TerminatingReducerComplete`, enabling type-safe handling of control tokens.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isReducerTerminated<U = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerNext",
+              "canonicalReference": "cassiopeia!TerminatingReducerNext:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<U>"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "cassiopeia!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaComplete",
+              "canonicalReference": "cassiopeia!CassiopeiaComplete:type"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "U",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "isReducerTerminated"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!parseCustomPropertyName:function(1)",
+          "docComment": "/**\n * Parses Cassiopeia custom property names with `---KEY-SUFFIX` structure.\n *\n * Pattern requirements: - Prefix: three literal hyphens `---` - KEY: identifier characters (letters, digits, underscore, non-ASCII) or CSS escapes; unescaped hyphens rejected - Separator: one literal hyphen `-` - SUFFIX: identifier characters or CSS escapes; unescaped hyphens allowed - Anchored to entire input; partial matches rejected - Case-sensitive\n *\n * @param input - String to parse\n *\n * @returns Tuple `[key, suffix]` when input matches pattern, `undefined` otherwise\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function parseCustomPropertyName(input: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "[string, string] | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/parse-custom-property-name.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "input",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "parseCustomPropertyName"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "cassiopeia!renderStyleSheets:function(1)",
+          "docComment": "/**\n * Extracts CSS stylesheets from a Cassiopeia instance for server-side rendering.\n *\n * Runs the orchestrator to completion by consuming its iterator, processing all triple-dash custom properties (---key-suffix) through configured reducers. Each reducer transforms custom properties into stylesheet content with metadata including reducer key, position index, and optional attributes like media queries.\n *\n * Returns undefined when no generator or reducers are available, allowing graceful handling of incomplete instance configurations during server-side rendering scenarios.\n *\n * @param cassiopeia - Cassiopeia instance containing generator and reducers for stylesheet processing\n *\n * @returns Object containing stylesheet arrays and keys, or undefined if generator/reducers unavailable\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "renderStyleSheets: <T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaInstance",
+              "canonicalReference": "cassiopeia!CassiopeiaInstance:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">(cassiopeia: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaStyleSheets",
+              "canonicalReference": "cassiopeia!CassiopeiaStyleSheets:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined"
+            }
+          ],
+          "fileUrlPath": "src/render-style-sheets.ts",
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "cassiopeia",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "isOptional": false
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "renderStyleSheets"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cassiopeia!~StyleElementSubscriptionOptions:interface",
+          "docComment": "/**\n * Configuration options for style element subscription behavior.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface StyleElementSubscriptionOptions "
+            }
+          ],
+          "fileUrlPath": "src/create-style-element-subscription.ts",
+          "releaseTag": "Public",
+          "name": "StyleElementSubscriptionOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!~StyleElementSubscriptionOptions#container:member",
+              "docComment": "/**\n * Container element for style injection. Supports flexible targeting for different DOM contexts.\n *\n * - `Element`: Direct element reference where styles will be injected - `ShadowRoot`: Shadow DOM root for Web Component style isolation - `string`: CSS selector that resolves to a container element - `undefined`: Defaults to `document.head` for global stylesheet management\n *\n * @defaultValue\n *\n * `document.head`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "container?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Element",
+                  "canonicalReference": "!Element:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ShadowRoot",
+                  "canonicalReference": "!ShadowRoot:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "container",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!~StyleElementSubscriptionOptions#method:member",
+              "docComment": "/**\n * Update strategy for existing style elements.\n *\n * - `overwrite`: Modifies existing elements in-place, preserving element identity and DOM position. Preferred for performance as it avoids element recreation and DOM reflow. - `insert-discard`: Replaces elements entirely by creating new ones at the same position. Use when complete element replacement is required for compatibility or debugging.\n *\n * @defaultValue\n *\n * `'overwrite'`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "method?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'insert-discard' | 'overwrite'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "method",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cassiopeia!~StyleElementSubscriptionOptions#namespace:member",
+              "docComment": "/**\n * Optional namespace identifier for isolating style element groups. When provided, creates qualified attributes like `cassiopeia-key-theme` instead of `cassiopeia-key`.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "namespace?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "namespace",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!TerminatingReducer:type",
+          "docComment": "/**\n * Generator type representing a synchronous terminating reducer.\n *\n * @typeParam GeneratorReturn - The type of value returned when the reducer completes normally\n *\n * @typeParam GeneratorNext - The type of data values accepted as input during processing\n *\n * Terminating reducers are synchronous generators that implement a controlled processing pattern where they yield nothing during execution, accept typed input through `.next()` including control tokens, and return either a final computed value or `undefined` when processing completes or is cancelled.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TerminatingReducer<GeneratorReturn = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ", GeneratorNext = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ", T = "
+            },
+            {
+              "kind": "Content",
+              "text": "undefined"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Generator",
+              "canonicalReference": "!Generator:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerReturn",
+              "canonicalReference": "cassiopeia!TerminatingReducerReturn:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<GeneratorReturn>, "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducerNext",
+              "canonicalReference": "cassiopeia!TerminatingReducerNext:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<GeneratorNext>>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "releaseTag": "Public",
+          "name": "TerminatingReducer",
+          "typeParameters": [
+            {
+              "typeParameterName": "GeneratorReturn",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "typeParameterName": "GeneratorNext",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            },
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 13
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!TerminatingReducerFactories:type",
+          "docComment": "/**\n * Input type for `createTerminatingReducers()` defining factory functions for each reducer key.\n *\n * @typeParam T - Object type where each property value extends `TerminatingReducer`\n *\n * Maps each property key to a factory function that returns a `TerminatingReducer` for that key. Factory functions are invoked exactly once per property upon first access, after which the getter is replaced with the static reducer instance for direct access.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TerminatingReducerFactories<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    [K in keyof T]: () => T[K] extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducer",
+              "canonicalReference": "cassiopeia!TerminatingReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": " ? T[K] : never;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "releaseTag": "Public",
+          "name": "TerminatingReducerFactories",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!TerminatingReducerNext:type",
+          "docComment": "/**\n * Union type representing all possible input values for a terminating reducer.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TerminatingReducerNext<GeneratorNext = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaCancel",
+              "canonicalReference": "cassiopeia!CassiopeiaCancel:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "CassiopeiaComplete",
+              "canonicalReference": "cassiopeia!CassiopeiaComplete:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | GeneratorNext"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "releaseTag": "Public",
+          "name": "TerminatingReducerNext",
+          "typeParameters": [
+            {
+              "typeParameterName": "GeneratorNext",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 7
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!TerminatingReducerReturn:type",
+          "docComment": "/**\n * Union type representing all possible return values for a terminating reducer.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TerminatingReducerReturn<GeneratorReturn = "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "GeneratorReturn | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "releaseTag": "Public",
+          "name": "TerminatingReducerReturn",
+          "typeParameters": [
+            {
+              "typeParameterName": "GeneratorReturn",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "cassiopeia!TerminatingReducers:type",
+          "docComment": "/**\n * Return type from `createTerminatingReducers()` with implicit caching through getter replacement.\n *\n * @typeParam T - Object type where each property value extends `TerminatingReducer`\n *\n * Properties provide lazy initialization with implicit caching behavior: first access triggers factory invocation and getter replacement with the static value, eliminating subsequent factory calls for the same property.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type TerminatingReducers<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": " = "
+            },
+            {
+              "kind": "Content",
+              "text": "{}"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "{\n    readonly [K in keyof T]: T[K] extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "TerminatingReducer",
+              "canonicalReference": "cassiopeia!TerminatingReducer:type"
+            },
+            {
+              "kind": "Content",
+              "text": " ? T[K] : never;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/create-terminating-reducers.ts",
+          "releaseTag": "Public",
+          "name": "TerminatingReducers",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 8
+          }
+        }
+      ]
+    }
+  ]
+}

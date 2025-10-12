@@ -1,3 +1,5 @@
+.claude/*.local.json
+documentation.api.json
 .aider*
 .cache
 .cache/

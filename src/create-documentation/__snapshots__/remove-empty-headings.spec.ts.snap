@@ -1,0 +1,1222 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`removeEmptyHeadings > edge cases > handles complex nested structure 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 18,
+            "line": 1,
+            "offset": 17,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Level 1 - Empty",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 18,
+        "line": 1,
+        "offset": 17,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 19,
+            "line": 3,
+            "offset": 37,
+          },
+          "start": {
+            "column": 4,
+            "line": 3,
+            "offset": 22,
+          },
+        },
+        "type": "text",
+        "value": "Level 2 - Empty",
+      },
+    ],
+    "depth": 2,
+    "position": {
+      "end": {
+        "column": 19,
+        "line": 3,
+        "offset": 37,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 19,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 26,
+            "line": 5,
+            "offset": 64,
+          },
+          "start": {
+            "column": 5,
+            "line": 5,
+            "offset": 43,
+          },
+        },
+        "type": "text",
+        "value": "Level 3 - Has Content",
+      },
+    ],
+    "depth": 3,
+    "position": {
+      "end": {
+        "column": 26,
+        "line": 5,
+        "offset": 64,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 39,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 7,
+            "offset": 79,
+          },
+          "start": {
+            "column": 1,
+            "line": 7,
+            "offset": 66,
+          },
+        },
+        "type": "text",
+        "value": "Content here.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 7,
+        "offset": 79,
+      },
+      "start": {
+        "column": 1,
+        "line": 7,
+        "offset": 66,
+      },
+    },
+    "type": "paragraph",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 42,
+            "line": 9,
+            "offset": 122,
+          },
+          "start": {
+            "column": 4,
+            "line": 9,
+            "offset": 84,
+          },
+        },
+        "type": "text",
+        "value": "Level 2 - Also Has Content (via child)",
+      },
+    ],
+    "depth": 2,
+    "position": {
+      "end": {
+        "column": 42,
+        "line": 9,
+        "offset": 122,
+      },
+      "start": {
+        "column": 1,
+        "line": 9,
+        "offset": 81,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 28,
+            "line": 11,
+            "offset": 151,
+          },
+          "start": {
+            "column": 5,
+            "line": 11,
+            "offset": 128,
+          },
+        },
+        "type": "text",
+        "value": "Level 3 - Child Content",
+      },
+    ],
+    "depth": 3,
+    "position": {
+      "end": {
+        "column": 28,
+        "line": 11,
+        "offset": 151,
+      },
+      "start": {
+        "column": 1,
+        "line": 11,
+        "offset": 124,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 13,
+            "offset": 164,
+          },
+          "start": {
+            "column": 1,
+            "line": 13,
+            "offset": 153,
+          },
+        },
+        "type": "text",
+        "value": "Child text.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 12,
+        "line": 13,
+        "offset": 164,
+      },
+      "start": {
+        "column": 1,
+        "line": 13,
+        "offset": 153,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > edge cases > handles empty input 1`] = `[]`;
+
+exports[`removeEmptyHeadings > edge cases > handles input with no headings 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 1,
+            "offset": 10,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "type": "text",
+        "value": "Just text.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 11,
+        "line": 1,
+        "offset": 10,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "paragraph",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 11,
+            "line": 3,
+            "offset": 22,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 12,
+          },
+        },
+        "type": "text",
+        "value": "More text.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 11,
+        "line": 3,
+        "offset": 22,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 12,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > preservation cases > keeps heading when child heading has content 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Parent",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 1,
+        "offset": 8,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 3,
+            "offset": 18,
+          },
+          "start": {
+            "column": 4,
+            "line": 3,
+            "offset": 13,
+          },
+        },
+        "type": "text",
+        "value": "Child",
+      },
+    ],
+    "depth": 2,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 3,
+        "offset": 18,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 10,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 5,
+            "offset": 34,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 20,
+          },
+        },
+        "type": "text",
+        "value": "Child content.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 5,
+        "offset": 34,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 20,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > preservation cases > keeps heading with blockquote containing content 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 16,
+            "line": 1,
+            "offset": 15,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Quote Section",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 16,
+        "line": 1,
+        "offset": 15,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "position": {
+              "end": {
+                "column": 14,
+                "line": 3,
+                "offset": 30,
+              },
+              "start": {
+                "column": 3,
+                "line": 3,
+                "offset": 19,
+              },
+            },
+            "type": "text",
+            "value": "Quote text.",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 3,
+            "offset": 30,
+          },
+          "start": {
+            "column": 3,
+            "line": 3,
+            "offset": 19,
+          },
+        },
+        "type": "paragraph",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 3,
+        "offset": 30,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 17,
+      },
+    },
+    "type": "blockquote",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > preservation cases > keeps heading with code block 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Code Section",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "lang": "js",
+    "meta": null,
+    "position": {
+      "end": {
+        "column": 4,
+        "line": 5,
+        "offset": 37,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "type": "code",
+    "value": "const x = 1",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > preservation cases > keeps heading with non-empty list 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 1,
+            "offset": 14,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "List Section",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 1,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 3,
+                    "offset": 24,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 3,
+                    "offset": 18,
+                  },
+                },
+                "type": "text",
+                "value": "Item 1",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 3,
+                "offset": 24,
+              },
+              "start": {
+                "column": 3,
+                "line": 3,
+                "offset": 18,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 3,
+            "offset": 24,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 16,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 4,
+                    "offset": 33,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 4,
+                    "offset": 27,
+                  },
+                },
+                "type": "text",
+                "value": "Item 2",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 4,
+                "offset": 33,
+              },
+              "start": {
+                "column": 3,
+                "line": 4,
+                "offset": 27,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 4,
+            "offset": 33,
+          },
+          "start": {
+            "column": 1,
+            "line": 4,
+            "offset": 25,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": false,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 4,
+        "offset": 33,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 16,
+      },
+    },
+    "spread": false,
+    "start": null,
+    "type": "list",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > preservation cases > keeps heading with paragraph content 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 8,
+            "line": 1,
+            "offset": 7,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "Title",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 8,
+        "line": 1,
+        "offset": 7,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 3,
+            "offset": 22,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 9,
+          },
+        },
+        "type": "text",
+        "value": "Some content.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 3,
+        "offset": 22,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 9,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > removal cases > removes empty heading at EOF 1`] = `[]`;
+
+exports[`removeEmptyHeadings > removal cases > removes empty heading before higher-level heading 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 3,
+            "offset": 24,
+          },
+          "start": {
+            "column": 3,
+            "line": 3,
+            "offset": 12,
+          },
+        },
+        "type": "text",
+        "value": "Higher Level",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 15,
+        "line": 3,
+        "offset": 24,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 10,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 5,
+            "offset": 34,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 26,
+          },
+        },
+        "type": "text",
+        "value": "Content.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 5,
+        "offset": 34,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 26,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > removal cases > removes empty heading before same-level heading 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 3,
+            "offset": 20,
+          },
+          "start": {
+            "column": 3,
+            "line": 3,
+            "offset": 11,
+          },
+        },
+        "type": "text",
+        "value": "Non-empty",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 12,
+        "line": 3,
+        "offset": 20,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 9,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 5,
+            "offset": 35,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 22,
+          },
+        },
+        "type": "text",
+        "value": "Content here.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 5,
+        "offset": 35,
+      },
+      "start": {
+        "column": 1,
+        "line": 5,
+        "offset": 22,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > removal cases > removes empty parent when all nested headings are empty 1`] = `[]`;
+
+exports[`removeEmptyHeadings > removal cases > removes multiple consecutive empty headings 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 7,
+            "offset": 45,
+          },
+          "start": {
+            "column": 3,
+            "line": 7,
+            "offset": 38,
+          },
+        },
+        "type": "text",
+        "value": "Content",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 10,
+        "line": 7,
+        "offset": 45,
+      },
+      "start": {
+        "column": 1,
+        "line": 7,
+        "offset": 36,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 6,
+            "line": 9,
+            "offset": 52,
+          },
+          "start": {
+            "column": 1,
+            "line": 9,
+            "offset": 47,
+          },
+        },
+        "type": "text",
+        "value": "Text.",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 6,
+        "line": 9,
+        "offset": 52,
+      },
+      "start": {
+        "column": 1,
+        "line": 9,
+        "offset": 47,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > keeps heading with NBSP in paragraph 1`] = `
+[
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 7,
+            "line": 1,
+            "offset": 6,
+          },
+          "start": {
+            "column": 3,
+            "line": 1,
+            "offset": 2,
+          },
+        },
+        "type": "text",
+        "value": "NBSP",
+      },
+    ],
+    "depth": 1,
+    "position": {
+      "end": {
+        "column": 7,
+        "line": 1,
+        "offset": 6,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "type": "heading",
+  },
+  {
+    "children": [
+      {
+        "position": {
+          "end": {
+            "column": 2,
+            "line": 3,
+            "offset": 9,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 8,
+          },
+        },
+        "type": "text",
+        "value": " ",
+      },
+    ],
+    "position": {
+      "end": {
+        "column": 2,
+        "line": 3,
+        "offset": 9,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 8,
+      },
+    },
+    "type": "paragraph",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > removes heading with empty blockquote 1`] = `
+[
+  {
+    "children": [],
+    "position": {
+      "end": {
+        "column": 5,
+        "line": 3,
+        "offset": 13,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 9,
+      },
+    },
+    "type": "blockquote",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > removes heading with empty list 1`] = `
+[
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [],
+        "position": {
+          "end": {
+            "column": 3,
+            "line": 3,
+            "offset": 10,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 8,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [],
+        "position": {
+          "end": {
+            "column": 5,
+            "line": 4,
+            "offset": 15,
+          },
+          "start": {
+            "column": 1,
+            "line": 4,
+            "offset": 11,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": false,
+    "position": {
+      "end": {
+        "column": 5,
+        "line": 4,
+        "offset": 15,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 8,
+      },
+    },
+    "spread": false,
+    "start": null,
+    "type": "list",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > removes heading with only thematic break 1`] = `
+[
+  {
+    "position": {
+      "end": {
+        "column": 4,
+        "line": 3,
+        "offset": 14,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 11,
+      },
+    },
+    "type": "thematicBreak",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > removes heading with whitespace-only code block 1`] = `
+[
+  {
+    "lang": null,
+    "meta": null,
+    "position": {
+      "end": {
+        "column": 4,
+        "line": 6,
+        "offset": 21,
+      },
+      "start": {
+        "column": 1,
+        "line": 3,
+        "offset": 8,
+      },
+    },
+    "type": "code",
+    "value": "   
+	",
+  },
+]
+`;
+
+exports[`removeEmptyHeadings > whitespace handling > removes heading with whitespace-only paragraph 1`] = `[]`;

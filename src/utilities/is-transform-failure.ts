@@ -1,7 +1,7 @@
-import type { TransformFailure } from '../types'
+import type { BuildMessages } from '../types'
 
-export const isTransformFailure = (value: unknown): value is TransformFailure => {
-  const failure = value as Partial<TransformFailure>
+export const isTransformFailure = (value: unknown): value is BuildMessages => {
+  const failure = value as Partial<BuildMessages>
 
   return (
     typeof failure === 'object' &&

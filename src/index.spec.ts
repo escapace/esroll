@@ -4,6 +4,8 @@ import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { build, type BuildOptions } from './index'
 
+// const dirname = path.resolve(import.meta.dirname, '../')
+
 describe('esroll integration test', () => {
   it('should bundle a TypeScript file', async ({ onTestFinished }) => {
     // Create a temporary directory
@@ -15,7 +17,7 @@ describe('esroll integration test', () => {
 
     // Write a sample TypeScript file
     const sampleFilePath = path.join(absWorkingDir, 'sample.ts')
-    await writeFile(sampleFilePath, 'export const greet = () => "Hello, world!";')
+    await writeFile(sampleFilePath, 'export const greet = (() => "Hello, world!");')
 
     // Build the TypeScript file using esroll
     const buildOptions: BuildOptions = {
@@ -41,7 +43,7 @@ describe('esroll integration test', () => {
     expect(result.errors).toHaveLength(0)
     expect(result.warnings).toHaveLength(0)
     expect(result.outputFiles).toHaveLength(2)
-    expect(await readFile(result.outputFiles[0].path)).toMatchSnapshot()
-    expect(await readFile(result.outputFiles[1].path)).toMatchSnapshot()
+    expect(await readFile(result.outputFiles[0].path, 'utf8')).toMatchSnapshot()
+    expect(await readFile(result.outputFiles[1].path, 'utf8')).toMatchSnapshot()
   })
 })

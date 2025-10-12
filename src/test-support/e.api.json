@@ -1,0 +1,1639 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.53.1",
+    "schemaVersion": 1011,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "snaproll!",
+  "docComment": "",
+  "name": "snaproll",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "snaproll!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Class",
+          "canonicalReference": "snaproll!Snaproll:class",
+          "docComment": "/**\n * Fixed-timestep animation loop with independent draw and update rates.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class Snaproll "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "Snaproll",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "snaproll!Snaproll:constructor(1)",
+              "docComment": "/**\n * Creates animation loop instance with specified configuration.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollOptions",
+                  "canonicalReference": "snaproll!SnaprollOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "snaproll!Snaproll#drawRate:member",
+              "docComment": "/**\n * Gets current draw rate in Hz.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get drawRate(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n\nset drawRate(value: number);"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "drawRate",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!Snaproll#pause:member(1)",
+              "docComment": "/**\n * Stops animation while keeping subscriptions.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pause(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "pause"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!Snaproll#reset:member(1)",
+              "docComment": "/**\n * Resets the animation loop with optional configuration updates.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "reset(options?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        keepContext?: boolean;\n        keepSubscriptions?: boolean;\n    } & "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollOptions",
+                  "canonicalReference": "snaproll!SnaprollOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 7,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 6
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "reset"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!Snaproll#resume:member(1)",
+              "docComment": "/**\n * Resumes animation.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "resume(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "resume"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "snaproll!Snaproll#state:member",
+              "docComment": "/**\n * Current animation loop state.\n *\n * Returns 'active' when running animation frames, 'idle' when no active subscriptions, or 'paused' when stopped by pause().\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get state(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "\"active\" | \"idle\" | \"paused\""
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "state",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!Snaproll#subscribe:member(1)",
+              "docComment": "/**\n * Registers subscription callback for animation frame processing.\n *\n * @param value - Callback function to execute during frame processing\n *\n * @param options - Subscription configuration with immediate activation flag\n *\n * @returns Control object for pausing, resuming, and removing subscription\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "subscribe(value: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollSubscription",
+                  "canonicalReference": "snaproll!SnaprollSubscription:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        immediate?: boolean;\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollSubscriptionControls",
+                  "canonicalReference": "snaproll!SnaprollSubscriptionControls:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "value",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "subscribe"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "snaproll!Snaproll#updateRate:member",
+              "docComment": "/**\n * Gets current update rate in Hz.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "get updateRate(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n\nset updateRate(value: number);"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateRate",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false,
+              "isAbstract": false
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollActionBegin:interface",
+          "docComment": "/**\n * Frame initialization action.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollActionBegin "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollActionBegin",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionBegin#action:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "action: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollActionType.Begin",
+                  "canonicalReference": "snaproll!SnaprollActionType.Begin:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "action",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionBegin#timestamp:member",
+              "docComment": "/**\n * Current frame time\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "timestamp: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "timestamp",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollActionDraw:interface",
+          "docComment": "/**\n * Interpolated drawing action.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollActionDraw extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Omit",
+              "canonicalReference": "!Omit:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollActionUpdate",
+              "canonicalReference": "snaproll!SnaprollActionUpdate:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", 'action'>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollActionDraw",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionDraw#action:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "action: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollActionType.Draw",
+                  "canonicalReference": "snaproll!SnaprollActionType.Draw:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "action",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionDraw#alpha:member",
+              "docComment": "/**\n * Interpolation factor [0, 1)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "alpha: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "alpha",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 5
+            }
+          ]
+        },
+        {
+          "kind": "Enum",
+          "canonicalReference": "snaproll!SnaprollActionType:enum",
+          "docComment": "/**\n * Animation frame phases.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare enum SnaprollActionType "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollActionType",
+          "preserveMemberOrder": true,
+          "members": [
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "snaproll!SnaprollActionType.Begin:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Begin = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "0"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Begin"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "snaproll!SnaprollActionType.Update:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Update = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "1"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Update"
+            },
+            {
+              "kind": "EnumMember",
+              "canonicalReference": "snaproll!SnaprollActionType.Draw:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "Draw = "
+                },
+                {
+                  "kind": "Content",
+                  "text": "2"
+                }
+              ],
+              "initializerTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "name": "Draw"
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollActionUpdate:interface",
+          "docComment": "/**\n * Fixed timestep animation logic action. The updateStep counts down remaining updates in the current frame.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollActionUpdate extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "Omit",
+              "canonicalReference": "!Omit:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollActionBegin",
+              "canonicalReference": "snaproll!SnaprollActionBegin:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", 'action'>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollActionUpdate",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionUpdate#action:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "action: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollActionType.Update",
+                  "canonicalReference": "snaproll!SnaprollActionType.Update:member"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "action",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionUpdate#timestep:member",
+              "docComment": "/**\n * Time to advance per update\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "timestep: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "timestep",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollActionUpdate#updateStep:member",
+              "docComment": "/**\n * Remaining updates this frame, counts down to 1\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateStep: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateStep",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 5
+            }
+          ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "snaproll!SnaprollContext:type",
+          "docComment": "/**\n * Context object passed to subscription callbacks during animation frames.\n *\n * @remarks\n *\n * Discriminated union that combines action-specific interfaces with user context. Available properties depend on the current action type: Begin, Update, or Draw.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type SnaprollContext = "
+            },
+            {
+              "kind": "Content",
+              "text": "("
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollActionBegin",
+              "canonicalReference": "snaproll!SnaprollActionBegin:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollActionDraw",
+              "canonicalReference": "snaproll!SnaprollActionDraw:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | "
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollActionUpdate",
+              "canonicalReference": "snaproll!SnaprollActionUpdate:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") & "
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollUserContext",
+              "canonicalReference": "snaproll!SnaprollUserContext:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollContext",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 9
+          }
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "snaproll!SnaprollDrawRateAdvisor:class",
+          "docComment": "/**\n * Provides draw rates inferred from observed frame periods.\n *\n * The recommendation logic is stateless and deterministic: identical period inputs produce identical outputs. Concurrent class instances do not interfere with each other.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class SnaprollDrawRateAdvisor "
+            }
+          ],
+          "fileUrlPath": "src/draw-rate-advisor.ts",
+          "releaseTag": "Public",
+          "isAbstract": false,
+          "name": "SnaprollDrawRateAdvisor",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisor:constructor(1)",
+              "docComment": "/**\n * Creates a new draw rate advisor instance.\n *\n * @param options - Configuration options for the advisor\n *\n * @throws\n *\n * Assertion error if any option values are invalid\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollDrawRateAdvisorOptions",
+                  "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": true
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisor#dispose:member(1)",
+              "docComment": "/**\n * Cancels ongoing operations and releases resources.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dispose(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "dispose"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisor#subscribe:member(1)",
+              "docComment": "/**\n * Registers callback for recommendation results.\n *\n * Callbacks receive SnaprollDrawRateAdvisorResponse when recommendation completes successfully. Callbacks are not invoked if the operation is canceled or produces no recommendations.\n *\n * @param subscription - Callback function to invoke with results\n *\n * @returns Function that unregisters the subscription when called\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "subscribe(subscription: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollDrawRateAdvisorSubscription",
+                  "canonicalReference": "snaproll!SnaprollDrawRateAdvisorSubscription:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "subscription",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "subscribe"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisor#trigger:member(1)",
+              "docComment": "/**\n * Cancels any previous ongoing operation before starting a new one. Results are delivered to registered subscriptions when the operation completes. If the operation is canceled or produces no recommendations, subscriptions are not invoked.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "trigger(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "trigger"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollDrawRateAdvisorOptions "
+            }
+          ],
+          "fileUrlPath": "src/draw-rate-advisor.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollDrawRateAdvisorOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions#canonicalBases:member",
+              "docComment": "/**\n * Array of canonical refresh rates to consider for snapping. Must be non-empty array of positive integers.\n *\n * @defaultValue\n *\n * `[50, 60, 72, 75, 90, 100, 120, 144, 165, 180, 200, 240]`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "canonicalBases?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "readonly number[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "canonicalBases",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions#maxDivisor:member",
+              "docComment": "/**\n * Maximum count of divisors to consider for candidate generation and output. Must be positive integer ≥ 1.\n *\n * @defaultValue\n *\n * `6`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "maxDivisor?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "maxDivisor",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions#minDraw:member",
+              "docComment": "/**\n * Minimum draw rate to include in results. Must be positive integer ≥ 5.\n *\n * @defaultValue\n *\n * `10`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "minDraw?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "minDraw",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions#samples:member",
+              "docComment": "/**\n * Number of frame intervals to collect after warmup. Must be positive integer ≥ 30.\n *\n * @defaultValue\n *\n * `90`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "samples?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "samples",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorOptions#warmup:member",
+              "docComment": "/**\n * Number of frames to ignore before sampling. Must be non-negative integer ≥ 0.\n *\n * @defaultValue\n *\n * `10`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "warmup?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "warmup",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollDrawRateAdvisorResponse:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollDrawRateAdvisorResponse "
+            }
+          ],
+          "fileUrlPath": "src/draw-rate-advisor.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollDrawRateAdvisorResponse",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorResponse#score:member",
+              "docComment": "/**\n * Quality score in range [0,1] using RF (Robustness × Fit) formula. Higher scores indicate better data consistency and more reliable recommendations.\n *\n * Score interpretation:\n *\n * - `0.95–1.00`: Rock-solid. Extremely stable capture, fits a canonical/divisor cleanly\n *\n * - `0.85–0.95`: Healthy. Mild jitter only; values are trustworthy\n *\n * - `0.75–0.85`: Borderline steady. Noticeable instability or light regime mixing; fine for most uses, re-run if chasing perfection\n *\n * - `0.60–0.75`: Shaky. Significant jitter or likely mid-phase change; consider re-running\n *\n * - `< 0.60` : Unstable. Strong evidence of blocking/jitter or regime split; re-run recommended\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "score: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "score",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorResponse#values:member",
+              "docComment": "/**\n * Array of recommended draw rates (Hz), sorted descending and de-duplicated. All values are integers and ≥ minDraw.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "values: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "values",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "snaproll!SnaprollDrawRateAdvisorSubscription:type",
+          "docComment": "/**\n * Callback function invoked when draw rate estimation completes.\n *\n * @param response - The recommendation result containing draw rates and score\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type SnaprollDrawRateAdvisorSubscription = "
+            },
+            {
+              "kind": "Content",
+              "text": "(response: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollDrawRateAdvisorResponse",
+              "canonicalReference": "snaproll!SnaprollDrawRateAdvisorResponse:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/draw-rate-advisor.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollDrawRateAdvisorSubscription",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollOptions:interface",
+          "docComment": "/**\n * Configuration interface for animation loop.\n *\n * @remarks\n *\n * drawRate and updateRate operate independently, allowing different frequencies for draw and update rates.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollOptions "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollOptions#context:member",
+              "docComment": "/**\n * Optional shared state object passed to all subscription callbacks\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "context?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SnaprollUserContext",
+                  "canonicalReference": "snaproll!SnaprollUserContext:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "context",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollOptions#drawRate:member",
+              "docComment": "/**\n * Draw rate in Hz, controls visual frame timing\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "drawRate: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "drawRate",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollOptions#updateRate:member",
+              "docComment": "/**\n * Update rate in Hz, determines fixed timestep size\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "updateRate: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "updateRate",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "snaproll!SnaprollSubscription:type",
+          "docComment": "/**\n * Subscription callback function.\n *\n * @remarks\n *\n * Return value controls frame execution flow: - `true` from Begin phase skips the entire frame - `true` from Update phase skips remaining updates and draw for current frame - `undefined` or `false` continues normal execution\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type SnaprollSubscription = "
+            },
+            {
+              "kind": "Content",
+              "text": "(context: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SnaprollContext",
+              "canonicalReference": "snaproll!SnaprollContext:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollSubscription",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollSubscriptionControls:interface",
+          "docComment": "/**\n * Control interface for managing individual animation subscriptions.\n *\n * @remarks\n *\n * Each subscription operates independently. Pausing one subscription does not affect others. The animation loop continues running as long as any subscription remains active.\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollSubscriptionControls "
+            }
+          ],
+          "fileUrlPath": "src/snaproll.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollSubscriptionControls",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollSubscriptionControls#pause:member",
+              "docComment": "/**\n * Pauses this subscription\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "pause: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "pause",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollSubscriptionControls#resume:member",
+              "docComment": "/**\n * Resumes this subscription\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "resume: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "resume",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "snaproll!SnaprollSubscriptionControls#unsubscribe:member",
+              "docComment": "/**\n * Removes this subscription\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "unsubscribe: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "() => void"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Public",
+              "name": "unsubscribe",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "snaproll!SnaprollUserContext:interface",
+          "docComment": "/**\n * Context interface for application-specific state.\n *\n * @remarks\n *\n * Uses TypeScript declaration merging to allow augmentation with custom properties. Extended properties become available in all subscription callbacks.\n *\n * @example\n * ```ts\n * declare module 'snaproll' {\n *   interface SnaprollUserContext {\n *     score: number\n *   }\n * }\n * ```\n *\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface SnaprollUserContext "
+            }
+          ],
+          "fileUrlPath": "src/index.ts",
+          "releaseTag": "Public",
+          "name": "SnaprollUserContext",
+          "preserveMemberOrder": false,
+          "members": [],
+          "extendsTokenRanges": []
+        }
+      ]
+    }
+  ]
+}

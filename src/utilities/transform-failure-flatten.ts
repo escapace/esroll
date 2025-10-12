@@ -1,8 +1,8 @@
 import { isTransformFailure } from './is-transform-failure'
-import type { TransformFailure } from '../types'
+import type { BuildMessages } from '../types'
 
 export const transformFailureFlatten = (...values: unknown[]) =>
-  values.reduce<TransformFailure>(
+  values.reduce<BuildMessages>(
     (accumulator, value) => {
       if (isTransformFailure(value)) {
         accumulator.errors?.push(...(value.errors ?? []))

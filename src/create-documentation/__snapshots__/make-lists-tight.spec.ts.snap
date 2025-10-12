@@ -1,0 +1,616 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`makeListsTight > converts loose ordered list to tight 1`] = `
+[
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 1,
+                    "offset": 13,
+                  },
+                  "start": {
+                    "column": 4,
+                    "line": 1,
+                    "offset": 3,
+                  },
+                },
+                "type": "text",
+                "value": "First item",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 14,
+                "line": 1,
+                "offset": 13,
+              },
+              "start": {
+                "column": 4,
+                "line": 1,
+                "offset": 3,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 1,
+            "offset": 13,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 15,
+                    "line": 3,
+                    "offset": 29,
+                  },
+                  "start": {
+                    "column": 4,
+                    "line": 3,
+                    "offset": 18,
+                  },
+                },
+                "type": "text",
+                "value": "Second item",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 15,
+                "line": 3,
+                "offset": 29,
+              },
+              "start": {
+                "column": 4,
+                "line": 3,
+                "offset": 18,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 15,
+            "line": 3,
+            "offset": 29,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 15,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 14,
+                    "line": 5,
+                    "offset": 44,
+                  },
+                  "start": {
+                    "column": 4,
+                    "line": 5,
+                    "offset": 34,
+                  },
+                },
+                "type": "text",
+                "value": "Third item",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 14,
+                "line": 5,
+                "offset": 44,
+              },
+              "start": {
+                "column": 4,
+                "line": 5,
+                "offset": 34,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 14,
+            "line": 5,
+            "offset": 44,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 31,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": true,
+    "position": {
+      "end": {
+        "column": 14,
+        "line": 5,
+        "offset": 44,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "spread": false,
+    "start": 1,
+    "type": "list",
+  },
+]
+`;
+
+exports[`makeListsTight > converts loose unordered list to tight 1`] = `
+[
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 1,
+                    "offset": 8,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                },
+                "type": "text",
+                "value": "Item 1",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 1,
+                "offset": 8,
+              },
+              "start": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 1,
+            "offset": 8,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 3,
+                    "offset": 18,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 3,
+                    "offset": 12,
+                  },
+                },
+                "type": "text",
+                "value": "Item 2",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 3,
+                "offset": 18,
+              },
+              "start": {
+                "column": 3,
+                "line": 3,
+                "offset": 12,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 3,
+            "offset": 18,
+          },
+          "start": {
+            "column": 1,
+            "line": 3,
+            "offset": 10,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 9,
+                    "line": 5,
+                    "offset": 28,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 5,
+                    "offset": 22,
+                  },
+                },
+                "type": "text",
+                "value": "Item 3",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 9,
+                "line": 5,
+                "offset": 28,
+              },
+              "start": {
+                "column": 3,
+                "line": 5,
+                "offset": 22,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 9,
+            "line": 5,
+            "offset": 28,
+          },
+          "start": {
+            "column": 1,
+            "line": 5,
+            "offset": 20,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": false,
+    "position": {
+      "end": {
+        "column": 9,
+        "line": 5,
+        "offset": 28,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "spread": false,
+    "start": null,
+    "type": "list",
+  },
+]
+`;
+
+exports[`makeListsTight > converts nested loose lists to tight 1`] = `
+[
+  {
+    "children": [
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 10,
+                    "line": 1,
+                    "offset": 9,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 1,
+                    "offset": 2,
+                  },
+                },
+                "type": "text",
+                "value": "Outer 1",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 10,
+                "line": 1,
+                "offset": 9,
+              },
+              "start": {
+                "column": 3,
+                "line": 1,
+                "offset": 2,
+              },
+            },
+            "type": "paragraph",
+          },
+          {
+            "children": [
+              {
+                "checked": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "position": {
+                          "end": {
+                            "column": 12,
+                            "line": 3,
+                            "offset": 22,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 3,
+                            "offset": 15,
+                          },
+                        },
+                        "type": "text",
+                        "value": "Inner 1",
+                      },
+                    ],
+                    "position": {
+                      "end": {
+                        "column": 12,
+                        "line": 3,
+                        "offset": 22,
+                      },
+                      "start": {
+                        "column": 5,
+                        "line": 3,
+                        "offset": 15,
+                      },
+                    },
+                    "type": "paragraph",
+                  },
+                ],
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 3,
+                    "offset": 22,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 3,
+                    "offset": 13,
+                  },
+                },
+                "spread": false,
+                "type": "listItem",
+              },
+              {
+                "checked": null,
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "position": {
+                          "end": {
+                            "column": 12,
+                            "line": 5,
+                            "offset": 35,
+                          },
+                          "start": {
+                            "column": 5,
+                            "line": 5,
+                            "offset": 28,
+                          },
+                        },
+                        "type": "text",
+                        "value": "Inner 2",
+                      },
+                    ],
+                    "position": {
+                      "end": {
+                        "column": 12,
+                        "line": 5,
+                        "offset": 35,
+                      },
+                      "start": {
+                        "column": 5,
+                        "line": 5,
+                        "offset": 28,
+                      },
+                    },
+                    "type": "paragraph",
+                  },
+                ],
+                "position": {
+                  "end": {
+                    "column": 12,
+                    "line": 5,
+                    "offset": 35,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 5,
+                    "offset": 26,
+                  },
+                },
+                "spread": false,
+                "type": "listItem",
+              },
+            ],
+            "ordered": false,
+            "position": {
+              "end": {
+                "column": 12,
+                "line": 5,
+                "offset": 35,
+              },
+              "start": {
+                "column": 3,
+                "line": 3,
+                "offset": 13,
+              },
+            },
+            "spread": false,
+            "start": null,
+            "type": "list",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 12,
+            "line": 5,
+            "offset": 35,
+          },
+          "start": {
+            "column": 1,
+            "line": 1,
+            "offset": 0,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+      {
+        "checked": null,
+        "children": [
+          {
+            "children": [
+              {
+                "position": {
+                  "end": {
+                    "column": 10,
+                    "line": 7,
+                    "offset": 46,
+                  },
+                  "start": {
+                    "column": 3,
+                    "line": 7,
+                    "offset": 39,
+                  },
+                },
+                "type": "text",
+                "value": "Outer 2",
+              },
+            ],
+            "position": {
+              "end": {
+                "column": 10,
+                "line": 7,
+                "offset": 46,
+              },
+              "start": {
+                "column": 3,
+                "line": 7,
+                "offset": 39,
+              },
+            },
+            "type": "paragraph",
+          },
+        ],
+        "position": {
+          "end": {
+            "column": 10,
+            "line": 7,
+            "offset": 46,
+          },
+          "start": {
+            "column": 1,
+            "line": 7,
+            "offset": 37,
+          },
+        },
+        "spread": false,
+        "type": "listItem",
+      },
+    ],
+    "ordered": false,
+    "position": {
+      "end": {
+        "column": 10,
+        "line": 7,
+        "offset": 46,
+      },
+      "start": {
+        "column": 1,
+        "line": 1,
+        "offset": 0,
+      },
+    },
+    "spread": false,
+    "start": null,
+    "type": "list",
+  },
+]
+`;

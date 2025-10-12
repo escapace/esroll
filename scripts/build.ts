@@ -1,9 +1,8 @@
-import { build, type BuildOptions } from '../src/index'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
+import { build, type BuildOptions } from '../src/index'
 
 const dirname = path.resolve(import.meta.dirname, '../')
-process.chdir(dirname)
 
 const packageJSON = JSON.parse(await readFile(path.join(dirname, 'package.json'), 'utf-8')) as {
   version: string
@@ -15,6 +14,7 @@ const constants = JSON.parse(
   await readFile(path.join(import.meta.dirname, 'constants.json'), 'utf-8'),
 ) as {
   builds: Record<string, BuildOptions>
+  declaration?: BuildOptions
 }
 
 for (const value of Object.values(constants.builds)) {
@@ -43,5 +43,12 @@ for (const value of Object.values(constants.builds)) {
       'const-and-let': true,
       ...value.supported,
     },
+  })
+}
+
+if (constants.declaration !== undefined) {
+  await build({
+    declaration: true,
+    ...constants.declaration,
   })
 }
