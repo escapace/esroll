@@ -41,7 +41,7 @@ await build({
 
 # API
 
-## function build [↗](https://github.com/escapace/esroll/blob/51c73025146571276fabfb75493017f820cf16a3/src/index.ts#L139-L154 'build')
+## function build [↗](https://github.com/escapace/esroll/blob/8c084bcf119795697d47516c665360e1e159b8df/src/index.ts#L139-L154 'build')
 
 Bundles source files, generates TypeScript declarations, and writes documentation based on the specified options.
 
@@ -73,7 +73,7 @@ Setting [options.documentation](#buildoptionsdocumentation) enables API document
 
 When both [options.outdir](#buildoptionsoutdir) and [options.declaration](#buildoptionsdeclaration) are set, bundling executes first, declaration generation runs second, and documentation writes last.
 
-## interface BuildOptions [↗](https://github.com/escapace/esroll/blob/51c73025146571276fabfb75493017f820cf16a3/src/types.ts#L39-L169 'BuildOptions')
+## interface BuildOptions [↗](https://github.com/escapace/esroll/blob/8c084bcf119795697d47516c665360e1e159b8df/src/types.ts#L39-L169 'BuildOptions')
 
 Configuration options for the build process.
 
@@ -214,7 +214,7 @@ Controls whether and how source maps are generated for the bundled output.
 - The 'inline' mode embeds source maps directly into the output files as base64-encoded data URIs.
 - The 'external' mode writes source maps to separate .map files alongside the output files but omits the sourceMappingURL comment
 
-## interface BuildResult [↗](https://github.com/escapace/esroll/blob/51c73025146571276fabfb75493017f820cf16a3/src/types.ts#L174-L187 'BuildResult')
+## interface BuildResult [↗](https://github.com/escapace/esroll/blob/8c084bcf119795697d47516c665360e1e159b8df/src/types.ts#L174-L187 'BuildResult')
 
 Result of a build operation.
 
@@ -246,7 +246,7 @@ Warnings that occurred during the build.
 warnings: PartialMessage[];
 ```
 
-## type BuildOptionsExcluded [↗](https://github.com/escapace/esroll/blob/51c73025146571276fabfb75493017f820cf16a3/src/types.ts#L16-L30 'BuildOptionsExcluded')
+## type BuildOptionsExcluded [↗](https://github.com/escapace/esroll/blob/8c084bcf119795697d47516c665360e1e159b8df/src/types.ts#L16-L30 'BuildOptionsExcluded')
 
 ESBuild options that esroll manages internally and excludes from user configuration.
 
