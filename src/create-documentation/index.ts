@@ -82,11 +82,6 @@ function collectItems(
         const location = findSourceLocation(item.displayName, filePath, strategy)
 
         if (location === undefined) {
-          console.warn(
-            'findSourceLocation failed for:',
-            item.displayName,
-            (item as ApiDeclaredItem)?.excerpt.text,
-          )
           return
         }
 
