@@ -41,7 +41,7 @@ await build({
 
 # API
 
-## function build [↗](https://github.com/escapace/esroll/blob/8c084bcf119795697d47516c665360e1e159b8df/src/index.ts#L139-L154 'build')
+## function build [↗](/src/index.ts#L139-L154 'build')
 
 Bundles source files, generates TypeScript declarations, and writes documentation based on the specified options.
 
