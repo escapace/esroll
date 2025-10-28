@@ -28,6 +28,7 @@ import {
 } from './create-language-service'
 import { typeScriptDiagnosticMessage } from './typescript-diagnostic-message'
 import { isPathImmediatelyInside } from '../utilities/is-path-immediately-inside'
+import { prettierFormat } from '../utilities/prettier-format'
 
 const declarationExtension = /\.d\.(?:cts|mts|ts)$/
 
@@ -71,7 +72,7 @@ const createEnvironmentOptions = async (
 
   assert(isPathInside(pathFileTSConfig, pathDirectoryPackage))
 
-  const pathFileTypeScript = await resolveModule('typescript')
+  const pathFileTypeScript = await resolveModule('typescript', { url: pathDirectoryPackage })
   const pathFileTypescriptPackageJSON = await findUp('package.json', {
     cwd: path.dirname(fileURLToPath(pathFileTypeScript)),
   })
@@ -438,7 +439,14 @@ const handleDocumentation = async (options: ProgramOptions) => {
   }
 
   await zx.fs.mkdirp(path.dirname(pathFileDocumentation))
-  await writeFile(pathFileDocumentation, toMarkdown(...root.children), 'utf-8')
+  await writeFile(
+    pathFileDocumentation,
+    await prettierFormat(toMarkdown(...root.children), {
+      filePath: pathFileDocumentation,
+      pathDirectoryPackage,
+    }),
+    'utf-8',
+  )
 
   result.outputFiles.push({ path: pathFileDocumentation })
 }
