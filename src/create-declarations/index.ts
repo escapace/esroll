@@ -27,6 +27,7 @@ import {
   type LanguageService,
 } from './create-language-service'
 import { typeScriptDiagnosticMessage } from './typescript-diagnostic-message'
+import { isPathImmediatelyInside } from '../utilities/is-path-immediately-inside'
 
 const declarationExtension = /\.d\.(?:cts|mts|ts)$/
 
@@ -406,6 +407,11 @@ const handleDocumentation = async (options: ProgramOptions) => {
   const pathFileDocumentation = path.resolve(
     pathDirectoryPackage,
     documentation === true ? 'README.md' : documentation,
+  )
+
+  assert(
+    isPathImmediatelyInside(pathFileDocumentation, pathDirectoryPackage),
+    'documentation file must be an immediate child of the package directory',
   )
 
   const heading = fromMarkdown(documentationHeading ?? '# API')[0]

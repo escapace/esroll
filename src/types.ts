@@ -77,9 +77,9 @@ export interface BuildOptions extends Omit<ESBuildOptions, BuildOptionsExcluded>
    *
    * Requires {@link BuildOptions.declaration | declaration} to be true. When set to `true`,
    * documentation is generated and either replaces or appends the matching section in `README.md`.
-   * When set to a string, the value points to an alternate markdown file that receives the same
-   * replacement or append behavior described by {@link BuildOptions.documentationHeading |
-   * documentationHeading}.
+   * When set to a string, the value identifies an alternate markdown file that must sit directly
+   * inside the package directory and receives the same replacement or append behavior described by
+   * {@link BuildOptions.documentationHeading | documentationHeading}.
    */
   documentation?: boolean | string
 

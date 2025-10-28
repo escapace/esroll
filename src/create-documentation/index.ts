@@ -15,7 +15,6 @@ import { ApiMarkdownWriter } from './api-markdown-writer'
 import { DOCUMENTATION_TOP_LEVEL_ITEMS } from './constants'
 import { createApiComparator } from './create-api-comparator'
 import { isApiItem } from './is-api-item'
-import { repositoryFileURL } from '../utilities/repository'
 
 export function createDocumentation(options: {
   /**
@@ -85,16 +84,10 @@ function collectItems(
           return
         }
 
-        const url = repositoryFileURL(filePath)
-
-        if (url === undefined) {
-          return
-        }
-
         return sanitizeUri(
           location.line === location.lineEnd
-            ? `${url}#L${location.line}`
-            : `${url}#L${location.line}-L${location.lineEnd}`,
+            ? `${filePath}#L${location.line}`
+            : `${filePath}#L${location.line}-L${location.lineEnd}`,
         )
       },
     }
