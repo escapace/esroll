@@ -1,9 +1,4 @@
 minimumReleaseAge: 10080
-minimumReleaseAgeExclude:
-  - '@microsoft/*'
-  - '@rushstack/*'
-  - '@types/node'
-  - knip
 
 onlyBuiltDependencies:
   - esbuild
