@@ -1,8 +1,9 @@
+import { build, type BuildOptions } from '../src/index'
 import { readFile } from 'node:fs/promises'
 import path from 'node:path'
-import { build, type BuildOptions } from '../src/index'
 
 const dirname = path.resolve(import.meta.dirname, '../')
+process.chdir(dirname)
 
 const packageJSON = JSON.parse(await readFile(path.join(dirname, 'package.json'), 'utf-8')) as {
   version: string

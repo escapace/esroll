@@ -1,8 +1,7 @@
-.claude/*.local.json
-documentation.api.json
 .aider*
 .cache
 .cache/
+.claude/*.local.json
 .docusaurus
 .dynamodb/
 .env
@@ -48,6 +47,7 @@ bower_components
 build/Release
 coverage
 dist
+documentation.api.json
 jspm_packages/
 lerna-debug.log*
 lib

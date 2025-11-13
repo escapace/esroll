@@ -57,9 +57,10 @@ pre-commit:
       run: pnpm exec prettier --write {staged_files}
       stage_fixed: true
 
-    typecheck:
+    build:
       priority: 6
-      run: pnpm run typecheck
+      run: pnpm run build
+      stage_fixed: true
 
     test:
       priority: 7
