@@ -9,4 +9,4 @@ export { greet };
 "
 `;
 
-exports[`esroll integration test > should bundle a TypeScript file 2`] = `"{"version":3,"file":"sample.js","sources":["../../sample.ts"],"sourcesContent":null,"names":[],"mappings":";AAAO,IAAM,SAAS,MAAM,eAAA;;;;"}"`;
+exports[`esroll integration test > should bundle a TypeScript file 2`] = `"{"version":3,"file":"sample.js","sources":["../../sample.ts"],"names":[],"mappings":";AAAO,IAAM,SAAS,MAAM,eAAA;;;;"}"`;
