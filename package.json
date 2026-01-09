@@ -52,7 +52,7 @@
     "eslint": "9.39.2",
     "eslint-config-escapace": "5.10.0",
     "knip": "5.79.0",
-    "lefthook": "1.13.6",
+    "lefthook": "2.0.13",
     "prettier": "3.7.4",
     "prettier-config-escapace": "1.2.1",
     "syncpack": "13.0.4",
