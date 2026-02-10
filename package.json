@@ -50,7 +50,7 @@
     "@types/node": "25.2.0",
     "@vitest/coverage-v8": "4.0.18",
     "eslint": "9.39.2",
-    "eslint-config-escapace": "5.10.1",
+    "eslint-config-escapace": "5.10.2",
     "knip": "5.83.0",
     "lefthook": "2.1.0",
     "prettier": "3.8.1",
