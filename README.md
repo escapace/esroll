@@ -191,7 +191,8 @@ Rollup bundler configuration.
 rollup?: {
   output?: {
       generatedCode?: GeneratedCodeOptions;
-  } & Partial<Pick<OutputOptions, 'exports' | 'externalImportAttributes' | 'importAttributesKey' | 'minifyInternalExports' | 'sanitizeFileName'>>;
+  } & Partial<Pick<OutputOptions, 'exports' | 'externalImportAttributes' | 'importAttributesKey'
+    | 'minifyInternalExports' | 'sanitizeFileName'>>;
   plugins?: Plugin[];
   treeshake?: TreeshakingOptions;
 } & Partial<Pick<RollupOptions, 'experimentalLogSideEffects' | 'maxParallelFileOps'>>;

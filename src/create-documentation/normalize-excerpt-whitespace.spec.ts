@@ -168,7 +168,7 @@ describe('normalizeExcerptWhitespace', () => {
         },
         {
           "type": "text",
-          "value": "}",
+          "value": "  }",
         },
       ]
     `)

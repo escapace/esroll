@@ -796,7 +796,8 @@ Creates a cached iterable that wraps a factory-produced iterable with lazy evalu
 Values are cached as they are consumed from the source iterator, enabling multiple iterators to share the same underlying data without redundant factory calls or source re-evaluation. Each iterator follows a two-phase approach: first consuming cached values, then extending the cache by consuming from the source if the cache requires extension.
 
 \`\`\`typescript
-export declare function createCachedIterable<T, TReturn = any>(factory: () => Iterable<T, TReturn, CassiopeiaCancel | undefined>): CachedIterable<T, TReturn>;
+export declare function createCachedIterable<T, TReturn = any>(factory: () => Iterable<T, TReturn,
+  CassiopeiaCancel | undefined>): CachedIterable<T, TReturn>;
 \`\`\`
 
 ### Type Parameters
@@ -857,7 +858,8 @@ Creates a revocable proxy that intercepts factory modifications with lifecycle c
 Wraps terminating reducer factories in a proxy that tracks property modifications, maintains a synchronized array of reducer keys, and provides controlled disposal. The proxy intercepts set and delete operations, calling corresponding lifecycle callbacks and updating the key array. Disposal revokes the proxy, clears all factory properties, and empties the key tracking array.
 
 \`\`\`typescript
-export declare function createTerminatingReducerFactoriesProxy<T extends object = {}, U = unknown>(reducerFactories: TerminatingReducerFactories<T>, options: {
+export declare function createTerminatingReducerFactoriesProxy<T extends object = {},
+  U = unknown>(reducerFactories: TerminatingReducerFactories<T>, options: {
     onDelete: (key: keyof T) => void;
     onDispose: (keys: Set<keyof T>) => U;
     onSet: (key: keyof T) => void;
@@ -893,7 +895,9 @@ Creates terminating reducers with implicit caching through getter replacement.
 Sets up property getters for the specified keys that provide lazy initialization with implicit caching behavior. Upon first access, each getter invokes the corresponding factory function exactly once, eagerly primes the returned reducer instance, then replaces itself with a static property containing the primed reducer. This eliminates subsequent factory calls and getter overhead for the same property.
 
 \`\`\`typescript
-export declare function createTerminatingReducers<T extends object>(reducerFactories: TerminatingReducerFactories<T>, keys: Iterable<keyof T>): TerminatingReducers<T>;
+export declare function createTerminatingReducers<T
+  extends object>(reducerFactories: TerminatingReducerFactories<T>,
+  keys: Iterable<keyof T>): TerminatingReducers<T>;
 \`\`\`
 
 ### Type Parameters
@@ -946,7 +950,8 @@ Checks whether an iterable input value is actual user data rather than a cancell
 Type guard that identifies CASSIOPEIA\\_CANCEL token in iterable inputs.
 
 \`\`\`typescript
-export declare function isIterableTerminated<U = unknown>(value: CassiopeiaCancel | U): value is CassiopeiaCancel;
+export declare function isIterableTerminated<U = unknown>(value: CassiopeiaCancel
+  | U): value is CassiopeiaCancel;
 \`\`\`
 
 ### Type Parameters
@@ -998,7 +1003,8 @@ Checks whether a reducer input value is actual user data rather than a control t
 Type guard that identifies termination control tokens in reducer inputs.
 
 \`\`\`typescript
-export declare function isReducerTerminated<U = unknown>(value: TerminatingReducerNext<U>): value is CassiopeiaCancel | CassiopeiaComplete;
+export declare function isReducerTerminated<U = unknown>(value: TerminatingReducerNext<U>): value is CassiopeiaCancel
+  | CassiopeiaComplete;
 \`\`\`
 
 ### Type Parameters
@@ -1252,7 +1258,8 @@ CASSIOPEIA_CUSTOM_PROPERTY_VAR_NOTATION_REGEX: RegExp
 Cached iterable with shared caching and external cancellation control.
 
 \`\`\`typescript
-export interface CachedIterable<T, TReturn = unknown> extends Iterable<T, TReturn | undefined, CassiopeiaCancel | undefined>
+export interface CachedIterable<T, TReturn = unknown> extends Iterable<T, TReturn
+  | undefined, CassiopeiaCancel | undefined>
 \`\`\`
 
 ### Type Parameters
@@ -1422,7 +1429,8 @@ export type CassiopeiaOrchestrator = TerminatingReducer<CassiopeiaStyleSheets, n
 Terminating reducer that processes custom property key-suffix strings and generates CSS stylesheets. Reduces triple-dash custom properties into stylesheet objects or arrays, with implementation-specific processing logic.
 
 \`\`\`typescript
-export type CassiopeiaReducer = TerminatingReducer<CassiopeiaPartialStyleSheet | CassiopeiaPartialStyleSheet[], string>;
+export type CassiopeiaReducer = TerminatingReducer<CassiopeiaPartialStyleSheet
+  | CassiopeiaPartialStyleSheet[], string>;
 \`\`\`
 
 ## type CassiopeiaReducerFactories
@@ -1462,7 +1470,9 @@ export type CassiopeiaReducerUpdateSync = (keys?: Iterable<string>) => void;
 Generator type representing a synchronous terminating reducer.
 
 \`\`\`typescript
-export type TerminatingReducer<GeneratorReturn = unknown, GeneratorNext = unknown, T = undefined> = Generator<T, TerminatingReducerReturn<GeneratorReturn>, TerminatingReducerNext<GeneratorNext>>;
+export type TerminatingReducer<GeneratorReturn = unknown, GeneratorNext = unknown,
+  T = undefined> = Generator<T, TerminatingReducerReturn<GeneratorReturn>,
+  TerminatingReducerNext<GeneratorNext>>;
 \`\`\`
 
 ### Type Parameters
@@ -1493,7 +1503,8 @@ export type TerminatingReducerFactories<T extends object = {}> = {
 Union type representing all possible input values for a terminating reducer.
 
 \`\`\`typescript
-export type TerminatingReducerNext<GeneratorNext = unknown> = CassiopeiaCancel | CassiopeiaComplete | GeneratorNext;
+export type TerminatingReducerNext<GeneratorNext = unknown> = CassiopeiaCancel | CassiopeiaComplete
+  | GeneratorNext;
 \`\`\`
 
 ## type TerminatingReducerReturn
@@ -1930,7 +1941,8 @@ declare module 'snaproll' {
 Context object passed to subscription callbacks during animation frames.
 
 \`\`\`typescript
-export type SnaprollContext = (SnaprollActionBegin | SnaprollActionDraw | SnaprollActionUpdate) & SnaprollUserContext;
+export type SnaprollContext = (SnaprollActionBegin | SnaprollActionDraw | SnaprollActionUpdate)
+  & SnaprollUserContext;
 \`\`\`
 
 ### Remarks
