@@ -109,11 +109,7 @@ function collectItems(
     source: ApiItem,
     token: ExcerptToken | undefined,
   ): ApiItem | undefined => {
-    if (
-      token === undefined ||
-      token.kind !== ExcerptTokenKind.Reference ||
-      token.canonicalReference === undefined
-    ) {
+    if (token?.kind !== ExcerptTokenKind.Reference || token.canonicalReference === undefined) {
       return undefined
     }
 

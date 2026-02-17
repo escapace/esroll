@@ -16,6 +16,7 @@ import { createHandlerRollupLog } from './create-handler-rollup-log'
 import { createSourcemapConsumers } from './create-sourcemap-consumers'
 import { createTable } from './create-table'
 import { scoreFile } from './score-file'
+import { normalizeCommonPathPrefixInput } from '../utilities/normalize-common-path-prefix-input'
 
 export const createBundle = async (options: CommonOptions) => {
   const { hasColor, logLevel, pathDirectoryPackage, result } = options
@@ -97,8 +98,6 @@ export const createBundle = async (options: CommonOptions) => {
 
     const optionsRollup = {
       experimentalLogSideEffects: options.rollup?.experimentalLogSideEffects,
-      external: (id) =>
-        !id.startsWith('./') && !id.startsWith(pathDirectoryTemporary) && !id.startsWith('../'),
       input: Object.fromEntries(
         Object.entries(resultESBuild.metafile.outputs)
           .filter(
@@ -125,13 +124,9 @@ export const createBundle = async (options: CommonOptions) => {
         } satisfies Record<BuildLogLevel, RollupLogLevel>
       )[logLevel],
       maxParallelFileOps: options.rollup?.maxParallelFileOps,
-      onLog: (_, log) => void handlerRollupLog(log),
-      onwarn: (log) => void handlerRollupLog(log),
       output: {
         chunkFileNames: `[name]-[hash]${esbuildOptions.outExtension['.js']}`,
         dir: options.outdir,
-        entryFileNames: (value) =>
-          value.isEntry ? value.name : `${value.name}${esbuildOptions.outExtension['.js']}`,
         exports: options.rollup?.output?.exports ?? 'auto',
         externalImportAttributes: options.rollup?.output?.externalImportAttributes,
         externalLiveBindings: false,
@@ -153,7 +148,7 @@ export const createBundle = async (options: CommonOptions) => {
           options.outbase ??
           (options.entryPoints.length === 1
             ? path.dirname(options.entryPoints[0])
-            : commonPathPrefix(options.entryPoints)),
+            : commonPathPrefix(options.entryPoints.map(normalizeCommonPathPrefixInput))),
         sanitizeFileName: options.rollup?.output?.sanitizeFileName,
         sourcemap:
           options.sourcemap === undefined || options.sourcemap === false
@@ -167,6 +162,8 @@ export const createBundle = async (options: CommonOptions) => {
                   : undefined,
         sourcemapBaseUrl: options.sourceRoot,
         sourcemapExcludeSources: !(esbuildOptions.sourcesContent === true),
+        entryFileNames: (value) =>
+          value.isEntry ? value.name : `${value.name}${esbuildOptions.outExtension['.js']}`,
         // sourcemapIgnoreList: options.rollup?.output?.sourcemapIgnoreList,
         // sourcemapIgnoreList: (value) => value.includes('node_modules'),
         // sourcemapPathTransform: options.rollup?.output?.sourcemapPathTransform,
@@ -189,6 +186,10 @@ export const createBundle = async (options: CommonOptions) => {
         unknownGlobalSideEffects: false,
         ...options.rollup?.treeshake,
       },
+      external: (id) =>
+        !id.startsWith('./') && !id.startsWith(pathDirectoryTemporary) && !id.startsWith('../'),
+      onLog: (_, log) => void handlerRollupLog(log),
+      onwarn: (log) => void handlerRollupLog(log),
     } satisfies RollupOptions
 
     await zx.fs.emptyDir(pathDirectoryOutput)

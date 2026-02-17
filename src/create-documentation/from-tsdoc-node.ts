@@ -40,8 +40,7 @@ export interface TSDocMarkdownWriterState {
 }
 
 export interface FromTSDocNodeOptions
-  extends Pick<TSDocMarkdownWriterState, 'item' | 'model'>,
-    TSDocMarkdownWriterOptions {
+  extends Pick<TSDocMarkdownWriterState, 'item' | 'model'>, TSDocMarkdownWriterOptions {
   node: DocNode
 }
 

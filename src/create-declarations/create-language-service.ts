@@ -198,15 +198,15 @@ export function createLanguageService(ts: typeof TS, program: TS.Program): Langu
   const host: TS.LanguageServiceHost = {
     directoryExists: ts.sys.directoryExists,
     fileExists: ts.sys.fileExists,
+    getDirectories: ts.sys.getDirectories,
+    readDirectory: ts.sys.readDirectory,
+    readFile: ts.sys.readFile,
     getCompilationSettings: () => compilerOptions,
     getCurrentDirectory: () => currentDirectory,
     getDefaultLibFileName: (options) => ts.getDefaultLibFilePath(options),
-    getDirectories: ts.sys.getDirectories,
     getScriptFileNames: () => [...realFiles, ...snapshots.keys()],
     getScriptSnapshot: (fileName) => snapshots.get(resolveInProgram(fileName)),
     getScriptVersion: () => INITIAL_SCRIPT_VERSION,
-    readDirectory: ts.sys.readDirectory,
-    readFile: ts.sys.readFile,
     useCaseSensitiveFileNames: () => ts.sys.useCaseSensitiveFileNames,
   }
 

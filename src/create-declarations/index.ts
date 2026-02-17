@@ -350,6 +350,9 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
 
     Extractor.invoke(extractorConfig, {
       localBuild: false,
+      showDiagnostics: false,
+      showVerboseMessages: false,
+      typescriptCompilerFolder: pathDirectoryTypescript,
       messageCallback: (message) => {
         message.handled = true
 
@@ -374,9 +377,6 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
           pathDirectoryPackage,
         })
       },
-      showDiagnostics: false,
-      showVerboseMessages: false,
-      typescriptCompilerFolder: pathDirectoryTypescript,
     })
 
     if (declarationRollup) {

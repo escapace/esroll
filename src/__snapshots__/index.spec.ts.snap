@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`esroll integration test > should bundle a TypeScript file 1`] = `
+exports[`esroll integration test > story: bundle TypeScript source files to an output directory 1`] = `
 "// sample.ts
 var greet = (() => "Hello, world!");
 
@@ -9,4 +9,4 @@ export { greet };
 "
 `;
 
-exports[`esroll integration test > should bundle a TypeScript file 2`] = `"{"version":3,"file":"sample.js","sources":["../../sample.ts"],"names":[],"mappings":";AAAO,IAAM,SAAS,MAAM,eAAA;;;;"}"`;
+exports[`esroll integration test > story: bundle TypeScript source files to an output directory 2`] = `"{"version":3,"file":"sample.js","sources":["../../sample.ts"],"names":[],"mappings":";AAAO,IAAM,SAAS,MAAM,eAAA;;;;"}"`;
