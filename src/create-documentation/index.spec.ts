@@ -5,7 +5,7 @@ import { isFile } from '../utilities/is-file'
 import { toMarkdown } from './markdown'
 
 describe('create-documentation', () => {
-  for (const option of ['a', 'b', 'c', 'd', 'e']) {
+  for (const option of ['a', 'b', 'c', 'd', 'e', 'f']) {
     it(`snapshot ${option}`, async () => {
       const json = path.join(import.meta.dirname, `../test-support/${option}.api.json`)
       assert(await isFile(json))

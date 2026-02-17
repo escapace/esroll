@@ -15,6 +15,7 @@ import { ApiMarkdownWriter } from './api-markdown-writer'
 import { DOCUMENTATION_TOP_LEVEL_ITEMS } from './constants'
 import { createApiComparator } from './create-api-comparator'
 import { isApiItem } from './is-api-item'
+import { selectPreferredOverloads } from './select-preferred-overloads'
 
 export function createDocumentation(options: {
   /**
@@ -41,7 +42,7 @@ export function createDocumentation(options: {
       continue
     }
 
-    for (const item of group) {
+    for (const item of selectPreferredOverloads(group)) {
       writer.writeApiItem(item)
     }
   }

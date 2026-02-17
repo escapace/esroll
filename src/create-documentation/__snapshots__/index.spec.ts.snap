@@ -1970,3 +1970,37 @@ export type SnaprollSubscription = (context: SnaprollContext) => boolean | undef
 Return value controls frame execution flow: - \`true\` from Begin phase skips the entire frame - \`true\` from Update phase skips remaining updates and draw for current frame - \`undefined\` or \`false\` continues normal execution
 "
 `;
+
+exports[`create-documentation > snapshot f 1`] = `
+"## function canonicalize
+
+Serializes a JSON-like value to a deterministic JSON string with canonical object key ordering.
+
+\`\`\`typescript
+export declare function canonicalize(value: unknown): string | undefined;
+\`\`\`
+
+### Parameters
+
+| Parameter | Type | Description |
+| - | - | - |
+| \`value\` | <pre>unknown</pre> | Input value to serialize. |
+
+### Returns
+
+A canonical JSON string, or \`undefined\` when root serialization is \`undefined\` under JSON rules.
+
+### Throws
+
+TypeError When serialization encounters a \`BigInt\` without \`BigInt.prototype.toJSON\`, or a circular structure.
+
+### Remarks
+
+Value handling follows \`JSON.stringify\` semantics for supported domains, including \`toJSON\`, boxed primitives, sparse arrays, dates, typed arrays, and circular-structure errors.
+
+Intentional differences from \`JSON.stringify\`:
+
+* Object keys are emitted in canonical lexicographic order.
+* Replacer and spacing parameters are not supported.
+"
+`;
