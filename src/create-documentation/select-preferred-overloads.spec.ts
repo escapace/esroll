@@ -22,7 +22,7 @@ const createApiItem = (options: {
     hasOwnPackage: () => false,
   }
 
-  return item as ApiItem
+  return item as unknown as ApiItem
 }
 
 describe('selectPreferredOverloads', () => {
