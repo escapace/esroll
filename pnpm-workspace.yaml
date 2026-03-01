@@ -28,6 +28,8 @@ minimumReleaseAgeExclude:
   - syncpack-linux-x64-musl
   - syncpack-windows-arm64
   - syncpack-windows-x64
+  # Renovate security update: rollup@4.59.0
+  - rollup@4.59.0
 onlyBuiltDependencies:
   - esbuild
   - lefthook
