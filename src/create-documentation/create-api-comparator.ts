@@ -17,26 +17,21 @@ export const createApiComparator = () => {
     const metadataA = a.metadata
     const metadataB = b.metadata
 
-    let isAParentOfB = false
-    let isBParentOfA = false
-    let inheritance = 0
+    const aExtendsB = metadataB.extendsComplete.has(a)
+    const bExtendsA = metadataA.extendsComplete.has(b)
+    const extendsRelation = aExtendsB === bExtendsA ? 0 : aExtendsB ? -1 : bExtendsA ? 1 : 0
 
-    isAParentOfB = metadataB.extendsComplete.has(a)
-    isBParentOfA = metadataA.extendsComplete.has(b)
-
-    inheritance = isAParentOfB === isBParentOfA ? 0 : isAParentOfB ? -1 : isBParentOfA ? 1 : 0
-
-    if (inheritance !== 0) {
-      return inheritance
+    if (extendsRelation !== 0) {
+      return extendsRelation
     }
 
-    isAParentOfB = metadataB.parents.has(a)
-    isBParentOfA = metadataA.parents.has(b)
+    const aIsParentOfB = metadataB.parents.has(a)
+    const bIsParentOfA = metadataA.parents.has(b)
+    const parentRelation =
+      aIsParentOfB === bIsParentOfA ? 0 : aIsParentOfB ? -1 : bIsParentOfA ? 1 : 0
 
-    inheritance = isAParentOfB === isBParentOfA ? 0 : isAParentOfB ? -1 : isBParentOfA ? 1 : 0
-
-    if (inheritance !== 0) {
-      return inheritance
+    if (parentRelation !== 0) {
+      return parentRelation
     }
 
     const depthA = calculatePathDepth(metadataA.filePath)
