@@ -82,7 +82,7 @@ describe('formatWithStringFormatter', () => {
         strict: true,
         format: (value) => value.replaceAll('\uE000', '').replaceAll('\uE001', ''),
       }),
-    ).toThrowError(IntegrityError)
+    ).toThrow(IntegrityError)
   })
 
   it('returns original input when formatter throws', () => {

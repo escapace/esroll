@@ -55,7 +55,7 @@ Updated section
     const current = parse('# Duplicate\n\nBody 1\n\n# Duplicate\n\nBody 2\n')
     const replacement = parse('# Duplicate\n\nNew body\n')
 
-    expect(() => replaceHeadingSection(current, replacement)).toThrowError(
+    expect(() => replaceHeadingSection(current, replacement)).toThrow(
       'Found multiple headings matching "Duplicate" at depth 1',
     )
   })
@@ -64,7 +64,7 @@ Updated section
     const current = parse('# Section\n\nBody\n')
     const replacement = parse('Paragraph without heading\n')
 
-    expect(() => replaceHeadingSection(current, replacement)).toThrowError(
+    expect(() => replaceHeadingSection(current, replacement)).toThrow(
       'Expected replacement content to contain a heading',
     )
   })
