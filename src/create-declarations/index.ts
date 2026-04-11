@@ -307,6 +307,12 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
         },
         bundledPackages: declarationRollupPackages,
         compiler: {
+          overrideTsconfig: {
+            exclude: [],
+            extends: pathFileTSConfig,
+            files: [path.relative(pathDirectoryPackage, pathFileEntryPoint)],
+            include: [],
+          },
           tsconfigFilePath: pathFileTSConfig,
         },
         docModel: {

@@ -227,6 +227,69 @@ describe('esroll integration test', () => {
     expect(readmeContent).not.toContain('legacy api section that should be replaced')
   }, 30_000)
 
+  it('story: generate declaration rollups without warning on source declaration imports', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+    await createPackageFixture(absoluteWorkingDirectory)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            declarationDir: 'types',
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            rootDir: 'src',
+            skipLibCheck: true,
+            target: 'ES2022',
+            types: [],
+          },
+          include: ['src'],
+        },
+        null,
+        2,
+      ),
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/types.ts'),
+      '/** @public */\nexport interface PublicApi {\n  value: string\n}\n',
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/global.d.ts'),
+      'import type { PublicApi } from "./types"\n\ndeclare global {\n  var __PUBLIC_API__: PublicApi | undefined\n}\n\nexport {}\n',
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'export type { PublicApi } from "./types"\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      declaration: true,
+      declarationRollup: true,
+      entryPoints: ['src/index.ts'],
+      logLevel: 'silent',
+      tsconfig: 'tsconfig.json',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const declarationFile = result.outputFiles.find((value) =>
+      value.path.endsWith('/types/index.d.ts'),
+    )
+
+    expect(declarationFile).toBeDefined()
+    expect(await readFile(declarationFile!.path, 'utf8')).toContain(
+      'export declare interface PublicApi',
+    )
+  }, 30_000)
+
   it('story: fail fast when declaration generation is requested without tsconfig', async ({
     onTestFinished,
   }) => {
@@ -239,7 +302,7 @@ describe('esroll integration test', () => {
         entryPoints: ['src/index.ts'],
         logLevel: 'silent',
       }),
-    ).rejects.toThrowError('options.tsconfig must be set when options.declaration is true')
+    ).rejects.toThrow('options.tsconfig must be set when options.declaration is true')
   })
 
   it('story: fail fast when documentation is enabled without declarations', async ({
@@ -255,7 +318,7 @@ describe('esroll integration test', () => {
         logLevel: 'silent',
         outdir: 'dist',
       }),
-    ).rejects.toThrowError(
+    ).rejects.toThrow(
       'options.declaration must be true when options.declarationRollup or options.documentation is set',
     )
   })
