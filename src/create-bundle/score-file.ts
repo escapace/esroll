@@ -1,6 +1,6 @@
-import type { OutputAsset, OutputChunk } from 'rollup'
+type ScoredFile = { type: 'asset' } | { type: 'chunk'; isEntry?: boolean }
 
-export const scoreFile = (value: OutputAsset | OutputChunk | undefined) => {
+export const scoreFile = (value: ScoredFile | undefined) => {
   if (value === undefined) {
     return 0
   } else if (value.type === 'asset') {
@@ -8,7 +8,7 @@ export const scoreFile = (value: OutputAsset | OutputChunk | undefined) => {
   } else {
     let score = 2
 
-    if (value.isEntry) {
+    if (value.isEntry === true) {
       score = score + 1
     }
 

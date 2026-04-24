@@ -31,9 +31,9 @@ export const createHandlerRollupLog =
         notes: [{ location: null, text: log.message }],
       })
     } else {
-      const consumer = options.sourceMapConsumers[log.loc.file]
+      const sourceMap = options.sourceMapConsumers[log.loc.file]
 
-      const position = consumer?.originalPositionFor({
+      const position = sourceMap?.consumer.originalPositionFor({
         column: log.loc.column,
         line: log.loc.line,
       })
@@ -48,7 +48,10 @@ export const createHandlerRollupLog =
 
       const { column, line, source: sourcePath } = position
 
-      const pathAbsolute = path.resolve(options.pathDirectoryTemporary, sourcePath)
+      const pathAbsolute = path.resolve(
+        sourceMap?.pathDirectoryOutput ?? options.pathDirectoryTemporary,
+        sourcePath,
+      )
       const file = path.relative(options.pathDirectoryPackage, pathAbsolute)
       const source = (await isFile(pathAbsolute)) ? await readFile(pathAbsolute, 'utf8') : undefined
       const lineText = source?.split(/\r?\n/)[position.line - 1]

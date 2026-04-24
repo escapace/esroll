@@ -186,7 +186,16 @@ export interface BuildResult {
   warnings: PartialMessage[]
 }
 
-export type BuildSourceMapConsumers = Partial<Record<string, IndexedSourceMapConsumer>>
+export type BuildSourceMapConsumers = Partial<
+  Record<
+    string,
+    {
+      consumer: IndexedSourceMapConsumer
+      map: string
+      pathDirectoryOutput: string
+    }
+  >
+>
 
 export type BuildMessages = Pick<BuildResult, 'errors' | 'warnings'>
 

@@ -13,12 +13,23 @@ export const createSourcemapConsumers = async (
       Object.keys(metafile.outputs)
         .filter((key) => !key.endsWith('.map'))
         .map(async (key) => {
-          const map = `${key}.map`
-          const consumer = (await isFile(map))
-            ? await new SourceMapConsumer(await readFile(map, 'utf-8'))
-            : undefined
+          const pathFileOutput = path.resolve(key)
+          const pathFileMap = `${key}.map`
 
-          return [path.resolve(key), consumer] as const
+          if (!(await isFile(pathFileMap))) {
+            return [pathFileOutput, undefined] as const
+          }
+
+          const map = await readFile(pathFileMap, 'utf-8')
+
+          return [
+            pathFileOutput,
+            {
+              consumer: await new SourceMapConsumer(map),
+              map,
+              pathDirectoryOutput: path.dirname(pathFileOutput),
+            },
+          ] as const
         }),
     ),
   )

@@ -1,7 +1,6 @@
 import pluginUtils, { type FilterPattern } from '@rollup/pluginutils'
 import { readFile } from 'node:fs/promises'
 import type { Plugin } from 'rollup'
-import { SourceMapGenerator } from 'source-map'
 import type { BuildSourceMapConsumers } from '../types'
 
 interface Options {
@@ -25,14 +24,10 @@ export function pluginSourcemaps(
 
       const code = await readFile(id, 'utf-8')
 
-      const sourceMapConsumer = sourceMapConsumers[id]
-
-      const map =
-        sourceMapConsumer === undefined
-          ? undefined
-          : SourceMapGenerator.fromSourceMap(sourceMapConsumer).toString()
-
-      return { code, map }
+      return {
+        code,
+        map: sourceMapConsumers[id]?.map,
+      }
     },
 
     name: 'sourcemaps',
