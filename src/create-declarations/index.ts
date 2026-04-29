@@ -5,14 +5,12 @@ import {
   ExtractorLogLevel,
   type IConfigFile,
 } from '@microsoft/api-extractor'
-import { findUp } from 'find-up'
 import isPathInside from 'is-path-inside'
 import { resolve as resolveModule } from 'mlly'
 import assert from 'node:assert'
 import { mkdtemp, readFile, writeFile } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
 import type TS from 'typescript'
 import * as zx from 'zx'
 import { createDocumentation } from '../create-documentation'
@@ -42,7 +40,6 @@ interface ProgramOptions extends CommonOptions {
   parsedCommandLine: TS.ParsedCommandLine
   pathDirectoryDeclaration: string
   pathDirectoryTemporary: string
-  pathDirectoryTypescript: string
   pathFileAPIJSON: string
   pathFileTSConfig: string
   program: TS.Program
@@ -73,11 +70,6 @@ const createEnvironmentOptions = async (
   assert(isPathInside(pathFileTSConfig, pathDirectoryPackage))
 
   const pathFileTypeScript = await resolveModule('typescript', { url: pathDirectoryPackage })
-  const pathFileTypescriptPackageJSON = await findUp('package.json', {
-    cwd: path.dirname(fileURLToPath(pathFileTypeScript)),
-  })
-  assert(pathFileTypescriptPackageJSON !== undefined, 'Unable to resovle typescript')
-  const pathDirectoryTypescript = path.dirname(pathFileTypescriptPackageJSON)
   const ts = (await import(pathFileTypeScript)) as typeof TS
 
   const parsedCommandLine = ts.parseJsonSourceFileConfigFileContent(
@@ -121,7 +113,6 @@ const createEnvironmentOptions = async (
     parsedCommandLine,
     pathDirectoryDeclaration,
     pathDirectoryTemporary,
-    pathDirectoryTypescript,
     pathFileAPIJSON,
     pathFileTSConfig,
     program,
@@ -286,7 +277,6 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
     documentationIncludeForgottenExports,
     pathDirectoryDeclaration,
     pathDirectoryPackage,
-    pathDirectoryTypescript,
     pathFileAPIJSON,
     pathFileEntryPoint,
     pathFilePackageJSON,
@@ -358,7 +348,9 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
       localBuild: false,
       showDiagnostics: false,
       showVerboseMessages: false,
-      typescriptCompilerFolder: pathDirectoryTypescript,
+      // API Extractor is coupled to its bundled TypeScript compiler. The target package may use
+      // a newer compiler for declaration emit, but forcing that compiler into API Extractor can
+      // crash its analyzer on otherwise valid declarations.
       messageCallback: (message) => {
         message.handled = true
 

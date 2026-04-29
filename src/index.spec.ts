@@ -952,6 +952,60 @@ describe('esroll integration test', () => {
     )
   }, 30_000)
 
+  it('story: generate declaration rollups for Error subclasses with newer project TypeScript', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+    await createPackageFixture(absoluteWorkingDirectory)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            declarationDir: 'types',
+            lib: ['ESNext'],
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            rootDir: 'src',
+            skipLibCheck: true,
+            target: 'ESNext',
+            types: [],
+          },
+          include: ['src'],
+        },
+        null,
+        2,
+      ),
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'export class PublicError extends Error {\n  readonly name = "PublicError" as const\n}\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      declaration: true,
+      declarationRollup: true,
+      entryPoints: ['src/index.ts'],
+      logLevel: 'silent',
+      tsconfig: 'tsconfig.json',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const declarationFile = result.outputFiles.find((value) =>
+      value.path.endsWith('/types/index.d.ts'),
+    )
+
+    expect(declarationFile).toBeDefined()
+    expect(await readFile(declarationFile!.path, 'utf8')).toContain(
+      'export declare class PublicError extends Error',
+    )
+  }, 30_000)
+
   it('story: fail fast when declaration generation is requested without tsconfig', async ({
     onTestFinished,
   }) => {
