@@ -359,6 +359,143 @@ describe('esroll integration test', () => {
     expect(messages.warnings[0].location?.lineText).toContain('export const page = 1')
   })
 
+  it('story: preserve copied JavaScript assets instead of rebundling them as chunks', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'import value from "./copy-me.js"\nexport default value\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/copy-me.js'),
+      'export default 123\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      entryPoints: ['src/index.ts'],
+      loader: { '.js': 'copy' },
+      logLevel: 'silent',
+      outdir: 'dist',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const files = await readDirectoryFiles(path.join(absoluteWorkingDirectory, 'dist'))
+    const pathCopiedJavaScript = Object.keys(files).find(
+      (value) => value !== 'index.js' && value.endsWith('.js'),
+    )
+
+    expect(pathCopiedJavaScript).toBeDefined()
+    expect(files['index.js']).toContain(`'./${pathCopiedJavaScript!}'`)
+    expect(files[pathCopiedJavaScript!]).toBe('export default 123\n')
+  })
+
+  it('story: preserve copy-loader JavaScript entry points as passthrough assets', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+
+    await writeFixtureFile(path.join(absoluteWorkingDirectory, 'src/data.js'), 'console.log(123)\n')
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      entryPoints: ['src/data.js'],
+      loader: { '.js': 'copy' },
+      logLevel: 'silent',
+      outdir: 'dist',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const files = await readDirectoryFiles(path.join(absoluteWorkingDirectory, 'dist'))
+
+    expect(Object.keys(files)).toEqual(['data.js'])
+    expect(files['data.js']).toBe('console.log(123)\n')
+  })
+
+  it('story: classify file-loader entry points by emitted output kind', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+
+    await writeFixtureFile(path.join(absoluteWorkingDirectory, 'src/data.txt'), 'entry asset\n')
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      entryPoints: ['src/data.txt'],
+      loader: { '.txt': 'file' },
+      logLevel: 'silent',
+      outdir: 'dist',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const files = await readDirectoryFiles(path.join(absoluteWorkingDirectory, 'dist'))
+    const pathAsset = Object.keys(files).find((value) => value.endsWith('.txt'))
+
+    expect(pathAsset).toBeDefined()
+    expect(files['data.js']).toContain(`./${pathAsset!}`)
+    expect(files[pathAsset!]).toBe('entry asset\n')
+  })
+
+  it('story: accept esbuild split entry wrappers and runtime chunks with empty metafile inputs', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'export { command } from "./command"\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/cli.ts'),
+      'export async function run() {\n  return (await import("./command")).command()\n}\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/command.ts'),
+      'import value from "./value.cjs"\nexport function command() {\n  return value\n}\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/value.cjs'),
+      'module.exports = "ok"\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      entryPoints: ['src/cli.ts', 'src/index.ts'],
+      logLevel: 'silent',
+      outdir: 'dist',
+      splitting: true,
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const files = await readDirectoryFiles(path.join(absoluteWorkingDirectory, 'dist'))
+    const pathWrapper = Object.keys(files).find(
+      (value) => value !== 'cli.js' && value !== 'index.js' && value.includes('command-'),
+    )
+    const pathRuntimeChunk = Object.keys(files).find(
+      (value) =>
+        value !== 'cli.js' &&
+        value !== 'index.js' &&
+        value !== pathWrapper &&
+        value.endsWith('.js'),
+    )
+
+    expect(pathWrapper).toBeDefined()
+    expect(pathRuntimeChunk).toBeDefined()
+    expect(files['cli.js']).toContain('./')
+    expect(files[pathWrapper!]).toContain('command')
+    expect(files[pathRuntimeChunk!]).toContain('__toESM')
+  })
+
   it('story: preserve file-loader assets across shared chunks and custom asset paths', async ({
     onTestFinished,
   }) => {
@@ -514,6 +651,55 @@ describe('esroll integration test', () => {
         (value) => value.startsWith('entries/css/index-') && value.endsWith('.css'),
       ),
     ).toBe(true)
+  })
+
+  it('story: classify multi-part output extensions correctly for JavaScript and CSS', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'import "./style.css"\nexport const value = () => import("./lazy")\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/lazy.ts'),
+      'export const lazy = 1\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/style.css'),
+      '.page { color: red }\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      chunkNames: 'chunks/[ext]/[name]-[hash]',
+      entryPoints: ['src/index.ts'],
+      logLevel: 'silent',
+      outdir: 'dist',
+      outExtension: {
+        '.css': '.min.css',
+        '.js': '.min.js',
+      },
+      sourcemap: true,
+      splitting: true,
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const files = await readDirectoryFiles(path.join(absoluteWorkingDirectory, 'dist'))
+
+    expect(Object.keys(files)).toContain('index.min.js')
+    expect(Object.keys(files)).toContain('index.min.js.map')
+    expect(Object.keys(files)).toContain('index.min.css')
+    expect(Object.keys(files)).toContain('index.min.css.map')
+    expect(
+      Object.keys(files).some(
+        (value) => value.startsWith('chunks/min.js/') && value.endsWith('.min.js'),
+      ),
+    ).toBe(true)
+    expect(files['index.min.js']).toContain('./chunks/min.js/')
   })
 
   it('story: preserve nested output paths for CSS bundles and copied assets', async ({

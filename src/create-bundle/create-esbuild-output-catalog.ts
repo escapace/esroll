@@ -1,23 +1,7 @@
 import type { Loader, Metafile } from 'esbuild'
-import assert from 'node:assert'
 import path from 'node:path'
 
 type ResolvedLoader = 'global-css' | Loader
-
-const LOADERS_EMITTING_ASSETS = new Set<ResolvedLoader>(['copy', 'file'])
-const LOADERS_EMITTING_CSS = new Set<ResolvedLoader>(['css', 'global-css', 'local-css'])
-const LOADERS_EMITTING_MODULES = new Set<ResolvedLoader>([
-  'base64',
-  'binary',
-  'dataurl',
-  'empty',
-  'js',
-  'json',
-  'jsx',
-  'text',
-  'ts',
-  'tsx',
-])
 
 export interface EsbuildOutputCatalogEntry {
   absolutePath: string
@@ -43,6 +27,11 @@ export interface EsbuildOutputCatalog {
   outputs: EsbuildOutputCatalogEntry[]
   passthroughExternalPaths: Set<string>
   passthroughOutputs: EsbuildPassthroughOutput[]
+}
+
+interface OutputExtensions {
+  css: string
+  js: string
 }
 
 const createLoaderResolver = (loaders: Record<string, Loader | undefined>) => {
@@ -97,34 +86,75 @@ const createLoaderResolver = (loaders: Record<string, Loader | undefined>) => {
   }
 }
 
-const classifyOutput = (
-  loaders: ResolvedLoader[],
-  pathOutput: string,
-): EsbuildOutputCatalogEntry['kind'] => {
-  const emitsAssets = loaders.some((loader) => LOADERS_EMITTING_ASSETS.has(loader))
-  const emitsCSS = loaders.some((loader) => LOADERS_EMITTING_CSS.has(loader))
-  const emitsModules = loaders.some((loader) => LOADERS_EMITTING_MODULES.has(loader))
-
-  if (emitsModules) {
-    return 'js-chunk'
-  }
-
-  if (emitsCSS && !emitsAssets) {
-    return 'css'
-  }
-
-  if (emitsAssets && !emitsCSS) {
-    return 'asset'
-  }
-
-  throw new Error(
-    `Internal error: unable to classify esbuild output ${pathOutput} from loaders ${loaders.join(', ')}`,
-  )
-}
-
 type OutputRecord = { requiresImportAttributes: boolean } & EsbuildOutputCatalogEntry
 
 type JavaScriptEntryOutputRecord = { kind: 'js-entry' } & OutputRecord
+
+type OutputExtensionKind = 'asset' | 'css' | 'module'
+type SemanticOutputKind = OutputExtensionKind
+
+const LOADERS_EMITTING_ASSETS = new Set<ResolvedLoader>(['copy', 'file'])
+const LOADERS_EMITTING_CSS = new Set<ResolvedLoader>(['css', 'global-css', 'local-css'])
+
+const isAssetLoader = (loader: ResolvedLoader) => LOADERS_EMITTING_ASSETS.has(loader)
+const isCSSLoader = (loader: ResolvedLoader) => LOADERS_EMITTING_CSS.has(loader)
+
+const classifyOutputExtension = (
+  pathOutput: string,
+  outputExtensions: OutputExtensions,
+): OutputExtensionKind => {
+  if (pathOutput.endsWith(outputExtensions.js)) {
+    return 'module'
+  }
+
+  if (pathOutput.endsWith(outputExtensions.css)) {
+    return 'css'
+  }
+
+  return 'asset'
+}
+
+const classifySemanticOutput = (options: {
+  exports: string[]
+  imports: Array<{ kind: string }>
+  loaders: ResolvedLoader[]
+  outputExtensions: OutputExtensions
+  pathOutput: string
+  entryPointLoader?: ResolvedLoader
+}): SemanticOutputKind => {
+  const outputExtensionKind = classifyOutputExtension(options.pathOutput, options.outputExtensions)
+  const hasInputs = options.loaders.length !== 0
+
+  if (!hasInputs) {
+    if (options.entryPointLoader !== undefined) {
+      if (isCSSLoader(options.entryPointLoader)) {
+        return 'css'
+      }
+
+      if (isAssetLoader(options.entryPointLoader)) {
+        return 'asset'
+      }
+    }
+
+    return outputExtensionKind
+  }
+
+  if (options.loaders.every(isAssetLoader)) {
+    // Asset loaders can still produce JavaScript wrappers for entry points, so a `.js` output is
+    // only a Rollup input when esbuild's metafile reports module linkage for that output.
+    const emitsJavaScriptModule = options.exports.length !== 0 || options.imports.length !== 0
+
+    return outputExtensionKind === 'module' && emitsJavaScriptModule ? 'module' : 'asset'
+  }
+
+  return outputExtensionKind
+}
+
+const refineOutputKind = (
+  semanticKind: SemanticOutputKind,
+  entryPoint: string | undefined,
+): EsbuildOutputCatalogEntry['kind'] =>
+  semanticKind === 'module' ? (entryPoint === undefined ? 'js-chunk' : 'js-entry') : semanticKind
 
 const isJavaScriptEntryOutput = (value: OutputRecord): value is JavaScriptEntryOutputRecord =>
   value.kind === 'js-entry'
@@ -135,6 +165,7 @@ const isPassthroughOutput = (value: OutputRecord): value is EsbuildPassthroughOu
 export const createEsbuildOutputCatalog = (options: {
   loaders: Record<string, Loader | undefined>
   metafile: Metafile
+  outputExtensions: OutputExtensions
   pathDirectoryPackage: string
   pathDirectoryTemporary: string
 }): EsbuildOutputCatalog => {
@@ -163,15 +194,22 @@ export const createEsbuildOutputCatalog = (options: {
     .filter(([pathOutput]) => !pathOutput.endsWith('.map'))
     .map(([pathOutput, value]) => {
       const pathAbsolute = path.resolve(pathOutput)
-      const loaders = Object.keys(value.inputs).map((inputPath) =>
+      const inputPaths = Object.keys(value.inputs)
+      const loaders = inputPaths.map((inputPath) =>
         resolveLoader(path.resolve(pathDirectoryPackage, inputPath)),
       )
-
-      assert(loaders.length !== 0, `Internal error: esbuild output ${pathOutput} has no inputs`)
-
-      const kindBase = classifyOutput(loaders, pathOutput)
-      const kind =
-        kindBase === 'js-chunk' && typeof value.entryPoint === 'string' ? 'js-entry' : kindBase
+      const semanticKind = classifySemanticOutput({
+        entryPointLoader:
+          typeof value.entryPoint === 'string'
+            ? resolveLoader(path.resolve(pathDirectoryPackage, value.entryPoint))
+            : undefined,
+        exports: value.exports,
+        imports: value.imports,
+        loaders,
+        outputExtensions: options.outputExtensions,
+        pathOutput,
+      })
+      const kind = refineOutputKind(semanticKind, value.entryPoint)
 
       return {
         absolutePath: pathAbsolute,
@@ -184,7 +222,7 @@ export const createEsbuildOutputCatalog = (options: {
         requiresImportAttributes:
           kind === 'asset' &&
           loaders.every((loader) => loader === 'copy') &&
-          Object.keys(value.inputs).some((inputPath) =>
+          inputPaths.some((inputPath) =>
             sourceFilesImportedWithAttributes.has(path.resolve(pathDirectoryPackage, inputPath)),
           ),
       }

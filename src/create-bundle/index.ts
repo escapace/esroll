@@ -93,9 +93,14 @@ export const createBundle = async (options: CommonOptions) => {
     messages.errors.push(...resultESBuild.errors)
     messages.warnings.push(...resultESBuild.warnings)
 
+    const outputExtensions = {
+      css: options.outExtension?.['.css'] ?? '.css',
+      js: esbuildOptions.outExtension['.js'],
+    }
     const outputCatalog = createEsbuildOutputCatalog({
       loaders: options.loader ?? {},
       metafile: resultESBuild.metafile,
+      outputExtensions,
       pathDirectoryPackage,
       pathDirectoryTemporary,
     })
