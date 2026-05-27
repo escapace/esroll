@@ -37,7 +37,7 @@
     "micromark-util-sanitize-uri": "^2.0.1",
     "mlly": "^1.8.2",
     "pretty-bytes": "^7.1.0",
-    "rollup": "^4.60.3",
+    "rollup": "^4.60.4",
     "source-map": "^0.7.6",
     "unist-util-visit": "^5.1.0",
     "zx": "^8.8.5"
@@ -50,17 +50,17 @@
     "@ls-lint/ls-lint": "2.3.1",
     "@types/mdast": "4.0.4",
     "@types/node": "25.6.0",
-    "@vitest/coverage-v8": "4.1.6",
-    "eslint": "10.3.0",
+    "@vitest/coverage-v8": "4.1.7",
+    "eslint": "10.4.0",
     "eslint-config-escapace": "5.19.0",
-    "knip": "6.13.1",
-    "lefthook": "2.1.6",
+    "knip": "6.14.1",
+    "lefthook": "2.1.8",
     "prettier": "3.8.3",
     "prettier-config-escapace": "1.2.2",
     "syncpack": "14.3.1",
-    "tsx": "4.21.0",
+    "tsx": "4.22.3",
     "typescript": "6.0.3",
-    "vitest": "4.1.6"
+    "vitest": "4.1.7"
   },
   "devEngines": {
     "packageManager": {
