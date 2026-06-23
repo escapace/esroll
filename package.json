@@ -8,14 +8,14 @@
   },
   "bugs": "https://github.com/escapace/esroll/issues",
   "dependencies": {
-    "@microsoft/api-extractor": "^7.58.8",
+    "@microsoft/api-extractor": "^7.58.9",
     "@microsoft/api-extractor-model": "^7.33.8",
     "@microsoft/tsdoc": "^0.16.0",
     "@rollup/pluginutils": "^5.4.0",
     "common-path-prefix": "^3.0.0",
     "console-table-printer": "^2.16.1",
     "es-module-lexer": "^2.1.0",
-    "es-toolkit": "^1.47.0",
+    "es-toolkit": "^1.47.1",
     "esbuild": "^0.28.0",
     "find-up": "^8.0.0",
     "github-slugger": "^2.0.0",
@@ -37,7 +37,7 @@
     "micromark-util-sanitize-uri": "^2.0.1",
     "mlly": "^1.8.2",
     "pretty-bytes": "^7.1.0",
-    "rollup": "^4.61.1",
+    "rollup": "^4.62.0",
     "source-map": "^0.7.6",
     "unist-util-visit": "^5.1.0",
     "zx": "^8.8.5"
@@ -50,17 +50,17 @@
     "@ls-lint/ls-lint": "2.3.1",
     "@types/mdast": "4.0.4",
     "@types/node": "25.6.0",
-    "@vitest/coverage-v8": "4.1.8",
-    "eslint": "10.4.1",
+    "@vitest/coverage-v8": "4.1.9",
+    "eslint": "10.5.0",
     "eslint-config-escapace": "5.20.0",
-    "knip": "6.16.1",
+    "knip": "6.17.1",
     "lefthook": "2.1.9",
     "prettier": "3.8.4",
     "prettier-config-escapace": "1.2.2",
-    "syncpack": "15.3.1",
+    "syncpack": "15.3.2",
     "tsx": "4.22.4",
     "typescript": "6.0.3",
-    "vitest": "4.1.8"
+    "vitest": "4.1.9"
   },
   "devEngines": {
     "packageManager": {
