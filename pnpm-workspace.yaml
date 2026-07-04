@@ -1,5 +1,9 @@
+allowBuilds:
+  esbuild: true
+  lefthook: true
 blockExoticSubdeps: true
 childConcurrency: 1
+dedupePeers: true
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
   - '@caslon/*'
@@ -12,6 +16,7 @@ minimumReleaseAgeExclude:
   - cassiopeia
   - cepheus
   - coastal
+  - esbuild@0.28.1
   - eslint-config-escapace
   - esroll
   - fastify-fetch
@@ -29,14 +34,13 @@ minimumReleaseAgeExclude:
   - syncpack-linux-x64-musl
   - syncpack-windows-arm64
   - syncpack-windows-x64
-  # Renovate security update: esbuild@0.28.1
-  - esbuild@0.28.1
-onlyBuiltDependencies:
-  - esbuild
-  - lefthook
+minimumReleaseAgeStrict: true
 strictDepBuilds: true
 trustPolicy: no-downgrade
 trustPolicyExclude:
-  - eslint
   - '@eslint/*'
+  - eslint
+  - tinyexec@1.2.1
+  - tinyexec@1.2.2
   - ts-api-utils@2.3.0
+verifyDepsBeforeRun: false
