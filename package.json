@@ -14,7 +14,7 @@
     "@rollup/pluginutils": "^5.4.0",
     "common-path-prefix": "^3.0.0",
     "console-table-printer": "^2.16.1",
-    "es-module-lexer": "^2.2.0",
+    "es-module-lexer": "^2.3.0",
     "es-toolkit": "^1.49.0",
     "esbuild": "^0.28.1",
     "find-up": "^8.0.0",
@@ -50,17 +50,17 @@
     "@ls-lint/ls-lint": "2.3.1",
     "@types/mdast": "4.0.4",
     "@types/node": "24.13.2",
-    "@vitest/coverage-v8": "4.1.9",
+    "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.6.0",
     "eslint-config-escapace": "5.20.0",
-    "knip": "6.23.0",
+    "knip": "6.25.0",
     "lefthook": "2.1.9",
     "prettier": "3.9.4",
     "prettier-config-escapace": "1.2.2",
     "syncpack": "15.3.2",
-    "tsx": "4.22.4",
+    "tsx": "4.23.0",
     "typescript": "6.0.3",
-    "vitest": "4.1.9"
+    "vitest": "4.1.10"
   },
   "devEngines": {
     "packageManager": {
