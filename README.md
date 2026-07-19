@@ -73,7 +73,7 @@ Setting [options.documentation](#buildoptionsdocumentation) enables API document
 
 When both [options.outdir](#buildoptionsoutdir) and [options.declaration](#buildoptionsdeclaration) are set, bundling executes first, declaration generation runs second, and documentation writes last.
 
-## interface BuildOptions [↗](src/types.ts#L39-L169 'BuildOptions')
+## interface BuildOptions [↗](src/types.ts#L39-L178 'BuildOptions')
 
 Configuration options for the build process.
 
@@ -130,6 +130,10 @@ documentation?: boolean | string;
 #### Remarks
 
 Requires [declaration](#buildoptionsdeclaration) to be true. When set to `true`, documentation is generated and either replaces or appends the matching section in `README.md`. When set to a string, the value identifies an alternate markdown file that must sit directly inside the package directory and receives the same replacement or append behavior described by [documentationHeading](#buildoptionsdocumentationheading).
+
+Add the `@hidden` modifier tag to an exported declaration to omit that API item from esroll-generated Markdown. Applying the tag to a class, interface, or enum also omits its rendered children; applying it to a child omits only that child. The tag does not remove API items from declaration output or their source comments. References to omitted items, including inline `{@link}` tags, remain as unlinked text.
+
+esroll registers `@hidden` with API Extractor when documentation is enabled. If the project's TSDoc configuration also defines `@hidden`, it must define it as a modifier tag.
 
 ### BuildOptions.documentationHeading
 
@@ -215,7 +219,7 @@ Controls whether and how source maps are generated for the bundled output.
 - The 'inline' mode embeds source maps directly into the output files as base64-encoded data URIs.
 - The 'external' mode writes source maps to separate .map files alongside the output files but omits the sourceMappingURL comment
 
-## interface BuildResult [↗](src/types.ts#L174-L187 'BuildResult')
+## interface BuildResult [↗](src/types.ts#L183-L196 'BuildResult')
 
 Result of a build operation.
 

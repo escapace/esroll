@@ -7,6 +7,9 @@ export interface DocumentationSectionVisibility {
   showThrows?: boolean
 }
 
+/** TSDoc modifier that omits an API item from generated Markdown. */
+export const DOCUMENTATION_HIDDEN_TAG_NAME = '@hidden'
+
 export const DOCUMENTATION_TABLE_COLUMNS = {
   ENUM_MEMBER: ['Member', 'Value', 'Description'],
   PARAMETER: ['Parameter', 'Type', 'Description'],

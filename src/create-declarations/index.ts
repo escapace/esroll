@@ -19,6 +19,7 @@ import { replaceHeadingSection } from '../create-documentation/replace-heading-s
 import type { CommonOptions } from '../types'
 import { isFile } from '../utilities/is-file'
 import { apiExtractorDiagnosticMessage } from './api-extractor-diagnostic-message'
+import { configureDocumentationHiddenTag } from './configure-documentation-hidden-tag'
 import {
   createLanguageService,
   SUPPORTED_ARBITRARY_EXTENSIONS,
@@ -344,6 +345,10 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
       packageJsonFullPath: pathFilePackageJSON,
     })
 
+    if (documentation === true || typeof documentation === 'string') {
+      configureDocumentationHiddenTag(extractorConfig.tsdocConfiguration)
+    }
+
     Extractor.invoke(extractorConfig, {
       localBuild: false,
       showDiagnostics: false,
@@ -422,10 +427,6 @@ const handleDocumentation = async (options: ProgramOptions) => {
     headingDepth: heading.depth + 1,
     modelFilePath: pathFileAPIJSON,
   })
-
-  if (root === undefined) {
-    return
-  }
 
   root.children.unshift(heading)
 

@@ -80,6 +80,15 @@ export interface BuildOptions extends Omit<ESBuildOptions, BuildOptionsExcluded>
    * When set to a string, the value identifies an alternate markdown file that must sit directly
    * inside the package directory and receives the same replacement or append behavior described by
    * {@link BuildOptions.documentationHeading | documentationHeading}.
+   *
+   * Add the `@hidden` modifier tag to an exported declaration to omit that API item from
+   * esroll-generated Markdown. Applying the tag to a class, interface, or enum also omits its
+   * rendered children; applying it to a child omits only that child. The tag does not remove API
+   * items from declaration output or their source comments. References to omitted items, including
+   * inline `{@link}` tags, remain as unlinked text.
+   *
+   * esroll registers `@hidden` with API Extractor when documentation is enabled. If the project's
+   * TSDoc configuration also defines `@hidden`, it must define it as a modifier tag.
    */
   documentation?: boolean | string
 

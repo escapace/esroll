@@ -29,6 +29,7 @@ import {
   type TSDocMarkdownWriterOptions,
 } from './from-tsdoc-node'
 import { isApiItem } from './is-api-item'
+import { isDocumentationHidden } from './is-documentation-hidden'
 import { isEmpty } from './is-empty'
 import { makeListsTight } from './make-lists-tight'
 import { normalizeExcerptWhitespace } from './normalize-excerpt-whitespace'
@@ -274,8 +275,9 @@ export class ApiMarkdownWriter {
       return
     }
 
-    const enumMembers = (this.item.members ?? []).filter((member): member is ApiEnumMember =>
-      isApiItem<ApiEnumMember>(member, ApiItemKind.EnumMember),
+    const enumMembers = (this.item.members ?? []).filter(
+      (member): member is ApiEnumMember =>
+        isApiItem<ApiEnumMember>(member, ApiItemKind.EnumMember) && !isDocumentationHidden(member),
     )
 
     if (enumMembers.length === 0) {
@@ -348,6 +350,10 @@ export class ApiMarkdownWriter {
   }
 
   writeApiItem(item: ApiItem, options?: { headline?: string | true }): void {
+    if (isDocumentationHidden(item)) {
+      return
+    }
+
     const writer = this.fork({
       headline: options?.headline ?? true,
       item,
@@ -359,7 +365,7 @@ export class ApiMarkdownWriter {
       const ctor = writer.item.members?.find((member): member is ApiConstructor =>
         isApiItem<ApiConstructor>(member, ApiItemKind.Constructor),
       )
-      if (ctor !== undefined) {
+      if (ctor !== undefined && !isDocumentationHidden(ctor)) {
         writer.fork({ headline: true, item: ctor }).writeSections()
       }
     }
@@ -372,7 +378,7 @@ export class ApiMarkdownWriter {
     const members = writer.item.members ?? []
     for (const memberKind of memberKinds) {
       for (const member of members) {
-        if (member.kind === memberKind) {
+        if (member.kind === memberKind && !isDocumentationHidden(member)) {
           writer.fork({ headline: true, item: member }).writeSections()
         }
       }

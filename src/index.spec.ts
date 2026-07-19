@@ -1025,17 +1025,22 @@ describe('esroll integration test', () => {
 
     await writeFixtureFile(
       path.join(absoluteWorkingDirectory, 'src/contracts/public-api.ts'),
-      '/** Primary API contract */\nexport interface PublicApi {\n  value: string\n}\n',
+      '/**\n * Primary API contract.\n *\n * @hidden\n */\nexport interface PublicApi {\n  value: string\n}\n',
     )
 
     await writeFixtureFile(
       path.join(absoluteWorkingDirectory, 'src/contracts/secondary-api.ts'),
-      '/** Secondary API contract */\nexport interface SecondaryApi {\n  id: number\n}\n',
+      '/** Secondary API contract */\nexport interface SecondaryApi {\n  /** Secondary identifier. */\n  id: number\n\n  /** Performs a visible operation. */\n  visibleMethod?(): void\n\n  /**\n   * Diagnostic detail.\n   *\n   * @hidden\n   */\n  hidden?: string\n\n  /**\n   * Performs a hidden operation.\n   *\n   * @hidden\n   */\n  hiddenMethod?(): void\n}\n',
     )
 
     await writeFixtureFile(
       path.join(absoluteWorkingDirectory, 'src/index.ts'),
-      'import type { PublicApi } from "./contracts/public-api"\nimport type { SecondaryApi } from "./contracts/secondary-api"\n\nexport type { PublicApi } from "./contracts/public-api"\nexport type { SecondaryApi } from "./contracts/secondary-api"\n\nexport const createApi = (): { primary: PublicApi; secondary: SecondaryApi } => ({\n  primary: { value: "ok" },\n  secondary: { id: 1 },\n})\n',
+      'import type { PublicApi } from "./contracts/public-api"\nimport type { SecondaryApi } from "./contracts/secondary-api"\n\nexport type { PublicApi } from "./contracts/public-api"\nexport type { SecondaryApi } from "./contracts/secondary-api"\n\n/**\n * Internal shape retained in declarations.\n *\n * @hidden\n */\nexport type InternalShape = { token: string }\n\n/** Runtime client. */\nexport class RuntimeClient {\n  /**\n   * Creates a runtime client.\n   *\n   * @hidden\n   */\n  constructor(readonly value: string) {}\n\n  /** Runs the client. */\n  run(): string { return this.value }\n\n  /**\n   * Returns diagnostic state.\n   *\n   * @hidden\n   */\n  debug(): string { return this.value }\n}\n\n/** Runtime modes. */\nexport enum RuntimeMode {\n  /** Normal runtime mode. */\n  Normal = "normal",\n  /**\n   * Hidden runtime mode.\n   *\n   * @hidden\n   */\n  Hidden = "hidden",\n}\n\n/**\n * Runtime helper omitted from documentation.\n *\n * @hidden\n */\nexport function hiddenRuntimeHelper(): void {}\n\n/**\n * Runtime class omitted from documentation.\n *\n * @hidden\n */\nexport class HiddenRuntimeClient {}\n\n/**\n * Runtime value omitted from documentation.\n *\n * @hidden\n */\nexport const hiddenRuntimeValue = 1\n\n/**\n * Runtime enum omitted from documentation.\n *\n * @hidden\n */\nexport enum HiddenRuntimeMode { Value = "value" }\n\n/** Creates the public API using {@link PublicApi | the primary contract}. */\nexport const createApi = (): { primary: PublicApi; secondary: SecondaryApi } => ({\n  primary: { value: "ok" },\n  secondary: { id: 1 },\n})\n\nexport * from "./coverage"\n',
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/coverage.ts'),
+      '/**\n * Base class retained for declaration inheritance.\n *\n * @hidden\n */\nexport class HiddenRuntimeBase {}\n\n/** Runtime API with independently visible members. */\nexport class MemberVisibilityClient extends HiddenRuntimeBase {\n  /** Visible state. */\n  readonly visibleState = "visible"\n\n  /**\n   * Hidden state.\n   *\n   * @hidden\n   */\n  readonly hiddenState = "hidden"\n\n  /** Uses {@link MemberVisibilityClient.hiddenState | hidden state}. */\n  visibleMethod(): string { return this.visibleState }\n\n  /**\n   * Returns hidden state.\n   *\n   * @hidden\n   */\n  hiddenMethod(): string { return this.hiddenState }\n}\n\n/** Callable API with a visible property. */\nexport interface CallableApi {\n  /** Visible callable name. */\n  name: string\n\n  /**\n   * Hidden call signature.\n   *\n   * @hidden\n   */\n  (input: string): string\n}\n',
     )
 
     await writeFixtureFile(
@@ -1067,12 +1072,168 @@ describe('esroll integration test', () => {
     const declarationContent = await readFile(declarationFile!.path, 'utf8')
     expect(declarationContent).toContain('export declare interface PublicApi')
     expect(declarationContent).toContain('export declare interface SecondaryApi')
+    expect(declarationContent).toContain('export declare type InternalShape')
+    expect(declarationContent).toContain('export declare class HiddenRuntimeClient')
+    expect(declarationContent).toContain('export declare const hiddenRuntimeValue = 1')
+    expect(declarationContent).toContain('export declare enum HiddenRuntimeMode')
+    expect(declarationContent).toContain('@hidden')
 
     const readmeContent = await readFile(readmeFile!.path, 'utf8')
     expect(readmeContent).toContain('# API')
-    expect(readmeContent).toContain('interface PublicApi')
+    expect(readmeContent).toContain('function createApi')
+    expect(readmeContent).toContain('class RuntimeClient')
+    expect(readmeContent).toContain('enum RuntimeMode')
     expect(readmeContent).toContain('interface SecondaryApi')
+    expect(readmeContent).toContain('interface CallableApi')
+    expect(readmeContent).toContain('RuntimeClient.run')
+    expect(readmeContent).toContain('SecondaryApi.id')
+    expect(readmeContent).toContain('SecondaryApi.visibleMethod')
+    expect(readmeContent).toContain('MemberVisibilityClient.visibleState')
+    expect(readmeContent).toContain('MemberVisibilityClient.visibleMethod')
+    expect(readmeContent).toContain('| `Normal`')
+    expect(readmeContent).toContain('the primary contract')
+    expect(readmeContent).toContain('hidden state')
+    expect(readmeContent).toContain('extends HiddenRuntimeBase')
+    expect(readmeContent).not.toContain('[the primary contract](')
+    expect(readmeContent).not.toContain('[hidden state](')
+    expect(readmeContent).not.toContain('[HiddenRuntimeBase](')
+    expect(readmeContent).not.toContain('[PublicApi](')
+    expect(readmeContent).not.toContain('interface PublicApi')
+    expect(readmeContent).not.toContain('type InternalShape')
+    expect(readmeContent).not.toContain('function hiddenRuntimeHelper')
+    expect(readmeContent).not.toContain('class HiddenRuntimeClient')
+    expect(readmeContent).not.toContain('const hiddenRuntimeValue')
+    expect(readmeContent).not.toContain('enum HiddenRuntimeMode')
+    expect(readmeContent).not.toContain('RuntimeClient.debug')
+    expect(readmeContent).not.toContain('new RuntimeClient')
+    expect(readmeContent).not.toContain('SecondaryApi.hidden')
+    expect(readmeContent).not.toContain('SecondaryApi.hiddenMethod')
+    expect(readmeContent).not.toContain('MemberVisibilityClient.hiddenState')
+    expect(readmeContent).not.toContain('MemberVisibilityClient.hiddenMethod')
+    expect(readmeContent).not.toContain('CallableApi.(call)')
+    expect(readmeContent).not.toContain('class HiddenRuntimeBase')
+    expect(readmeContent).not.toContain('| `Hidden`')
     expect(readmeContent).not.toContain('legacy api section that should be replaced')
+  }, 30_000)
+
+  it('story: replace stale documentation when every API item is ignored', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+    await createPackageFixture(absoluteWorkingDirectory)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            declarationDir: 'types',
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            rootDir: 'src',
+            skipLibCheck: true,
+            target: 'ES2022',
+            types: [],
+          },
+          include: ['src/**/*.ts'],
+        },
+        null,
+        2,
+      ),
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      '/**\n * Hidden API.\n *\n * @hidden\n */\nexport function hiddenApi(): void {}\n',
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'README.md'),
+      '# fixture\n\n# API\n\nlegacy api section that should be removed\n',
+    )
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      declaration: true,
+      documentation: true,
+      entryPoints: ['src/index.ts'],
+      logLevel: 'silent',
+      tsconfig: 'tsconfig.json',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const readmeFile = result.outputFiles.find((value) => value.path.endsWith('/README.md'))
+    expect(readmeFile).toBeDefined()
+
+    const readmeContent = await readFile(readmeFile!.path, 'utf8')
+    expect(readmeContent).toContain('# fixture')
+    expect(readmeContent).toContain('# API')
+    expect(readmeContent).not.toContain('hiddenApi')
+    expect(readmeContent).not.toContain('legacy api section that should be removed')
+  }, 30_000)
+
+  it('story: reject an incompatible project definition of the documentation ignore tag', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+    await createPackageFixture(absoluteWorkingDirectory)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            declarationDir: 'types',
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            rootDir: 'src',
+            skipLibCheck: true,
+            target: 'ES2022',
+            types: [],
+          },
+          include: ['src/**/*.ts'],
+        },
+        null,
+        2,
+      ),
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsdoc.json'),
+      JSON.stringify(
+        {
+          $schema: 'https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json',
+          supportForTags: {
+            '@hidden': true,
+          },
+          tagDefinitions: [
+            {
+              syntaxKind: 'block',
+              tagName: '@hidden',
+            },
+          ],
+        },
+        null,
+        2,
+      ),
+    )
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      '/** Public API. */\nexport function publicApi(): void {}\n',
+    )
+
+    await expect(
+      build({
+        absWorkingDir: absoluteWorkingDirectory,
+        declaration: true,
+        documentation: true,
+        entryPoints: ['src/index.ts'],
+        logLevel: 'silent',
+        tsconfig: 'tsconfig.json',
+      }),
+    ).rejects.toThrow(
+      '@hidden must be defined as a TSDoc modifier tag when documentation is enabled',
+    )
   }, 30_000)
 
   it('story: generate declaration rollups without warning on source declaration imports', async ({

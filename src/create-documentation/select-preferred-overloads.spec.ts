@@ -1,5 +1,7 @@
 import { ApiItemKind, type ApiItem } from '@microsoft/api-extractor-model'
 import { describe, expect, it } from 'vitest'
+import { DOCUMENTATION_HIDDEN_TAG_NAME } from './constants'
+import { isDocumentationHidden } from './is-documentation-hidden'
 import { selectPreferredOverloads } from './select-preferred-overloads'
 
 type MutableApiItem = {
@@ -77,5 +79,31 @@ describe('selectPreferredOverloads', () => {
 
     expect(selected).toBe(overload2)
     expect(selected.tsdocComment).toBe(comment)
+  })
+
+  it('preserves the documentation ignore modifier from the documented overload', () => {
+    const parent = createApiItem({ displayName: 'entry', kind: ApiItemKind.EntryPoint })
+    const overload1 = createApiItem({
+      displayName: 'canonicalize',
+      kind: ApiItemKind.Function,
+      overloadIndex: 1,
+      parent,
+      tsdocComment: {
+        modifierTagSet: {
+          hasTagName: (tagName: string) => tagName === DOCUMENTATION_HIDDEN_TAG_NAME,
+        },
+      },
+    })
+    const overload2 = createApiItem({
+      displayName: 'canonicalize',
+      kind: ApiItemKind.Function,
+      overloadIndex: 2,
+      parent,
+    })
+
+    const [selected] = selectPreferredOverloads([overload2, overload1])
+
+    expect(selected).toBe(overload2)
+    expect(isDocumentationHidden(selected)).toBe(true)
   })
 })

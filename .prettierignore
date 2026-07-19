@@ -1,4 +1,4 @@
 *.api.json
-coverage
 lib
+coverage
 pnpm-lock.yaml

@@ -14,7 +14,7 @@ describe('create-documentation', () => {
         toMarkdown(
           ...createDocumentation({
             modelFilePath: json,
-          })!.children,
+          }).children,
         ),
       ).toMatchSnapshot()
     })

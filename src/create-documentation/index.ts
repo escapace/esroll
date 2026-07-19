@@ -24,7 +24,7 @@ export function createDocumentation(options: {
   modelFilePath: string
   findSourceLocation?: FindSourceLocation
   headingDepth?: number
-}): Root | undefined {
+}): Root {
   let headingDepth = options.headingDepth ?? 2
   assert(headingDepth >= 2)
   headingDepth -= 1
@@ -47,7 +47,7 @@ export function createDocumentation(options: {
     }
   }
 
-  return writer.content
+  return writer.content ?? { children: [], type: 'root' }
 }
 
 function collectItems(

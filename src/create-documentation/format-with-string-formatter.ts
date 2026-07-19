@@ -233,7 +233,7 @@ function stableSerializeInternal(value: unknown, visited: WeakSet<object>): stri
     return `[${value.map((entry) => stableSerializeInternal(entry, visited)).join(',')}]`
   }
 
-  const keys = Object.keys(value as Record<string, unknown>).sort()
+  const keys = Object.keys(value).sort()
 
   return `{${keys
     .map(
