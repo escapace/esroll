@@ -20,7 +20,7 @@
     "find-up": "^8.0.0",
     "github-slugger": "^2.0.0",
     "is-path-inside": "^4.0.0",
-    "magic-string": "^0.30.21",
+    "magic-string": "^1.2.2",
     "mdast-squeeze-paragraphs": "^6.0.0",
     "mdast-util-find-and-replace": "^3.0.2",
     "mdast-util-from-markdown": "^2.0.3",
