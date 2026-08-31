@@ -1236,6 +1236,72 @@ describe('esroll integration test', () => {
     )
   }, 30_000)
 
+  it('story: preserve entry-point global declarations in declaration rollups', async ({
+    onTestFinished,
+  }) => {
+    const absoluteWorkingDirectory = await createTemporaryWorkspace(onTestFinished)
+    await createPackageFixture(absoluteWorkingDirectory)
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'tsconfig.json'),
+      JSON.stringify(
+        {
+          compilerOptions: {
+            declarationDir: 'types',
+            module: 'ESNext',
+            moduleResolution: 'Bundler',
+            rootDir: 'src',
+            skipLibCheck: true,
+            target: 'ES2022',
+            types: [],
+          },
+          include: ['src'],
+        },
+        null,
+        2,
+      ),
+    )
+
+    await writeFixtureFile(
+      path.join(absoluteWorkingDirectory, 'src/index.ts'),
+      'import type { BuildOptions } from "esbuild"\n\n/** Public options. */\nexport interface PublicOptions {\n  value: string\n}\n\ndeclare global {\n  interface Window {\n    buildOptions: BuildOptions\n    publicOptions: PublicOptions\n  }\n}\n\n/** Public value. */\nexport const publicValue = 1\n',
+    )
+    await writeFixtureFile(path.join(absoluteWorkingDirectory, 'README.md'), '# fixture\n')
+
+    const result = await build({
+      absWorkingDir: absoluteWorkingDirectory,
+      declaration: true,
+      declarationRollup: true,
+      documentation: true,
+      entryPoints: ['src/index.ts'],
+      logLevel: 'silent',
+      tsconfig: 'tsconfig.json',
+    })
+
+    expect(result.errors).toHaveLength(0)
+    expect(result.warnings).toHaveLength(0)
+
+    const declarationFile = result.outputFiles.find((value) =>
+      value.path.endsWith('/types/index.d.ts'),
+    )
+    const readmeFile = result.outputFiles.find((value) => value.path.endsWith('/README.md'))
+
+    expect(declarationFile).toBeDefined()
+    expect(readmeFile).toBeDefined()
+
+    const declarationContent = await readFile(declarationFile!.path, 'utf8')
+    expect(declarationContent).toContain("import type { BuildOptions } from 'esbuild'")
+    expect(declarationContent).toContain('declare global {')
+    expect(declarationContent).toContain('interface Window')
+    expect(declarationContent).toContain('buildOptions: BuildOptions')
+    expect(declarationContent).toContain('publicOptions: PublicOptions')
+    expect(declarationContent).not.toContain('__esroll_global_')
+
+    const readmeContent = await readFile(readmeFile!.path, 'utf8')
+    expect(readmeContent).not.toContain('__esroll_global_')
+    expect(readmeContent).not.toContain('interface Window')
+  }, 30_000)
+
   it('story: generate declaration rollups without warning on source declaration imports', async ({
     onTestFinished,
   }) => {

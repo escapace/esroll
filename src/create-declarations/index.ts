@@ -30,6 +30,8 @@ import { isPathImmediatelyInside } from '../utilities/is-path-immediately-inside
 import { prettierFormat } from '../utilities/prettier-format'
 
 const declarationExtension = /\.d\.(?:cts|mts|ts)$/
+const globalDeclarationIdentifierPrefix = '__esroll_global_'
+const hiddenGlobalDeclarationComment = '/** @hidden */'
 
 // export interface CommonOptions extends DeclarationOptions {
 //   includeForgottenExports?: boolean
@@ -57,6 +59,140 @@ interface DeclarationWriteOptions extends ProgramOptions {
 interface ApiExtractorOptions extends DeclarationWriteOptions {
   apiExtractorEnabled: boolean
   pathFileEntryPoint?: string
+}
+
+interface GlobalDeclarationRollup {
+  hiddenFromDocumentation: boolean
+  identifiers: string[]
+}
+
+// API Extractor omits global declarations from rollups. Temporarily expose them as namespaces so
+// its normal analysis retains their referenced imports and declarations, then restore them.
+const prepareGlobalDeclarationsForRollup = async (
+  options: ApiExtractorOptions,
+): Promise<GlobalDeclarationRollup> => {
+  const { documentation, pathFileEntryPoint, ts } = options
+  assert(pathFileEntryPoint !== undefined, 'Entry point declaration file must be found')
+
+  const content = await readFile(pathFileEntryPoint, 'utf-8')
+  const sourceFile = ts.createSourceFile(
+    pathFileEntryPoint,
+    content,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  )
+  const declarations = sourceFile.statements.filter(
+    (statement): statement is TS.ModuleDeclaration =>
+      ts.isModuleDeclaration(statement) &&
+      (statement.flags & ts.NodeFlags.GlobalAugmentation) !== 0,
+  )
+  const hiddenFromDocumentation = documentation === true || typeof documentation === 'string'
+  const identifiers: string[] = []
+  const identifiersInContent = new Set(content.match(/[a-z_$][\w$]*/gi) ?? [])
+  const replacements: Array<{ end: number; start: number; text: string }> = []
+  let nextIdentifierNumber = 0
+
+  for (const declaration of declarations) {
+    let identifier: string | undefined
+
+    for (; nextIdentifierNumber <= identifiersInContent.size; nextIdentifierNumber++) {
+      const candidate = `${globalDeclarationIdentifierPrefix}${nextIdentifierNumber}`
+
+      if (!identifiersInContent.has(candidate)) {
+        identifier = candidate
+        identifiersInContent.add(candidate)
+        nextIdentifierNumber++
+        break
+      }
+    }
+
+    assert(identifier !== undefined, 'A unique global declaration identifier must be available')
+    identifiers.push(identifier)
+    replacements.push({
+      end: declaration.name.end,
+      start: declaration.getStart(sourceFile),
+      text: `${hiddenFromDocumentation ? `${hiddenGlobalDeclarationComment}\n` : ''}export declare namespace ${identifier}`,
+    })
+  }
+
+  let transformedContent = content
+
+  for (const replacement of replacements.toSorted((a, b) => b.start - a.start)) {
+    transformedContent =
+      transformedContent.slice(0, replacement.start) +
+      replacement.text +
+      transformedContent.slice(replacement.end)
+  }
+
+  if (replacements.length > 0) {
+    await writeFile(pathFileEntryPoint, transformedContent)
+  }
+
+  return { hiddenFromDocumentation, identifiers }
+}
+
+const restoreGlobalDeclarationsAfterRollup = (
+  content: string,
+  globalDeclarationRollup: GlobalDeclarationRollup,
+  pathFileEntryPoint: string,
+  ts: typeof TS,
+): string => {
+  const { hiddenFromDocumentation, identifiers } = globalDeclarationRollup
+
+  if (identifiers.length === 0) {
+    return content
+  }
+
+  const identifierSet = new Set(identifiers)
+  const sourceFile = ts.createSourceFile(
+    pathFileEntryPoint,
+    content,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  )
+  const declarations = sourceFile.statements.filter(
+    (statement): statement is TS.ModuleDeclaration =>
+      ts.isModuleDeclaration(statement) &&
+      ts.isIdentifier(statement.name) &&
+      identifierSet.has(statement.name.text),
+  )
+
+  assert(
+    declarations.length === identifiers.length,
+    'Global declarations must be found after declaration rollup',
+  )
+
+  const replacements = declarations.map((declaration) => {
+    const declarationStart = declaration.getStart(sourceFile)
+    let start = declarationStart
+
+    if (hiddenFromDocumentation) {
+      const commentStart = content.lastIndexOf(hiddenGlobalDeclarationComment, declarationStart)
+      assert(
+        commentStart >= 0 &&
+          content
+            .slice(commentStart + hiddenGlobalDeclarationComment.length, declarationStart)
+            .trim().length === 0,
+        'Synthetic global declaration documentation comment must be found after declaration rollup',
+      )
+      start = commentStart
+    }
+
+    return { end: declaration.name.end, start, text: 'declare global' }
+  })
+
+  let transformedContent = content
+
+  for (const replacement of replacements.toSorted((a, b) => b.start - a.start)) {
+    transformedContent =
+      transformedContent.slice(0, replacement.start) +
+      replacement.text +
+      transformedContent.slice(replacement.end)
+  }
+
+  return transformedContent
 }
 
 const createEnvironmentOptions = async (
@@ -290,6 +426,9 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
   assert(pathFilePackageJSON !== undefined, 'package.json must be found')
 
   try {
+    const globalDeclarationRollup = declarationRollup
+      ? await prepareGlobalDeclarationsForRollup(apiExtractorOptions)
+      : { hiddenFromDocumentation: false, identifiers: [] }
     const extractorConfig = ExtractorConfig.prepare({
       configObject: {
         apiReport: {
@@ -383,7 +522,12 @@ const runApiExtractor = async (apiExtractorOptions: ApiExtractorOptions): Promis
     })
 
     if (declarationRollup) {
-      const bundle = await readFile(pathFileEntryPoint, 'utf-8')
+      const bundle = restoreGlobalDeclarationsAfterRollup(
+        await readFile(pathFileEntryPoint, 'utf-8'),
+        globalDeclarationRollup,
+        pathFileEntryPoint,
+        ts,
+      )
       await zx.fs.emptyDir(pathDirectoryDeclaration)
       await zx.fs.mkdirp(path.dirname(pathFileEntryPoint))
       await writeFile(pathFileEntryPoint, bundle)
