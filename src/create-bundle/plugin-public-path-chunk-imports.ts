@@ -50,7 +50,7 @@ export const pluginPublicPathChunkImports = (publicPath: string | undefined): Pl
 
     return {
       code: magicString.toString(),
-      map: magicString.generateMap({ hires: true }),
+      map: magicString.generateMap({ hires: true }).toString(),
     }
   },
 })
